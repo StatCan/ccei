@@ -1,0 +1,9 @@
+name: 'CCEI Extend Migrate'
+description: 'Registers migration plugins and provides content.'
+type: module
+core: 8.x
+package: CCEI
+
+# Required modules
+dependencies:
+  - wxt_ext_migration:wxt_ext_migration

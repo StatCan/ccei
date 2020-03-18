@@ -1,0 +1,114 @@
+{
+    "name": "wcms/ccei",
+    "description": "Project template for Drupal 8 sites built with the WxT distribution.",
+    "type": "drupal-profile",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "drush/drush": "^9.0",
+        "drupal/drupal-extension": "~3.4.0",
+        "behat/behat": "^3.0",
+        "drupal/coder": "^8.3.7",
+        "phing/phing": "^2.14",
+        "drupal/devel": "^1.0",
+        "squizlabs/php_codesniffer": "3.*",
+        "se/selenium-server-standalone": "^2.53",
+        "drupal/console": "~1.8.0",
+        "jakoch/phantomjs-installer": "1.9.8",
+        "composer/composer": "^1.4",
+        "grasmash/yaml-cli": "^1.0",
+        "bex/behat-screenshot": "^1.2"
+    },
+    "config": {
+        "secure-http": false,
+        "prestissimo": {
+            "maxConnections": 10,
+            "minConnections": 5
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://drupalwxt.github.io/composer-extdeps/"
+        }
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "@composer drupal-scaffold"
+        ],
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "release-version": "Drupal\\ccei\\Composer\\ReleaseVersion::execute"
+    },
+    "extra": {
+        "installer-types": [
+          "bower-asset",
+          "npm-asset"
+        ],
+        "installer-paths": {
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "html/core": [
+                "type:drupal-core"
+            ],
+            "html/libraries/{$name}" : [
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset",
+                "type:drupal-console-library"
+            ],
+            "html/modules/custom/{$name}": [
+                "drupal/wxt_library"
+            ],
+            "html/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "html/profiles/{$name}": [
+                "type:drupal-profile"
+            ],
+            "html/themes/custom/{$name}": [
+                "drupal/wxt_bootstrap"
+            ],
+            "html/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ]
+        },
+        "enable-patching": true,
+        "patches": {
+            "drupal/jsonapi": {
+                "3034626 - Fatal error after security update without updating Drupal core.": "https://www.drupal.org/files/issues/2019-02-21/fatal_error_after_updating_the_module-3034626-2.patch"
+            }
+        },
+        "patches-ignore": {
+            "drupal/lightning_core": {
+                "drupal/core": {
+                    "1356276 - Allow profiles to define a base/parent profile and load them in the correct order":
+                    "https://www.drupal.org/files/issues/2019-11-05/1356276-531-8.8.x-4.patch",
+                    "2914389 - Allow profiles to exclude dependencies of their parent":
+                    "https://www.drupal.org/files/issues/2018-07-09/2914389-8-do-not-test.patch"
+                }
+            }
+        }
+    },
+    "require": {
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6.7",
+        "drupal-composer/drupal-scaffold": "^2.0.0",
+        "drupalwxt/wxt": "3.0.7",
+        "acquia/lightning": "4.1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\ccei\\": "src"
+        }
+    }
+}

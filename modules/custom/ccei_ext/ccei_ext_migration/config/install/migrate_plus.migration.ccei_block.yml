@@ -1,0 +1,49 @@
+id: ccei_block
+migration_group: ccei
+migration_tags:
+  - Core
+dependencies:
+  enforced:
+    module:
+      - ccei_ext_migration
+label: 'Embedded data import for custom block types (basic)'
+source:
+  plugin: embedded_data
+  # Enforce default language to english
+  default_lang: true
+  data_rows:
+    - bid: 'homepage_block_1'
+      language: 'en'
+      title: 'Coming soon'
+      body: |
+        <section class="alert alert-info">
+          <h2 class="h4">Coming soon: Canada's trusted new source for energy news!</h2>
+          <p>Want to learn more about Canada's energy future?</p>
+          <p>Statistics Canada and Natural Resources Canada will be developing the Canadian Centre for Energy Information (CCEI) in collaboration with Environment and Climate Change Canada and the Canada Energy Regulator. This new website will house resources on all things energy-related, including production, consumption, international trade and much more.</p>
+          <p>Check back frequently to see what's new, and follow #energynews on social media to keep up with the latest developments!</p>
+        </section>
+  # Under 'ids', we identify source fields populated above which will uniquely
+  # identify each imported item. The 'type' makes sure the migration map table
+  # uses the proper schema type for stored the IDs.
+  ids:
+    bid:
+      type: string
+process:
+  id: bid
+  info: title
+  uid:
+    plugin: default_value
+    default_value: 1
+  'body/value': body
+  'body/format':
+    plugin: default_value
+    default_value: rich_text
+  langcode: language
+destination:
+  plugin: entity:block_content
+  default_bundle: basic
+  no_stub: true
+migration_dependencies:
+  required:
+    - ccei_file
+    - ccei_media

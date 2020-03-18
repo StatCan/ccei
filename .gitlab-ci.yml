@@ -1,0 +1,54 @@
+image: alpine:latest
+
+variables:
+
+  DOCKER_REPOSITORY: 'artifactory.cloud.statcan.ca/docker/drupal/8/ccei'
+
+  # Project information
+  PROJECT_NAME: wcms/site-ccei
+  SITE_FOLDER: site-ccei
+  PROFILE: ccei
+  SITE_REPOSITORY: https://gitlab.k8s.cloud.statcan.ca/WCMS/canadian-centre-energy-information/site-ccei
+
+  # Docker
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: 'tcp://localhost:2375'
+  DOCKER_TLS_CERTDIR: ''
+
+stages:
+  - build
+  - test
+
+before_script:
+  - command -v git && git config --global credential.helper store
+  - echo https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.k8s.cloud.statcan.ca > ~/.git-credentials
+  - apk --update add jq
+  - git clone ${SITE_REPOSITORY} ${SITE_FOLDER}
+  - git clone https://gitlab.k8s.cloud.statcan.ca/WCMS/stc_docker.git ${SITE_FOLDER}/docker
+  - git clone https://gitlab.k8s.cloud.statcan.ca/WCMS/stc_ci.git ${SITE_FOLDER}/.gitlab-ci
+  - cd ${SITE_FOLDER} && source .gitlab-ci/env.sh
+
+build:
+  stage: build
+  image: sylus/gitlab-ci
+  services:
+     - docker:stable-dind
+  script:
+    # Identify BRANCH or PR
+    - export PR_BRANCH=$(curl -s "https://gitlab.k8s.cloud.statcan.ca/api/v4/projects/${CI_PROJECT_ID}/merge_requests?private_token=${OAUTH_TOKEN}&state=opened" | jq -r ".[]|select(.sha == \"$CI_COMMIT_SHA\")|.source_branch")
+    - export PR_ID=$(curl -s "https://gitlab.k8s.cloud.statcan.ca/api/v4/projects/${CI_PROJECT_ID}/merge_requests?private_token=${OAUTH_TOKEN}&state=opened" | jq -r ".[]|select(.sha == \"$CI_COMMIT_SHA\")|.iid")
+    - export BRANCH=$(if [ "$PR_ID" == "" ]; then echo ${CI_COMMIT_REF_NAME}; else echo ${PR_BRANCH}; fi)
+    # Update composer.json
+    - cp composer.json composer.json.old
+    - jq -r ".require[\"wcms/${PROFILE}\"] |= \"dev-$BRANCH#$CI_COMMIT_SHA\"" composer.json.old > composer.json
+    - rm composer.json.old
+    - echo '{}' > composer.lock
+    - bash .gitlab-ci/run.sh .gitlab-ci/build.sh
+
+test:
+  stage: test
+  image: sylus/gitlab-ci
+  services:
+    - docker:stable-dind
+  script:
+    - bash .gitlab-ci/run.sh .gitlab-ci/test.sh

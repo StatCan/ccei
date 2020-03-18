@@ -1,0 +1,64 @@
+id: ccei_media
+label: Embedded data feed of media associated metadata
+migration_group: ccei
+migration_tags:
+  - Core
+source:
+  plugin: embedded_data
+  # Enforce default language to english
+  default_lang: true
+  data_rows:
+    - fid: 'hp-ccei-logo-eng'
+      title: 'Image (hp-ccei-logo)'
+      alt: 'Image (hp-ccei-logo)'
+      caption: 'Image (hp-ccei-logo) used for CCEI.'
+      link_uri: 'https://energy-information.canada.ca'
+      link_title: 'Canadian Centre for Energy Information'
+    - fid: 'hp-ccei-logo-fra'
+      title: 'Image (hp-ccei-logo)'
+      alt: 'Image (hp-ccei-logo)'
+      caption: 'Image (hp-ccei-logo) pour CCEI.'
+      link_uri: 'https://information-energie.canada.ca'
+      link_title: 'Centre canadien d''information sur l''énergie'
+    - fid: 'hp-resources-eng'
+      title: 'Image (hp-resources)'
+      alt: 'Image (hp-resources)'
+      caption: 'Image (hp-resources) used for CCEI.'
+      link_uri: 'https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2019028-fra.htm'
+      link_title: 'New Motor Vehicle Registrations Data Visualization Tool'
+    - fid: 'hp-resources-fra'
+      title: 'Image (hp-resources)'
+      alt: 'Image (hp-resources)'
+      caption: 'Image (hp-resources) used for CCEI.'
+      link_uri: 'https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2019028-fra.htm'
+      link_title: 'Nouvelle information sur l''énergie du Canada'
+  # Under 'ids', we identify source fields populated above which will uniquely
+  # identify each imported item. The 'type' makes sure the migration map table
+  # uses the proper schema type for stored the IDs.
+  ids:
+    fid:
+      type: string
+process:
+  # Media bundle.
+  bundle:
+    plugin: default_value
+    default_value: image
+  # Use image title as media name.
+  name: title
+  status:
+    plugin: default_value
+    default_value: 1
+  # Add image to media entity.
+  'image/target_id':
+    plugin: migration_lookup
+    migration: ccei_file
+    source: fid
+  'image/title': title
+  'image/alt': alt
+  'field_image_link/uri': link_uri
+  'field_image_link/title': link_title
+destination:
+  plugin: entity:media
+migration_dependencies:
+  required:
+    - ccei_file
