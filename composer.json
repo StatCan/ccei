@@ -12,6 +12,7 @@
         "drupal/coder": "^8.3.7",
         "phing/phing": "^2.14",
         "drupal/console": "~1.9.0",
+        "drupal/core-composer-scaffold": "*",
         "drupal/devel": "^1.0",
         "drupal/drupal-extension": "~3.4.0",
         "drush/drush": "^9.0",
@@ -90,7 +91,8 @@
         },
         "patches": {
             "drupal/jsonapi": {
-                "3034626 - Fatal error after security update without updating Drupal core.": "https://www.drupal.org/files/issues/2019-02-21/fatal_error_after_updating_the_module-3034626-2.patch"
+                "3034626 - Fatal error after security update without updating Drupal core.":
+                "https://www.drupal.org/files/issues/2019-02-21/fatal_error_after_updating_the_module-3034626-2.patch"
             }
         },
         "patches-ignore": {
@@ -107,7 +109,6 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.7",
-        "drupal/core-composer-scaffold": "*",
         "drupalwxt/wxt": "3.0.7",
         "acquia/lightning": "4.1.2",
         "nxp/math-executor": "^1.1"
