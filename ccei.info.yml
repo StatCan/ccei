@@ -1,0 +1,22 @@
+name: 'CCEI'
+description: 'A Drupal distribution for CCEI created to leverage the Web Experience Toolkit.'
+type: profile
+core: 8.x
+distribution:
+  name: 'CCEI'
+
+# Base profile
+base profile: wxt
+
+# Language
+keep_english: true
+
+# Required modules
+dependencies:
+  # custom (ccei)
+  - drupal:ccei_core
+
+themes:
+  - bartik
+  - seven
+  - ccei_bootstrap

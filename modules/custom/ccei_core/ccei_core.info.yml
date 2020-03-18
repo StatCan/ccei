@@ -1,0 +1,11 @@
+name: 'CCEI Core'
+description: 'Registers additional CCEI functionality.'
+type: module
+core: 8.x
+package: CCEI
+
+# Required modules
+dependencies: { }
+
+# Required libraries
+libraries: { }

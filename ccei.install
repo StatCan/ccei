@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for the CCEI installation profile.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function ccei_install() {
+  _ccei_setup_themes();
+  _ccei_setup_branding();
+  _ccei_setup_base_configurations();
+}
+
+/**
+ * Setup base site configurations.
+ */
+function _ccei_setup_base_configurations() {
+  $config = \Drupal::service('config.factory')->getEditable('system.site');
+  $config->set('name', 'Canadian Centre for Energy Information')
+    ->set('mail', 'statcan.ccei-ccie.statcan@canada.ca')
+    ->save();
+
+  $config = \Drupal::languageManager()->getLanguageConfigOverride('fr', 'system.site');
+  $config->set('name', "Centre canadien d'information sur l'énergie")
+    ->save();
+
+  // Set regional settings to be Country: Canada, TZ: America/Toronto, etc.
+  \Drupal::service('config.factory')
+    ->getEditable('system.date')
+    ->set('country.default', 'CA')
+    ->set('timezone.default', 'America/Toronto')
+    ->set('timezone.user.configurable', TRUE)
+    ->set('timezone.user.warn', FALSE)
+    ->set('timezone.user.default', 0)
+    ->save(TRUE);
+
+  // Ensure the translation fields are created in the database.
+  \Drupal::service('entity.definition_update_manager')->applyUpdates();
+
+}
+
+/**
+ * Set up the default branding.
+ */
+function _ccei_setup_branding() {
+  // Set the path to the logo, favicon and README file based on install
+  // directory.
+  $ccei_path = drupal_get_path('profile', 'ccei');
+  \Drupal::configFactory()
+    ->getEditable('system.theme.global')
+    ->set('logo', [
+      'path' => $ccei_path . '/ccei.svg',
+      'url' => '',
+      'use_default' => FALSE,
+    ])
+    ->set('favicon', [
+      'mimetype' => 'image/vnd.microsoft.icon',
+      'path' => $ccei_path . '/favicon.ico',
+      'url' => '',
+      'use_default' => FALSE,
+    ])
+    ->save(TRUE);
+}
+
+/**
+ * Setup the themes.
+ */
+function _ccei_setup_themes() {
+  // Set the default and admin theme.
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', 'ccei_bootstrap')
+    ->set('admin', 'seven')
+    ->save(TRUE);
+
+  // Enable the admin theme.
+  \Drupal::configFactory()
+    ->getEditable('node.settings')
+    ->set('use_admin_theme', TRUE)
+    ->save(TRUE);
+}

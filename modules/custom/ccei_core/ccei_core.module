@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Contains ccei_core.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ccei_core_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.ccei_core':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The CCEI Core module helps load the additional
+      assets required to properly implement <a href=":ccei_ca">CCEI</a>.',
+      [':ccei_ca' => 'https://energy-information.canada.ca/']) . '</p>';
+      return $output;
+  }
+}

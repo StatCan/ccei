@@ -1,0 +1,10 @@
+services:
+  ccei.extender:
+    class: '\Drupal\ccei\Extender'
+    arguments:
+      - '@app.root'
+      - '@site.path'
+  ccei.form_helper:
+    class: '\Drupal\ccei\FormHelper'
+    arguments:
+      - '@element_info'

@@ -1,0 +1,57 @@
+id: ccei_block_translation
+migration_group: ccei_translation
+migration_tags:
+  - Core
+dependencies:
+  enforced:
+    module:
+      - ccei_ext_migration
+label: 'Embedded data import for custom block types (basic)'
+source:
+  plugin: embedded_data
+  translations: true
+  # Enforce default language to french
+  default_lang: false
+  data_rows:
+    - bid: 'homepage_block_1'
+      language: 'fr'
+      title: 'Bientôt'
+      body: |
+        <section class="alert alert-info">
+          <h2 class="h4">Bientôt&nbsp;: La nouvelle source fiable d'information sur l'énergie du Canada!</h2>
+          <p>Vous voulez en savoir plus sur l'avenir de l'énergie au Canada?</p>
+          <p>Statistique Canada et Ressources naturelles Canada mettront sur pied le Centre canadien d'information sur l'énergie en collaboration avec Environnement et changement climatique Canada et la Régie de l'énergie du Canada. Ce nouveau site Web hébergera des ressources concernant tout ce qui a trait à l'énergie, y compris la production, la consommation, le commerce international et bien plus encore.</p>
+          <p>Consultez-le site Web souvent et suivez #infoénergie sur les médias sociaux pour vous tenir au courant des nouveautés!</p>
+        </section>
+  # Under 'ids', we identify source fields populated above which will uniquely
+  # identify each imported item. The 'type' makes sure the migration map table
+  # uses the proper schema type for stored the IDs.
+  ids:
+    bid:
+      type: string
+process:
+  id:
+    plugin: migration_lookup
+    migration: ccei_block
+    source: bid
+  info: title
+  uid:
+    plugin: default_value
+    default_value: 1
+  'body/value': body
+  'body/format':
+    plugin: default_value
+    default_value: rich_text
+  langcode: language
+  content_translation_source:
+    plugin: default_value
+    default_value: "en"
+destination:
+  plugin: entity:block_content
+  default_bundle: basic
+  no_stub: true
+  translations: true
+migration_dependencies:
+  required:
+    - ccei_file
+    - ccei_media

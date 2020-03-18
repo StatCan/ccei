@@ -1,0 +1,10 @@
+name: 'CCEI Extend'
+description: 'Wrapper module for enabling all of the CCEI Extensions.'
+type: module
+core: 8.x
+package: CCEI
+
+# Required modules
+dependencies:
+  - ccei_core:ccei_core
+  - ccei_ext_migration:ccei_ext_migration
