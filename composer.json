@@ -42,11 +42,8 @@
         }
     ],
     "scripts": {
-        "post-install-cmd": [
-            "@composer drupal-scaffold"
-        ],
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "release-version": "Drupal\\ccei\\Composer\\ReleaseVersion::execute"
+        "post-install-cmd": [ ],
+        "post-update-cmd": [ ]
     },
     "extra": {
         "drupal-scaffold": {
