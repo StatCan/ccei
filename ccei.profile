@@ -116,3 +116,16 @@ function ccei_import_language_config(array &$install_state) {
     }
   }
 }
+
+/**
+ * Implements hook_modules_installed().
+ */
+function ccei_modules_installed($modules) {
+  if (in_array('wxt', $modules)) {
+    \Drupal::configFactory()
+      ->getEditable('system.theme')
+      ->set('default', 'ccei_bootstrap')
+      ->set('admin', 'claro')
+      ->save(TRUE);
+  }
+}
