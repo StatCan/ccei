@@ -13,7 +13,6 @@
  * @see system_install()
  */
 function ccei_install() {
-  _ccei_setup_themes();
   _ccei_setup_branding();
   _ccei_setup_base_configurations();
 }
@@ -40,10 +39,6 @@ function _ccei_setup_base_configurations() {
     ->set('timezone.user.warn', FALSE)
     ->set('timezone.user.default', 0)
     ->save(TRUE);
-
-  // Ensure the translation fields are created in the database.
-  \Drupal::service('entity.definition_update_manager')->applyUpdates();
-
 }
 
 /**
@@ -66,23 +61,5 @@ function _ccei_setup_branding() {
       'url' => '',
       'use_default' => FALSE,
     ])
-    ->save(TRUE);
-}
-
-/**
- * Setup the themes.
- */
-function _ccei_setup_themes() {
-  // Set the default and admin theme.
-  \Drupal::configFactory()
-    ->getEditable('system.theme')
-    ->set('default', 'ccei_bootstrap')
-    ->set('admin', 'seven')
-    ->save(TRUE);
-
-  // Enable the admin theme.
-  \Drupal::configFactory()
-    ->getEditable('node.settings')
-    ->set('use_admin_theme', TRUE)
     ->save(TRUE);
 }

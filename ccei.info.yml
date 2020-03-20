@@ -19,4 +19,5 @@ dependencies:
 themes:
   - bartik
   - seven
+  - claro
   - ccei_bootstrap
