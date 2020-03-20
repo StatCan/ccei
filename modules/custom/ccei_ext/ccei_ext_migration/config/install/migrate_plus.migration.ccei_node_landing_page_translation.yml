@@ -20,55 +20,57 @@ source:
           description: '[node:summary]'
           keywords: 'Énergie'
       layout:
-        layout_id: 'wxt_homepage'
+        layout_id: 'bs_2col_bricked'
         layout_settings:
-          layout:
-            wrapper: div
-            classes: {}
-            add_layout_class: 1
-            attributes: ''
-          regions:
-            top:
+            layout:
               wrapper: div
-              classes: {}
-              add_region_classes: 1
+              classes:
+                row: row
+              add_layout_class: 1
               attributes: ''
-            top_left:
-              wrapper: div
-              classes:
-                col-md-6: col-md-8
-              add_region_classes: 1
-              attributes: class|mrgn-tp-md
-            top_right:
-              wrapper: div
-              classes:
-                col-md-6: col-md-4
-              add_region_classes: 1
-              attributes: class|mrgn-tp-xl
-            middle:
-              wrapper: div
-              classes:
-                col-sm-12: col-sm-12
-              add_region_classes: 1
-              attributes: ''
-            bottom_left:
-              wrapper: div
-              classes:
-                col-sm-6: col-sm-6
-              add_region_classes: 1
-              attributes: ''
-            bottom_right:
-              wrapper: div
-              classes:
-                col-sm-6: col-sm-6
-              add_region_classes: 1
-              attributes: ''
-            bottom:
-              wrapper: div
-              classes:
-                col-sm-12: col-sm-12
-              add_region_classes: 1
-              attributes: class|mrgn-tp-lg
+            regions:
+              top:
+                wrapper: div
+                classes:
+                  col-sm-12: col-sm-12
+                add_region_classes: 1
+                attributes: ''
+              top_left:
+                wrapper: div
+                classes:
+                  col-md-6: col-md-8
+                add_region_classes: 1
+                attributes: class|mrgn-tp-md
+              top_right:
+                wrapper: div
+                classes:
+                  col-md-6: col-md-4
+                add_region_classes: 1
+                attributes: class|mrgn-tp-xl
+              middle:
+                wrapper: div
+                classes:
+                  col-sm-12: col-sm-12
+                add_region_classes: 1
+                attributes: ''
+              bottom_left:
+                wrapper: div
+                classes:
+                  col-sm-6: col-sm-6
+                add_region_classes: 1
+                attributes: ''
+              bottom_right:
+                wrapper: div
+                classes:
+                  col-sm-6: col-sm-6
+                add_region_classes: 1
+                attributes: ''
+              bottom:
+                wrapper: div
+                classes:
+                  col-sm-12: col-sm-12
+                add_region_classes: 1
+                attributes: class|mrgn-tp-lg
         components:
           -
             region: top
