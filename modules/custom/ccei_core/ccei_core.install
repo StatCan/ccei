@@ -4,30 +4,3 @@
  * @file
  * Installation and update functions for CCEI Core.
  */
-
-/**
- * Implements hook_install().
- */
-function ccei_core_install() {
-  $theme_list = [
-    'claro',
-    'ccei_bootstrap',
-  ];
-
-  // Install themes.
-  \Drupal::service('theme_installer')->install($theme_list);
-
-  // Get theme manager
-  $system_theme = \Drupal::configFactory()->getEditable('system.theme');
-
-  // Set default and admin themes.
-  $system_theme
-    ->set('default', 'ccei_bootstrap')
-    ->set('admin', 'claro')
-    ->save();
-
-  // GCWeb
-  // $config = \Drupal::configFactory()->getEditable('wxt_library.settings');
-  // $config->set('wxt.theme', 'theme-gcweb');
-  // $config->save();
-}
