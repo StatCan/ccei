@@ -95,7 +95,7 @@
 {# Main #}
 {% block main %}
 
-  <div class="{{ is_front ? "container" : container }}">
+  <div class="{{ (is_front and wxt_homepage) ? "container" : container }}">
     <div class="row">
 
       {# Highlighted #}
