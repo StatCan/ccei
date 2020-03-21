@@ -33,3 +33,4 @@ bower_components/
 # CCEI
 test-results
 files_private/
+/.editorconfig
