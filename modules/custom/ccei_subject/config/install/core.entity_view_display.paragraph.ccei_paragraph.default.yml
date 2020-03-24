@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ccei_paragraph.field_body
+    - paragraphs.paragraphs_type.ccei_paragraph
+  module:
+    - text
+id: paragraph.ccei_paragraph.default
+targetEntityType: paragraph
+bundle: ccei_paragraph
+mode: default
+content:
+  field_body:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  search_api_excerpt: true

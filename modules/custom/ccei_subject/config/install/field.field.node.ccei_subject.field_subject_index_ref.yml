@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subject_index_ref
+    - node.type.ccei_subject
+id: node.ccei_subject.field_subject_index_ref
+field_name: field_subject_index_ref
+entity_type: node
+bundle: ccei_subject
+label: 'Subject Index Reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
