@@ -1,0 +1,160 @@
+.block-indicators-block h2 {
+  padding-bottom: 9px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ccei-indicators {
+  position: relative;
+  overflow: hidden;
+}
+
+.ccei-indicators .ind-list {
+  display: flex;
+  flex-wrap: nowrap;
+  transform: translateX(0);
+  transition: transform 0.25s ease-out;
+}
+
+.ind-nav {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  z-index: 100;
+  transform: translateX(0);
+}
+
+.btn-ind {
+  padding: 0;
+  margin: 0;
+  width: 50px;
+  height: 100%;
+  display: inline-block;
+  background-color: #fff;
+  border: none;
+  font-size: 36px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-ind svg {
+  pointer-events: none;
+}
+
+.btn-ind:hover,
+.btn-ind:focus {
+  background-color: #e8f0f7;
+}
+
+.btn-ind:active {
+  background-color: #dee6ed;
+}
+
+.btn-ind.disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+.btn-ind.disabled svg {
+  fill: #ccc;
+  cursor: default;
+}
+
+.btn-ind.disabled:hover,
+.btn-ind.disabled:focus {
+  background-color: #fff;
+}
+
+.btn-ind:first-child {
+  border-right: 1px solid #ddd;
+}
+
+.ccei-indicators .ind {
+  flex: 0 0 220px;
+  min-height: 200px;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid transparent;
+}
+
+.ccei-indicators .ind:hover,
+.ccei-indicators .ind:focus {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+.ccei-indicators .ind:last-child {
+  margin-right: 0;
+}
+
+.ind p {
+  font-family: Lato,sans-serif;
+  font-size: .95em;
+  line-height: 1.1;
+  margin: 5px;
+}
+
+.ccei-indicators .ind-title {
+  /*font-size: .95em;*/
+  /*line-height: 1.1;*/
+  margin: 0 0 11.5px;
+}
+
+.ind-growth-rate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 66px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.ind-dir-0 {
+  color: #0057af;
+  background-color: #e8f0f7;
+}
+.ind-dir-1 {
+  color: #26965d;
+  background-color: #e5efe9;
+}
+.ind-dir-2 {
+  color: #b00020;
+  background-color: #f8e8ea;
+}
+
+.ind-growth {
+  flex: 1;
+  font-size: 36px;
+}
+
+.ind-arrow {
+  flex: 0 auto;
+  font-size: 75%;
+
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+.ind-arrow-dir-1 {
+  border-bottom: 5px solid #26965d;
+}
+.ind-arrow-dir-2 {
+  border-top: 5px solid #b00020;
+}
+
+.ind-value {
+  line-height: 1.1;
+  margin-bottom: 0;
+  /*font-size: 140%;*/
+}
+
+.ind .ind-unit {
+  line-height: 1.1;
+  margin-bottom: 0;
+  font-size: .7em;
+}
+
+.ind  .ind-refper {
+  font-size: .6em;
+}

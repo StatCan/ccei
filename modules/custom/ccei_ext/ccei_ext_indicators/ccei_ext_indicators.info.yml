@@ -1,0 +1,5 @@
+name: 'CCEI ext indicators'
+type: module
+description: 'Provides an indicators block'
+core: 8.x
+package: 'CCEI'

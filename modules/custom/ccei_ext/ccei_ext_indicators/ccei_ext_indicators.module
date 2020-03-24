@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Contains ccei_ext_indicators.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ccei_ext_indicators_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ccei_ext_indicators module.
+    case 'help.page.ccei_ext_indicators':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides an indicators block') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ccei_ext_indicators_theme() {
+  return [
+//    'ccei_ext_indicators' => [
+//      'render element' => 'children',
+//    ],
+    'indicators_block' => [
+      'variables' => [
+        'title' => NULL,
+        'indicators' => [],
+        'content' => NULL
+      ],
+      'render element' => 'children',
+    ],
+  ];
+}
+
