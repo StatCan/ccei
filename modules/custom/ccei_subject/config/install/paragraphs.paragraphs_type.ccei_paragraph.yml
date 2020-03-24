@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ccei_paragraph
+label: 'CCEI Paragraph'
+icon_uuid: null
+icon_default: null
+description: 'Basic Paragraph type for CCEI markup'
+behavior_plugins: {  }

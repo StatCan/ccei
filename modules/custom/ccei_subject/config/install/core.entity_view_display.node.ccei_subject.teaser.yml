@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.ccei_subject.body
+    - field.field.node.ccei_subject.field_subject_highlights
+    - field.field.node.ccei_subject.field_subject_icon
+    - field.field.node.ccei_subject.field_subject_index_ref
+    - field.field.node.ccei_subject.field_subject_indicators
+    - field.field.node.ccei_subject.field_subject_powerbi
+    - field.field.node.ccei_subject.field_subject_tag
+    - field.field.node.ccei_subject.field_subject_whats_new
+    - node.type.ccei_subject
+  module:
+    - text
+    - user
+id: node.ccei_subject.teaser
+targetEntityType: node
+bundle: ccei_subject
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_subject_highlights: true
+  field_subject_icon: true
+  field_subject_index_ref: true
+  field_subject_indicators: true
+  field_subject_powerbi: true
+  field_subject_tag: true
+  field_subject_whats_new: true
+  langcode: true
+  search_api_excerpt: true
