@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ccei_landing_page_reviewer
+label: 'CCEI Landing Page reviewer'
+weight: 12
+is_admin: false
