@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ccei_subject_reviewer
+label: 'CCEI Subject reviewer'
+weight: 10
+is_admin: false

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ccei_subject_creator
+label: 'CCEI Subject creator'
+weight: 9
+is_admin: false

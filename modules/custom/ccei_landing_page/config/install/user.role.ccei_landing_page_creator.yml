@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ccei_landing_page_creator
+label: 'CCEI Landing Page creator'
+weight: 11
+is_admin: false

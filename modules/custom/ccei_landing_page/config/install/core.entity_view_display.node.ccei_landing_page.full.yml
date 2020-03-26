@@ -1,0 +1,79 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.ccei_landing_page.body
+    - field.field.node.ccei_landing_page.field_meta_tags
+    - field.field.node.ccei_landing_page.layout_builder__layout
+    - field.field.node.ccei_landing_page.layout_builder__translation
+    - field.field.node.ccei_landing_page.layout_selection
+    - node.type.ccei_landing_page
+  module:
+    - layout_builder
+    - layout_discovery
+    - layout_library
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: true
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          f7fc19df-8bf8-4050-9398-bbf8150a336e:
+            uuid: f7fc19df-8bf8-4050-9398-bbf8150a336e
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:ccei_landing_page:links'
+            additional: {  }
+            weight: 0
+          ea49c17d-283e-410b-bb9d-4716aa6aed86:
+            uuid: ea49c17d-283e-410b-bb9d-4716aa6aed86
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:ccei_landing_page:body'
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings: {  }
+            additional: {  }
+            weight: 1
+        third_party_settings: {  }
+  layout_library:
+    enable: true
+id: node.ccei_landing_page.full
+targetEntityType: node
+bundle: ccei_landing_page
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_meta_tags: true
+  langcode: true
+  layout_builder__layout: true
+  layout_builder__translation: true
+  layout_selection: true
+  search_api_excerpt: true
