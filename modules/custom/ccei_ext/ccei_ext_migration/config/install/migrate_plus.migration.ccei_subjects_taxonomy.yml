@@ -9,11 +9,9 @@ source:
     -
       term_id: 1
       name: 'Commodities'
-      parent_id: 0
     -
       term_id: 2
       name: 'Topics'
-      parent_id: 0
     -
       term_id: 3
       name: 'Electricity'
