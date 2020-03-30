@@ -1,0 +1,9 @@
+services:
+  logger.channel.ccei_ext_indicators:
+    parent: logger.channel_base
+    arguments: ['ccei_ext_indicators']
+  ccei_ext_indicators.indicators:
+    class: Drupal\ccei_ext_indicators\CceiIndicatorsService
+    arguments:
+      - '@config.factory'
+      - '@http_client'

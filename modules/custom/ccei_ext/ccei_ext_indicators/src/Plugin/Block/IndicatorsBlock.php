@@ -2,10 +2,10 @@
 
 namespace Drupal\ccei_ext_indicators\Plugin\Block;
 
+use Drupal\ccei_ext_indicators\CceiIndicatorsService;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use GuzzleHttp\ClientInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -21,9 +21,9 @@ class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * An http client.
    *
-   * @var \GuzzleHttp\ClientInterface
+   * @var \Drupal\ccei_ext_indicators\CceiIndicatorsService
    */
-  protected $httpClient;
+  protected $cceiIndicators;
 
   /**
    * Construct.
@@ -34,12 +34,12 @@ class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterfa
    *   The plugin_id for the plugin instance.
    * @param string $plugin_definition
    *   The plugin implementation definition.
-   * @param \GuzzleHttp\ClientInterface $http_client
-   *   An HTTP client.
+   * @param \Drupal\ccei_ext_indicators\CceiIndicatorsService $ccei_indicators
+   *   A service to retrieve indicator data.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ClientInterface $http_client) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, CceiIndicatorsService $ccei_indicators) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->httpClient = $http_client;
+    $this->cceiIndicators = $ccei_indicators;
   }
 
   /**
@@ -50,7 +50,7 @@ class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterfa
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('http_client')
+      $container->get('ccei_ext_indicators.indicators')
     );
   }
 
@@ -87,15 +87,7 @@ class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterfa
    */
   public function build() {
 
-    $request = $this->httpClient->request('GET', 'https://www150.statcan.gc.ca/n1/en/indicators.json',
-      [
-        'query' => [
-          'count' => 10,
-        ],
-      ]);
-
-    // TODO: Implement http response status validation.
-    $response = json_decode($request->getBody()->getContents(), TRUE);
+    $response = $this->cceiIndicators->getIndicatorsDataOld();
 
     $build = [];
     $build['#theme'] = 'indicators_block';
