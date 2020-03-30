@@ -1,0 +1,14 @@
+urls:
+  url1: 'https://www150.statcan.gc.ca/t1/wds/rest/getDataFromVectorsAndLatestNPeriods'
+indicators:
+  - id: Elect001
+    title: 'Installed capacity'
+    units: Megawatts
+    calculation: 'Kilowatts / 1000'
+    refper: 2
+    source_raw: 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510002201&selectedNodeIds=1D2,1D3,1D4,1D5,1D6,1D7,1D8,1D9,1D10,1D11,1D12,1D13,1D14,2D2,2D3,2D4&checkedLevels=0D1,1D1,2D1,2D2,2D3&refPeriods=20130101,20170101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
+    sources:
+      - base_url: url1
+        query:
+          vectorId: 53517872
+          latestN: 2
