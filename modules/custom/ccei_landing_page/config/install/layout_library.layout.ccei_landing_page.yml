@@ -7,7 +7,7 @@ targetEntityType: node
 targetBundle: ccei_landing_page
 layout:
   -
-    layout_id: wxt_topic
+    layout_id: ccei_topic
     layout_settings:
       label: ''
       layout:
