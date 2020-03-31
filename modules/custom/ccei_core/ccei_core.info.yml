@@ -5,7 +5,8 @@ core: 8.x
 package: CCEI
 
 # Required modules
-dependencies: { }
+dependencies:
+    - ccei_subject
 
 # Required libraries
 libraries: { }
