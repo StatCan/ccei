@@ -7,6 +7,7 @@ dependencies:
   - lightning_media
   - lightning_media_image
   - wxt_ext_paragraph
+  - migrate_plus
   - content_moderation
   - content_translation
   - entity_browser
