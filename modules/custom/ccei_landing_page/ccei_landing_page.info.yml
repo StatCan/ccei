@@ -18,5 +18,8 @@ dependencies:
   - path
   - text
   - user
+  - core_context
+  - lightning_layout
+  - page_manager_ui
 core_incompatible: false
 version: 8.x-1.0-alpha1
