@@ -2,7 +2,7 @@
 
 namespace Drupal\ccei_bootstrap\Plugin\Preprocess;
 
-use Drupal\wxt_bootstrap\Plugin\Preprocess\PreprocessBase;
+use Drupal\wxt_bootstrap\Plugin\Preprocess\Block as WxtBlockPreprocess;
 
 /**
  * Pre-processes variables for the "block" theme hook.
