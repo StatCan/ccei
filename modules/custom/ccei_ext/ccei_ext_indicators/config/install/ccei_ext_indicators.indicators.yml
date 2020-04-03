@@ -1,14 +1,227 @@
 urls:
-  url1: 'https://www150.statcan.gc.ca/t1/wds/rest/getDataFromVectorsAndLatestNPeriods'
+  url1: 'https://www150.statcan.gc.ca/t1/wds/rest/getDataFromCubePidCoordAndLatestNPeriods'
+types:
+  electricity: 'Electricity'
+  petroleum: 'Refined Petroleum Products'
+  renewable: 'Renewable Energy'
+  energy: 'Overview of the Energy Sector'
 indicators:
-  - id: Elect001
+  - id: elect001
+    type: electricity
     title: 'Installed capacity'
-    units: Megawatts
-    calculation: 'Kilowatts / 1000'
+    units: 'Megawatts'
+    # calculation: 'Kilowatts / 1000'
+    calculation: 'value-0 / 1000'
+    function: processDivisionThousand
+    valueformat:
+      function: round
+      precision: 0
     refper: 2
-    source_raw: 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510002201&selectedNodeIds=1D2,1D3,1D4,1D5,1D6,1D7,1D8,1D9,1D10,1D11,1D12,1D13,1D14,2D2,2D3,2D4&checkedLevels=0D1,1D1,2D1,2D2,2D3&refPeriods=20130101,20170101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
+    source_raw:
+      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510002201&selectedNodeIds=1D2,1D3,1D4,1D5,1D6,1D7,1D8,1D9,1D10,1D11,1D12,1D13,1D14,2D2,2D3,2D4&checkedLevels=0D1,1D1,2D1,2D2,2D3&refPeriods=20130101,20170101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
     sources:
       - base_url: url1
-        query:
-          vectorId: 53517872
-          latestN: 2
+        queries:
+          - productId: 25100022
+            coordinate: '1.1.1.0.0.0.0.0.0.0'
+            latestN: 2
+  - id: elect002
+    type: electricity
+    title: Generation
+    units: 'Megawatts hours'
+    calculation: ''
+    function: processSimple
+    valueformat:
+      function: round
+      precision: 0
+    refper: 2
+    source_raw:
+      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510001501&selectedNodeIds=3D2,3D4,3D7,3D8,3D9,3D10,3D11&checkedLevels=0D1,0D2,1D1,1D2,2D1&refPeriods=20160101,20191001&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
+    sources:
+      - base_url: url1
+        queries:
+          - productId: 25100015
+            coordinate: 1.1.1.0.0.0.0.0.0.0
+            latestN: 2
+  - id: elect003
+    type: electricity
+    title: Consumption
+    units: 'Megawatts hours'
+    calculation: ''
+    function: processSimple
+    valueformat:
+      function: round
+      precision: 0
+    refper: 2
+    source_raw:
+      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510001601&selectedNodeIds=1D2,1D3,1D4,1D5,1D6,1D7,1D8,1D9,1D10,1D11,1D12,1D13,1D14,2D17&checkedLevels=0D1&refPeriods=20190601,20191001&dimensionLayouts=layout3,layout3,layout2&vectorDisplay=true'
+    sources:
+      - base_url: url1
+        queries:
+          - productId: 25100016
+            coordinate: 1.17.0.0.0.0.0.0.0.0
+            latestN: 2
+  - id: elect004
+    type: electricity
+    title: Exports
+    units: 'Megawatts hours'
+    calculation: ''
+    function: processSimple
+    valueformat:
+      function: round
+      precision: 0
+    refper: 2
+    source_raw:
+      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510001601&selectedNodeIds=1D2,1D3,1D4,1D5,1D6,1D7,1D8,1D9,1D10,1D11,1D12,1D13,1D14,2D17&checkedLevels=0D1&refPeriods=20190601,20191001&dimensionLayouts=layout3,layout3,layout2&vectorDisplay=true'
+    sources:
+      - base_url: url1
+        queries:
+          - productId: 25100016
+            coordinate: 1.8.0.0.0.0.0.0.0.0
+            latestN: 2
+  - id: elect005
+    type: electricity
+    title: Imports
+    units: 'Megawatts hours'
+    calculation: ''
+    function: processSimple
+    valueformat:
+      function: round
+      precision: 0
+    refper: 2
+    source_raw:
+      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510001601&selectedNodeIds=1D2,1D3,1D4,1D5,1D6,1D7,1D8,1D9,1D10,1D11,1D12,1D13,1D14,2D4&checkedLevels=0D1&refPeriods=20190601,20191001&dimensionLayouts=layout3,layout3,layout2&vectorDisplay=true'
+    sources:
+      - base_url: url1
+        queries:
+          - productId: 25100016
+            coordinate: 1.4.0.0.0.0.0.0.0.0
+            latestN: 2
+  - id: elect006
+    type: electricity
+    title: 'Average selling price'
+    units: 'Cents per kilowatts hours'
+    #calculation: 'Dollars (in thousands) / Quantity (megawatt hours) *100'
+    calculation: 'value-1 / value-0 * 100'
+    function: processAverage
+    valueformat:
+      function: round
+      precision: 2
+    refper: 2
+    source_raw:
+      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510002101&selectedNodeIds=2D18,2D19,2D20,2D21,2D22&checkedLevels=0D1,0D2,2D1&refPeriods=20140101,20180101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
+    sources:
+      - base_url: url1
+        queries:
+          - productId: 25100021
+            coordinate: 1.18.1.0.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100021
+            coordinate: 1.18.2.0.0.0.0.0.0.0
+            latestN: 2
+  - id: elect007
+    type: electricity
+    title: 'Average export value'
+    units: 'Cents per kilowatts hours'
+    #calculation: 'Dollars (in thousands) / Quantity (megawatt hours) *100'
+    calculation: 'value-1 / value-0 * 100'
+    function: processAverage
+    valueformat:
+      function: round
+      precision: 2
+    refper: 2
+    source_raw:
+      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510002101&selectedNodeIds=2D12&checkedLevels=0D1,0D2,2D1&refPeriods=20140101,20180101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
+    sources:
+      - base_url: url1
+        queries:
+          - productId: 25100021
+            coordinate: 1.12.1.0.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100021
+            coordinate: 1.12.2.0.0.0.0.0.0.0
+            latestN: 2
+#  - id: Elect008
+#    type: electricity
+#    title: 'Average export value'
+#    units: 'Cents per kilowatts hours'
+#    #calculation: 'Dollars (in thousands) / Quantity (megawatt hours) *100'
+#    calculation: 'value-1 / value-0 * 100'
+#    function: processAverage
+#    valueformat:
+#      function: round
+#      precision: 2
+#    refper: 2
+#    source_raw:
+#      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510002101&selectedNodeIds=2D12&checkedLevels=0D1,0D2,2D1&refPeriods=20140101,20180101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
+#      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510002101&selectedNodeIds=2D12&checkedLevels=0D1,0D2,2D1&refPeriods=20140101,20180101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
+#    sources:
+#      - base_url: url1
+#        queries:
+#          - productId: 25100021
+#            coordinate: 1.12.1.0.0.0.0.0.0.0
+#            latestN: 2
+#          - productId: 25100021
+#            coordinate: 1.12.2.0.0.0.0.0.0.0
+#            latestN: 2
+  - id: petro001
+    type: petroleum
+    title: 'Production'
+    units: 'Barrels'
+    #calculation: 'Cubic meters * 6.28981077'
+    calculation: 'sum(values) * 6.28981077'
+    function: processSumTimesConstant
+    valueformat:
+      function: round
+      precision: 0
+    refper: 2
+    source_raw:
+      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510002101&selectedNodeIds=2D12&checkedLevels=0D1,0D2,2D1&refPeriods=20140101,20180101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
+    sources:
+      - base_url: url1
+        queries:
+          - productId: 25100076
+            coordinate: 1.1.1.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.2.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.3.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.4.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.5.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.6.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.7.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.8.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.9.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.10.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.11.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.12.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.13.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.14.1.0.0.0.0.0.0
+            latestN: 2
+          - productId: 25100076
+            coordinate: 1.1.15.1.0.0.0.0.0.0
+            latestN: 2
