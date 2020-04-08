@@ -5,6 +5,7 @@ namespace Drupal\ccei_ext_indicators;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use GuzzleHttp\ClientInterface;
+use NXP\MathExecutor;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -27,16 +28,26 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
   protected $httpClient;
 
   /**
+   * A mathematical expression parser.
+   *
+   * @var \NXP\MathExecutor
+   */
+  protected $executor;
+
+  /**
    * Constructs a new CceiIndicatorsService object.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The config factory service.
    * @param \GuzzleHttp\ClientInterface $http_client
    *   An HTTP client.
+   * @param \NXP\MathExecutor $executor
+   *   A mathematical expression parser.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, ClientInterface $http_client) {
+  public function __construct(ConfigFactoryInterface $config_factory, ClientInterface $http_client, MathExecutor $executor) {
     $this->configFactory = $config_factory;
     $this->httpClient = $http_client;
+    $this->executor = $executor;
   }
 
   public function getIndicatorsDataOld() {
@@ -53,23 +64,57 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     return $response;
   }
 
-  public function getIndicatorsData() {
+  public function getIndicatorTypes() {
+    return $this->configFactory->get('ccei_ext_indicators.indicators')->get('types');
+  }
+
+  public function getIndicatorsData($types = []) {
     // Load list of indicator parameters.
     $config = $this->configFactory->get('ccei_ext_indicators.indicators')->get('');
-    $indicators = &$config['indicators'];
+
+    if (empty($types)) {
+      $types = array_keys($config['types']);
+    }
+
+    $filteredTypes = array_filter($config['types'], function ($key) use ($types) {
+      return in_array($key, $types);
+    }, ARRAY_FILTER_USE_KEY);
+
+    $indicators = array_values(array_filter($config['indicators'], function ($var) use ($types) {
+      return in_array($var['type'], $types);
+    }));
 
     // Aggregate queries from all indicators in one array.
     // Create a lookup table to match queries with indicators.
     $queriesAccumulator = [];
     $queriesLookupTable = [];
-    foreach ($config['indicators'] as $key => $indicator) {
-      foreach ($indicator['sources'][0]['queries'] as $query) {
-        $queriesAccumulator[] = $query;
-        $hash = hash('adler32', $query['productId'] . $query['coordinate']);
-        $queriesLookupTable[$hash] = $key;
+    foreach ($indicators as $indicatorKey => $indicator) {
+      foreach ($indicator['sources'] as $sourceKey => $source) {
+        foreach ($source['coordinates'] as $coordinate) {
+          // Pad incomplete coordinates to 10 numbers.
+          $fullCoordinate = implode('.', array_pad(explode('.', $coordinate), 10, 0));
+          // Format queries to API specs.
+          $queriesAccumulator[] = [
+            'productId' => $source['productId'],
+            'coordinate' => $fullCoordinate,
+            'latestN' => $source['latestN'],
+          ];
 
-        // Create a hashed response placeholders to maintain sort order.
-        $indicators[$key]['response'][$hash] = [];
+          // The API response doesn't maintain query order.
+          // Create a indexed response placeholders and a lookup table to
+          // maintain sort order.
+          // The index is based on the sourceId + coordinate due to the limited
+          // information returned. There is a collision possibility if multiple
+          // indicators use the same combination for some of its queries.
+          // TODO: find a better way, for example creating a global standalone
+          //   indexed list and having indicators reference it instead.
+          $index = $source['productId'] . '-' . $fullCoordinate;
+          $queriesLookupTable[$index] = [
+            'source' => $sourceKey,
+            'indicator' => $indicatorKey,
+          ];
+          $indicators[$indicatorKey]['response'][$sourceKey][$index] = [];
+        }
       }
     }
 
@@ -78,8 +123,10 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
 
     // Redistribute API responses to their respective indicators, keeping order.
     foreach ($responses as $key => $response) {
-      $hash = hash('adler32', $response['object']['productId'] . $response['object']['coordinate']);
-      $indicators[$queriesLookupTable[$hash]]['response'][$hash] = $response;
+      $index = $response['object']['productId'] . '-' . $response['object']['coordinate'];
+      $sourceKey = $queriesLookupTable[$index]['source'];
+      $indicatorKey = $queriesLookupTable[$index]['indicator'];
+      $indicators[$indicatorKey]['response'][$sourceKey][$index] = $response;
     }
 
     // Process each indicators.
@@ -90,7 +137,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
 
     // Return the list.
     return [
-      'types' => $config['types'],
+      'types' => $filteredTypes,
       'indicators' => $results,
     ];
   }
@@ -107,19 +154,22 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
   }
 
   private function process($indicator) {
-    // Reset responses to numerical array.
-    $responseIndicators = array_values($indicator['response']);
-
     $datapoints = [];
-    foreach ($responseIndicators as $key => $responseDatapoint) {
-      $datapoints[$key]['values'] = $responseDatapoint['object']['vectorDataPoint'];
-      $datapoints[$key]['previous'] = reset($datapoints[$key]['values'])['value'];
-      $datapoints[$key]['latest'] = end($datapoints[$key]['values'])['value'];
+    foreach ($indicator['response'] as $sourceKey => $source) {
+      // Reset responses to numerical array.
+      $responseIndicators = array_values($source);
+      foreach ($responseIndicators as $key => $responseDatapoint) {
+        $datapoints['values'][$sourceKey][$key] = $responseDatapoint['object']['vectorDataPoint'];
+        $datapoints['previous'][$sourceKey][$key] = reset($datapoints['values'][$sourceKey][$key])['value'];
+        $datapoints['latest'][$sourceKey][$key] = end($datapoints['values'][$sourceKey][$key])['value'];
+      }
     }
 
-    // Call specialised process function.
-    list('previous' => $previous, 'latest' => $latest) = $this->{$indicator['function']}($datapoints);
+    // Calculate datapoints with submitted formula.
+    $previous = $this->calculate($indicator, $datapoints['previous']);
+    $latest = $this->calculate($indicator, $datapoints['latest']);
 
+    // Format the indicator value.
     if (isset($indicator['valueformat'])) {
       $formattedValue = call_user_func_array(
         $indicator['valueformat']['function'],
@@ -136,37 +186,29 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
       'direction' => $percentChange > 0 ? 'up' : ($percentChange == 0 ? 'nil' : 'down'),
       'value' => $formattedValue ?? $latest,
       'units' => $indicator['units'],
-      'refper' => reset($datapoints[0]['values'])['refPer'],
+      'refper' => reset($datapoints['values'][0][0])['refPer'],
     ];
   }
 
-  private function processSimple($datapoints) {
-    return [
-      'previous' => $datapoints[0]['previous'],
-      'latest' => $datapoints[0]['latest'],
-    ];
-  }
+  private function calculate($indicator, $datapoints) {
+    if (!empty($indicator['calculation'])) {
+      $variables = [];
+      foreach ($datapoints as $sourceKey => $sourceDatapoints) {
+        foreach ($sourceDatapoints as $key => $datapoint) {
+          $variables['src' . $sourceKey . 'var' . $key] = $datapoint ?? 0;
+        }
+        if (!empty($indicator['preprocess']) && $indicator['preprocess'] === 'sum') {
+          $variables['src' . $sourceKey . 'sum'] = array_sum($sourceDatapoints);
+        }
+      }
 
-  private function processDivisionThousand($datapoints) {
-    return [
-      'previous' => $datapoints[0]['previous'] / 1000,
-      'latest' => $datapoints[0]['latest'] / 1000,
-    ];
-  }
-
-  private function processAverage($datapoints) {
-    return [
-      'previous' => $datapoints[1]['previous'] / $datapoints[0]['previous'] * 100,
-      'latest' => $datapoints[1]['latest'] / $datapoints[0]['latest'] * 100,
-    ];
-  }
-
-  private function processSumTimesConstant($datapoints) {
-    // TODO: what to do if a datapoint failed to load/is null?
-    return [
-      'previous' => array_sum(array_column($datapoints, 'previous')) * 6.28981077,
-      'latest' => array_sum(array_column($datapoints, 'latest')) * 6.28981077,
-    ];
+      $this->executor->setVars($variables, TRUE);
+      return $this->executor->execute($indicator['calculation']);
+    }
+    else {
+      // Assume first source and first datapoint or default to 0.
+      return $datapoints[0][0] ?? 0;
+    }
   }
 
   public function apiTest() {
