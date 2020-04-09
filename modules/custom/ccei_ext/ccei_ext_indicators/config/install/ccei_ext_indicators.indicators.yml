@@ -508,26 +508,25 @@ indicators:
         coordinates:
           - '1.2.1'
           - '1.2.10'
-#  - id: energy003
-#    type: energy
-#    title: 'Primary energy production'
-#    units: 'Terajoules'
-#    calculation_desc: 'Energy sector / All industries * 100'
-#    calculation: '$src0var1 / $src0var0 * 100'
-#    preprocess: ''
-#    valueformat:
-#      function: round
-#      precision: 0
-#    refper: 0
-#    source_raw:
-#      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=3610040201&selectedNodeIds=2D2,3D10,3D23,3D24,3D25,3D27,3D32,3D40,3D43,3D45,3D86,3D195,3D196,3D197&checkedLevels=0D1,2D1&refPeriods=20080101,20180101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
-#    sources:
-#      - base_url: url1
-#        productId: 36100402
-#        latestN: 2
-#        coordinates:
-#          - '1.2.1'
-#          - '1.2.10'
+  - id: energy003
+    type: energy
+    title: 'Primary energy production'
+    units: 'Terajoules'
+    calculation_desc: ''
+    calculation: ''
+    preprocess: ''
+    valueformat:
+      function: round
+      precision: 0
+    refper: 0
+    source_raw:
+      - 'https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=2510002901&selectedNodeIds=1D7,1D8,1D9,1D10,1D11,1D12,2D2,2D4,2D5,2D6,2D7,2D29,3D1&checkedLevels=0D1,0D3&refPeriods=20090101,20180101&dimensionLayouts=layout3,layout3,layout3,layout2&vectorDisplay=true'
+    sources:
+      - base_url: url1
+        productId: 25100029
+        latestN: 2
+        coordinates:
+          - '1.2.1'
   - id: energy004
     type: energy
     title: 'Energy consumption'
