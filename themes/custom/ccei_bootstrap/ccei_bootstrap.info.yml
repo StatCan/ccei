@@ -2,7 +2,7 @@ name: 'CCEI Bootstrap'
 description: 'WxT sub-theme(s) support leveraging WxT Bootstrap. Source files for Bootstrap are defined as part of the WxT Library module.'
 type: theme
 core: 8.x
-package: 'CCEI'
+package: 'WxT'
 base theme: wxt_bootstrap
 
 regions:
@@ -24,6 +24,5 @@ regions:
   page_top: 'Page top'
   page_bottom: 'Page bottom'
 
-libraries-extend:
-  bootstrap/framework:
-    - 'ccei_bootstrap/framework'
+libraries:
+    - 'ccei_bootstrap/global-styling'

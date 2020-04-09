@@ -1,8 +1,8 @@
-# Schema for the theme setting configuration file of the CCEI Bootstrap theme.
+# Schema for the theme setting configuration file of the CCEI theme.
 
 ccei_bootstrap.settings:
   type: theme_settings
-  label: 'CCEI Bootstrap settings'
+  label: 'CCEI settings'
   mapping:
     cdn_provider:
       type: string

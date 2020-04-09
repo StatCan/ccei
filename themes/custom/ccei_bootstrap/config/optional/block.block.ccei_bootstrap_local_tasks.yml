@@ -1,11 +1,8 @@
 langcode: en
 status: true
 dependencies:
-  module:
-    - wxt_library
   theme:
     - ccei_bootstrap
-third_party_settings: {  }
 id: ccei_bootstrap_local_tasks
 theme: ccei_bootstrap
 region: header
@@ -27,8 +24,3 @@ visibility:
     context_mapping:
       node: '@node.node_route_context:node'
       taxonomy_term: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
-  request_path:
-    id: request_path
-    pages: '<front>'
-    negate: true
-    context_mapping: {  }

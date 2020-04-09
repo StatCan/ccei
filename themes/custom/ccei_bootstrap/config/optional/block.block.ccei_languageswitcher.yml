@@ -5,7 +5,7 @@ dependencies:
     - wxt_library
   theme:
     - ccei_bootstrap
-id: ccei_bootstrap_languageswitcher
+id: ccei_languageswitcher
 theme: ccei_bootstrap
 region: language_toggle
 weight: -8

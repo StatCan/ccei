@@ -5,7 +5,7 @@ dependencies:
     - system
   theme:
     - ccei_bootstrap
-id: ccei_bootstrap_sitebranding
+id: ccei_sitebranding
 theme: ccei_bootstrap
 region: banner
 weight: -7

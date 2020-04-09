@@ -17,7 +17,9 @@ class Block extends WxtBlockPreprocess {
    * {@inheritdoc}
    */
   public function preprocess(array &$variables, $hook, array $info) {
+
     parent::preprocess($variables, $hook, $info);
+
   }
 
 }

@@ -7,11 +7,11 @@ dependencies:
     - ccei_bootstrap
 third_party_settings:
   block_class:
-    classes: 'col-md-12'
-id: ccei_bootstrap_datemodifiedblock
+    classes: 'col-md-6'
+id: ccei_datemodifiedblock
 theme: ccei_bootstrap
 region: content_footer
-weight: -7
+weight: -8
 provider: null
 plugin: date_modified_block
 settings:

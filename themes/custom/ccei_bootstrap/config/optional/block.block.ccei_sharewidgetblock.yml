@@ -1,5 +1,5 @@
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -8,11 +8,11 @@ dependencies:
     - ccei_bootstrap
 third_party_settings:
   block_class:
-    classes: 'col-sm-4 col-md-3 col-sm-offset-2 col-md-offset-4 col-lg-offset-5'
-id: ccei_bootstrap_sharewidgetblock
+    classes: 'col-md-6 mrgn-tp-lg'
+id: ccei_sharewidgetblock
 theme: ccei_bootstrap
 region: content_footer
-weight: -8
+weight: -7
 provider: null
 plugin: share_widget_block
 settings:
@@ -25,8 +25,8 @@ settings:
     gmail: gmail
     twitter: twitter
 visibility:
-  panels_title:
-    id: panels_title
-    enabled: 0
+  request_path:
+    id: request_path
+    pages: '/node/*'
     negate: false
     context_mapping: {  }

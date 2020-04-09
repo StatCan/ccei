@@ -5,13 +5,12 @@ dependencies:
     - system.menu.brand
   module:
     - system
-    - wxt_core
   theme:
     - ccei_bootstrap
 third_party_settings:
   block_class:
     classes: ''
-id: ccei_bootstrap_brand
+id: ccei_brand
 theme: ccei_bootstrap
 region: branding
 weight: 0

@@ -5,7 +5,7 @@ dependencies:
     - wxt_library
   theme:
     - ccei_bootstrap
-id: ccei_bootstrap_wxtsearchform
+id: ccei_wxtsearchform
 theme: ccei_bootstrap
 region: search
 weight: -7

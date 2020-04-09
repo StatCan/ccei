@@ -11,8 +11,8 @@ dependencies:
     - ccei_bootstrap
 third_party_settings:
   block_class:
-    classes: 'col-sm-6 col-md-5 col-lg-4'
-id: ccei_bootstrap_reportproblemblock
+    classes: 'col-md-6 mrgn-tp-lg'
+id: ccei_reportproblemblock
 theme: ccei_bootstrap
 region: content_footer
 weight: -9

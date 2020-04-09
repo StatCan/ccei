@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: ccei_bootstrap_mid-footer
-label: 'Mid footer'
-description: 'Mid footer menu.'
-locked: false
