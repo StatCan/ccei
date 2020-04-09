@@ -1,6 +1,6 @@
 ccei_ext_indicators.api_indicators:
   path: '/api/ccei'
   defaults:
-    _controller: 'ccei_ext_indicators.indicators:apiTest'
+    _controller: 'ccei_ext_indicators.indicators:api'
   requirements:
     _access: 'TRUE'

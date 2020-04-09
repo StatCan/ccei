@@ -10,7 +10,7 @@ indicators:
     type: electricity
     title: 'Installed capacity'
     units: 'Megawatts'
-    # calculation: 'Kilowatts / 1000'
+    calculation_desc: 'Kilowatts / 1000'
     calculation: '$src0var0 / 1000'
     preprocess: ''
     valueformat:

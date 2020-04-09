@@ -50,25 +50,55 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     $this->executor = $executor;
   }
 
-  public function getIndicatorsDataOld() {
-
-  $request = $this->httpClient->request('GET', 'https://www150.statcan.gc.ca/n1/en/indicators.json',
-    [
-      'query' => [
-        'count' => 10,
-      ],
-    ]);
-
-    $response = Json::decode($request->getBody()->getContents());
-
-    return $response;
-  }
-
+  /**
+   * Helper function : return the list of indicator types.
+   *
+   * @return array|mixed|null
+   *   A list of indicator types.
+   */
   public function getIndicatorTypes() {
     return $this->configFactory->get('ccei_ext_indicators.indicators')->get('types');
   }
 
-  public function getIndicatorsData($types = []) {
+  /**
+   * Retrieve indicators data from API and process them.
+   *
+   * @param array $types
+   *   A list of indicator types.
+   *
+   * @return array
+   *   A list of indicators
+   *
+   * @throws \Exception
+   */
+  public function getIndicators(array $types = []) {
+    $data = &drupal_static(__METHOD__);
+
+    $typesKey = empty($types) ? 'all' : implode('-', $types);
+    $cid = 'ccei_ext_indicators:' . $typesKey;
+
+    if ($cache = \Drupal::cache()->get($cid)) {
+      $data = $cache->data;
+    }
+    else {
+      $data = $this->getIndicatorsData($types);
+      \Drupal::cache()->set($cid, $data);
+    }
+    return $data;
+  }
+
+  /**
+   * Retrieve indicators data from API and process them.
+   *
+   * @param array $types
+   *   A list of indicator types.
+   *
+   * @return array
+   *   A list of indicators
+   *
+   * @throws \Exception
+   */
+  private function getIndicatorsData(array $types = []) {
     // Load list of indicator parameters.
     $config = $this->configFactory->get('ccei_ext_indicators.indicators')->get('');
 
@@ -107,7 +137,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
           // information returned. There is a collision possibility if multiple
           // indicators use the same combination for some of its queries.
           // TODO: find a better way, for example creating a global standalone
-          //   indexed list and having indicators reference it instead.
+          // indexed list and having indicators reference it instead.
           $index = $source['productId'] . '-' . $fullCoordinate;
           $queriesLookupTable[$index] = [
             'source' => $sourceKey,
@@ -142,26 +172,56 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     ];
   }
 
-  private function queryCoords($url, $source) {
+  /**
+   * Query API with indicators payload.
+   *
+   * @param string $url
+   *   The URL of the API.
+   * @param array $query
+   *   The query payload.
+   *
+   * @return mixed
+   *   A list of indicator responses.
+   */
+  private function queryCoords($url, array $query) {
     // Guide: https://www.statcan.gc.ca/eng/developers/wds/user-guide#a12-4
     $request = $this->httpClient->post($url,
       [
-        'json' => $source,
+        'json' => $query,
       ]);
 
     // TODO: Implement http response status validation.
     return Json::decode($request->getBody()->getContents());
   }
 
-  private function process($indicator) {
+  /**
+   * Process an indicator's datapoints.
+   *
+   * @param array $indicator
+   *   An indicator's data and config.
+   *
+   * @return array
+   *   A processed indicator ready to be consumed.
+   *
+   * @throws \Exception
+   */
+  private function process(array $indicator) {
     $datapoints = [];
     foreach ($indicator['response'] as $sourceKey => $source) {
       // Reset responses to numerical array.
       $responseIndicators = array_values($source);
       foreach ($responseIndicators as $key => $responseDatapoint) {
-        $datapoints['values'][$sourceKey][$key] = $responseDatapoint['object']['vectorDataPoint'];
-        $datapoints['previous'][$sourceKey][$key] = reset($datapoints['values'][$sourceKey][$key])['value'];
-        $datapoints['latest'][$sourceKey][$key] = end($datapoints['values'][$sourceKey][$key])['value'];
+        if (isset($responseDatapoint['object'])) {
+          $datapoints['values'][$sourceKey][$key] = $responseDatapoint['object']['vectorDataPoint'];
+          $datapoints['previous'][$sourceKey][$key] = reset($datapoints['values'][$sourceKey][$key])['value'];
+          $datapoints['latest'][$sourceKey][$key] = end($datapoints['values'][$sourceKey][$key])['value'];
+        }
+        else {
+          // On a failed response, treat values as zero.
+          // TODO: log the issue?
+          $datapoints['previous'][$sourceKey][$key] = 0;
+          $datapoints['latest'][$sourceKey][$key] = 0;
+        }
       }
     }
 
@@ -186,11 +246,26 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
       'direction' => $percentChange > 0 ? 'up' : ($percentChange == 0 ? 'nil' : 'down'),
       'value' => $formattedValue ?? $latest,
       'units' => $indicator['units'],
+      // TODO: API failures might prevent $datapoints['values'][0] from
+      // existing. Need to find better solution.
       'refper' => reset($datapoints['values'][0][0])['refPer'],
     ];
   }
 
-  private function calculate($indicator, $datapoints) {
+  /**
+   * Define variables and perform mathematical calculations on an indicator.
+   *
+   * @param array $indicator
+   *   An indicator's data and config.
+   * @param array $datapoints
+   *   A list of indicator datapoints.
+   *
+   * @return int|float
+   *   A calculated indicator value.
+   *
+   * @throws \Exception
+   */
+  private function calculate(array $indicator, array $datapoints) {
     if (!empty($indicator['calculation'])) {
       $variables = [];
       foreach ($datapoints as $sourceKey => $sourceDatapoints) {
@@ -211,9 +286,20 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     }
   }
 
-  public function apiTest() {
-    opcache_invalidate(__FILE__, true);
-    $response = $this->getIndicatorsData();
+  /**
+   * Get a list of indicators in JSON format.
+   *
+   * @param array $types
+   *   A list of indicator types.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   A list of indicators in JSON format.
+   *
+   * @throws \Exception
+   */
+  public function api(array $types = []) {
+    // opcache_invalidate(__FILE__, true);.
+    $response = $this->getIndicators($types);
     return JsonResponse::create($response);
   }
 

@@ -9,9 +9,10 @@
         let steps = 0 // Number of indicators to shift.
 
         wrapper.find('.btn-ind').on('click', function (e) {
+          let stepsPerScreen = Math.floor((indList.width() - wrapper.width()) / translateX)
           if (e.target.name === 'prev') {
             if (steps > 0) {
-              steps--
+              steps = Math.max(0, steps - stepsPerScreen)
             }
             if (steps <= 0) {
               $(this).addClass('disabled')
@@ -26,9 +27,9 @@
             if (steps < indCount - 1) {
               // TODO: calculate how many indicators can fit on screen at current time.
               //  and use that as limit instead.
-              steps++
+              steps = Math.min(indCount - stepsPerScreen, steps + stepsPerScreen)
             }
-            if (steps >= indCount - 1) {
+            if (steps >= indCount - stepsPerScreen) {
               $(this).addClass('disabled')
               $(this).attr('aria-disabled', true)
             }
