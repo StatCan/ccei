@@ -9,7 +9,6 @@
 */
 #}
 {% set region = 0 %}
-
 <div class="ccei-indicators">
   <div class="ind-nav">
     <button class="btn-ind prev disabled" name="prev" aria-disabled="true"><?xml version="1.0" encoding="iso-8859-1"?>
@@ -33,13 +32,15 @@
       {% for indicator in indicators %}
         <li class="ind" tabindex="0">
           <p class="ind-title">{{ indicator.title }}</p>
-          <div class="ind-growth-rate ind-dir-{{ indicator.geo[region].growth_rate.arrow_direction }}">
-            <span class="ind-growth">{{ indicator.geo[region].growth_rate.growth }}</span>
-            <span class="ind-arrow ind-arrow-dir-{{ indicator.geo[region].growth_rate.arrow_direction }}"></span>
+          <div class="ind-growth-rate ind-dir-{{ indicator.direction }}">
+            <span class="ind-growth">{{ indicator.change }}</span>
+            <span class="ind-arrow ind-arrow-{{ indicator.direction }}"></span>
           </div>
-          <p class="ind-value">{{ indicator.geo[region].value }}</p>
-{#          <p class="ind-unit">{{ indicator.geo[region].value }}</p>#}
-          <p class="ind-refper">{{ indicator.refper }}</p>
+          <div class="ind-values">
+            <p class="ind-value">{{ indicator.value }}</p>
+            <p class="ind-unit">{{ indicator.units }}</p>
+          </div>
+          <p class="ind-refper">{{ 'Reference period:'|t }} {{ indicator.refper }}</p>
         </li>
       {% endfor %}
   </ul>

@@ -86,18 +86,17 @@ class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterfa
    * {@inheritdoc}
    */
   public function build() {
-
-    $response = $this->cceiIndicators->getIndicatorsDataOld();
+    $response = $this->cceiIndicators->getIndicators();
 
     $build = [];
     $build['#theme'] = 'indicators_block';
     $build['#title'] = $this->t('Indicators');
 
-    $build['#indicators'] = $response['result'];
+    $build['#indicators'] = $response['indicators'];
     $build['#content'] = '';
 
     $build['#attached']['library'][] = 'ccei_ext_indicators/ccei-indicators';
-    $build['#cache']['max-age'] = 0;
+    $build['#cache']['max-age'] = 5;
 
     return $build;
   }

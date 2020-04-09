@@ -12,7 +12,7 @@
   display: flex;
   flex-wrap: nowrap;
   transform: translateX(0);
-  transition: transform 0.25s ease-out;
+  transition: transform 0.35s ease-out;
 }
 
 .ind-nav {
@@ -69,6 +69,9 @@
 }
 
 .ccei-indicators .ind {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   flex: 0 0 220px;
   min-height: 200px;
   padding: 10px;
@@ -108,15 +111,15 @@
   margin-bottom: 15px;
 }
 
-.ind-dir-0 {
+.ind-dir-nil {
   color: #0057af;
   background-color: #e8f0f7;
 }
-.ind-dir-1 {
+.ind-dir-up {
   color: #26965d;
   background-color: #e5efe9;
 }
-.ind-dir-2 {
+.ind-dir-down {
   color: #b00020;
   background-color: #f8e8ea;
 }
@@ -132,15 +135,21 @@
 
   width: 0;
   height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
 }
 
-.ind-arrow-dir-1 {
-  border-bottom: 5px solid #26965d;
+.ind-arrow-nil {
+  border-left: 7px solid #0057af;
+  border-right: 7px solid #0057af;
+  border-top: 3px solid #0057af;
+  border-bottom: 3px solid #0057af;
 }
-.ind-arrow-dir-2 {
-  border-top: 5px solid #b00020;
+.ind-arrow-up {
+  border-bottom: 9px solid #26965d;
+}
+.ind-arrow-down {
+  border-top: 9px solid #b00020;
 }
 
 .ind-value {
@@ -151,7 +160,7 @@
 
 .ind .ind-unit {
   line-height: 1.1;
-  margin-bottom: 0;
+  margin-top: 0;
   font-size: .7em;
 }
 
