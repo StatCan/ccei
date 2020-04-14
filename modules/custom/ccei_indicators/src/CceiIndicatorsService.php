@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\ccei_ext_indicators;
+namespace Drupal\ccei_indicators;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -57,7 +57,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
    *   A list of indicator types.
    */
   public function getIndicatorTypes() {
-    return $this->configFactory->get('ccei_ext_indicators.indicators')->get('types');
+    return $this->configFactory->get('ccei_indicators.indicators')->get('types');
   }
 
   /**
@@ -75,7 +75,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     $data = &drupal_static(__METHOD__);
 
     $typesKey = empty($types) ? 'all' : implode('-', $types);
-    $cid = 'ccei_ext_indicators:' . $typesKey;
+    $cid = 'ccei_indicators:' . $typesKey;
 
     if ($cache = \Drupal::cache()->get($cid)) {
       $data = $cache->data;
@@ -100,7 +100,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
    */
   private function getIndicatorsData(array $types = []) {
     // Load list of indicator parameters.
-    $config = $this->configFactory->get('ccei_ext_indicators.indicators')->get('');
+    $config = $this->configFactory->get('ccei_indicators.indicators')->get('');
 
     if (empty($types)) {
       $types = array_keys($config['types']);

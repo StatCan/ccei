@@ -109,7 +109,8 @@
         "cweagans/composer-patches": "^1.6.7",
         "drupal/core-composer-scaffold": "*",
         "drupalwxt/wxt": "3.0.7",
-        "acquia/lightning": "4.1.2"
+        "acquia/lightning": "4.1.2",
+        "nxp/math-executor": "^1.1"
     },
     "autoload": {
         "psr-4": {

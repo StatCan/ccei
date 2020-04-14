@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\ccei_ext_indicators;
+namespace Drupal\ccei_indicators;
 
 /**
  * Interface CceiIndicatorsServiceInterface.
