@@ -17,8 +17,13 @@
 #}
 {% block content %}
   <div class="brand col-xs-8 col-sm-9 col-md-6">
-    <a href="">
-      <img id="header-logo" src='{{ logo_svg }}' alt="{{ 'Government of Canada'|t }}" />
+    <a href="https://www.canada.ca/en.html" property="url">
+      <img id="header-logo" src='{{ logo_svg }}' alt="{{ 'Government of Canada'|t }}" property="logo"/>
+      <span class="wb-inv" property="name">
+      Government of Canada / <span lang="fr">Gouvernement du Canada</span>
+      </span>
     </a>
+    <meta property="areaServed" typeof="Country" content="Canada">
+    <link property="logo" href='{{ logo_svg }}'>
   </div>
 {% endblock %}
