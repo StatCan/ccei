@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ccei_whats_new_item
+label: 'CCEI What''s New Item'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for What''s New Items'
+behavior_plugins: {  }

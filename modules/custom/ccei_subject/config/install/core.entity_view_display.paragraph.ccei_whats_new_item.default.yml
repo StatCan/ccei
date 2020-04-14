@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ccei_whats_new_item.field_background
+    - field.field.paragraph.ccei_whats_new_item.field_url
+    - paragraphs.paragraphs_type.ccei_whats_new_item
+  module:
+    - link
+id: paragraph.ccei_whats_new_item.default
+targetEntityType: paragraph
+bundle: ccei_whats_new_item
+mode: default
+content:
+  field_background:
+    type: entity_reference_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_url:
+    weight: 0
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  search_api_excerpt: true

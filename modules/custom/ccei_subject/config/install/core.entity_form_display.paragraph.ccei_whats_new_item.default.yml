@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ccei_whats_new_item.field_background
+    - field.field.paragraph.ccei_whats_new_item.field_url
+    - paragraphs.paragraphs_type.ccei_whats_new_item
+  module:
+    - link
+    - media_library
+id: paragraph.ccei_whats_new_item.default
+targetEntityType: paragraph
+bundle: ccei_whats_new_item
+mode: default
+content:
+  field_background:
+    type: entity_browser_entity_reference
+    weight: 1
+    settings:
+      entity_browser: media_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: thumbnail
+      open: true
+      field_widget_replace: false
+    region: content
+    third_party_settings: {  }
+  field_url:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  created: true
+  status: true

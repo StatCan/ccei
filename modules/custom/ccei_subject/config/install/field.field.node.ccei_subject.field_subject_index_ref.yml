@@ -8,7 +8,7 @@ id: node.ccei_subject.field_subject_index_ref
 field_name: field_subject_index_ref
 entity_type: node
 bundle: ccei_subject
-label: 'Subject Index Reference'
+label: 'Subject Index ID'
 description: ''
 required: false
 translatable: false
