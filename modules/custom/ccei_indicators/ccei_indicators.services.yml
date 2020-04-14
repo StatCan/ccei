@@ -1,11 +1,11 @@
 services:
-  logger.channel.ccei_ext_indicators:
+  logger.channel.ccei_indicators:
     parent: logger.channel_base
-    arguments: ['ccei_ext_indicators']
+    arguments: ['ccei_indicators']
   npx.math_executor:
     class: NXP\MathExecutor
-  ccei_ext_indicators.indicators:
-    class: Drupal\ccei_ext_indicators\CceiIndicatorsService
+  ccei_indicators.indicators:
+    class: Drupal\ccei_indicators\CceiIndicatorsService
     arguments:
       - '@config.factory'
       - '@http_client'

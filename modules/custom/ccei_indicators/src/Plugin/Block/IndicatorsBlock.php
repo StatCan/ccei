@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\ccei_ext_indicators\Plugin\Block;
+namespace Drupal\ccei_indicators\Plugin\Block;
 
-use Drupal\ccei_ext_indicators\CceiIndicatorsService;
+use Drupal\ccei_indicators\CceiIndicatorsService;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -21,7 +21,7 @@ class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * An http client.
    *
-   * @var \Drupal\ccei_ext_indicators\CceiIndicatorsService
+   * @var \Drupal\ccei_indicators\CceiIndicatorsService
    */
   protected $cceiIndicators;
 
@@ -34,7 +34,7 @@ class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterfa
    *   The plugin_id for the plugin instance.
    * @param string $plugin_definition
    *   The plugin implementation definition.
-   * @param \Drupal\ccei_ext_indicators\CceiIndicatorsService $ccei_indicators
+   * @param \Drupal\ccei_indicators\CceiIndicatorsService $ccei_indicators
    *   A service to retrieve indicator data.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, CceiIndicatorsService $ccei_indicators) {
@@ -50,7 +50,7 @@ class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterfa
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('ccei_ext_indicators.indicators')
+      $container->get('ccei_indicators.indicators')
     );
   }
 
@@ -95,7 +95,7 @@ class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterfa
     $build['#indicators'] = $response['indicators'];
     $build['#content'] = '';
 
-    $build['#attached']['library'][] = 'ccei_ext_indicators/ccei-indicators';
+    $build['#attached']['library'][] = 'ccei_indicators/ccei-indicators';
     $build['#cache']['max-age'] = 5;
 
     return $build;

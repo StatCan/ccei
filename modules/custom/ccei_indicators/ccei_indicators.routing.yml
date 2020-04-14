@@ -1,0 +1,6 @@
+ccei_indicators.api_indicators:
+  path: '/api/ccei'
+  defaults:
+    _controller: 'ccei_indicators.indicators:api'
+  requirements:
+    _access: 'TRUE'
