@@ -35,4 +35,5 @@ dependencies:
   - text
   - user
   - wxt_core
+  - wxt_ext_paragraph
 version: 8.x-1.0-alpha1
