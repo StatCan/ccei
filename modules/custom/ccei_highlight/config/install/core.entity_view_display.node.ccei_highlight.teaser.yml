@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.ccei_highlight.body
+    - field.field.node.ccei_highlight.field_image
+    - field.field.node.ccei_highlight.field_subject_reference
+    - node.type.ccei_highlight
+  module:
+    - text
+    - user
+id: node.ccei_highlight.teaser
+targetEntityType: node
+bundle: ccei_highlight
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_image: true
+  field_subject_reference: true
+  langcode: true
+  search_api_excerpt: true

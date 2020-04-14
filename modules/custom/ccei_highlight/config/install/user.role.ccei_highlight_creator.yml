@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ccei_highlight_creator
+label: 'CCEI Highlight creator'
+weight: 19
+is_admin: false
