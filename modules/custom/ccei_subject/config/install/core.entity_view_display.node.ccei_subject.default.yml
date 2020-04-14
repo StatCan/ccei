@@ -19,14 +19,13 @@ dependencies:
     - layout_library
     - text
     - user
-    - wxt_ext_layout
 third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: true
     sections:
       -
-        layout_id: wxt_topic
+        layout_id: ccei_topic
         layout_settings:
           label: ''
           layout:
