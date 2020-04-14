@@ -4,7 +4,7 @@ dependencies:
   config:
     - field.storage.node.field_subject_whats_new
     - node.type.ccei_subject
-    - paragraphs.paragraphs_type.ccei_paragraph
+    - paragraphs.paragraphs_type.ccei_whats_new_item
   module:
     - entity_reference_revisions
 id: node.ccei_subject.field_subject_whats_new
@@ -22,9 +22,12 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      ccei_paragraph: ccei_paragraph
+      ccei_whats_new_item: ccei_whats_new_item
     target_bundles_drag_drop:
       ccei_paragraph:
-        enabled: true
         weight: 2
+        enabled: false
+      ccei_whats_new_item:
+        enabled: true
+        weight: 4
 field_type: entity_reference_revisions
