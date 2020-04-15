@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.ccei_highlight.body
-    - field.field.node.ccei_highlight.field_image
+    - field.field.node.ccei_highlight.field_background
     - field.field.node.ccei_highlight.field_subject_reference
     - node.type.ccei_highlight
   module:
@@ -22,7 +22,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_image:
+  field_background:
     weight: 102
     label: above
     settings:
