@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
-    - metatag
-    - node
-id: node.field_meta_tags
-field_name: field_meta_tags
-entity_type: node
-type: metatag
+    - link
+    - media
+id: media.field_image_link
+field_name: field_image_link
+entity_type: media
+type: link
 settings: {  }
-module: metatag
+module: link
 locked: false
 cardinality: 1
 translatable: true

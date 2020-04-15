@@ -2,14 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_subject_highlights
+    - field.storage.node.field_subject_reference
     - node.type.ccei_highlight
-    - node.type.ccei_subject
-id: node.ccei_subject.field_subject_highlights
-field_name: field_subject_highlights
+id: node.ccei_highlight.field_subject_reference
+field_name: field_subject_reference
 entity_type: node
-bundle: ccei_subject
-label: 'Subject Highlights'
+bundle: ccei_highlight
+label: 'Subject reference'
 description: ''
 required: false
 translatable: false
@@ -19,7 +18,7 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      ccei_highlight: ccei_highlight
+      ccei_subject: ccei_subject
     sort:
       field: _none
     auto_create: false

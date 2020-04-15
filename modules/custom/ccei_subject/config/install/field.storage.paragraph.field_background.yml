@@ -2,16 +2,16 @@ langcode: en
 status: true
 dependencies:
   module:
-    - layout_library
-    - node
-id: node.layout_selection
-field_name: layout_selection
-entity_type: node
+    - media
+    - paragraphs
+id: paragraph.field_background
+field_name: field_background
+entity_type: paragraph
 type: entity_reference
 settings:
-  target_type: layout
+  target_type: media
 module: core
-locked: true
+locked: false
 cardinality: 1
 translatable: true
 indexes: {  }

@@ -1,10 +1,10 @@
 langcode: en
 status: true
 dependencies: {  }
-id: ccei_landing_page
-label: 'CCEI Landing Page'
+id: ccei_subject
+label: 'CCEI Subject'
 targetEntityType: node
-targetBundle: ccei_landing_page
+targetBundle: ccei_subject
 layout:
   -
     layout_id: ccei_topic

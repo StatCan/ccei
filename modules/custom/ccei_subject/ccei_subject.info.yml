@@ -4,23 +4,36 @@ type: module
 core: 8.x
 package: CCEI
 dependencies:
-  - lightning_media
-  - lightning_media_image
-  - wxt_ext_paragraph
-  - migrate_plus
+  - block_class
   - content_moderation
   - content_translation
+  - ctools
   - entity_browser
   - entity_reference_revisions
   - field
+  - field_group
+  - inline_entity_form
   - language
+  - layout_builder
+  - layout_builder_restrictions
+  - layout_builder_st
+  - layout_discovery
+  - layout_library
+  - lightning_media
+  - lightning_media_image
+  - link
   - media
+  - media_library
   - menu_ui
+  - migrate_plus
   - node
   - paragraphs
   - path
+  - pathauto
+  - redirect
   - taxonomy
   - text
   - user
-core_incompatible: false
+  - wxt_core
+  - wxt_ext_paragraph
 version: 8.x-1.0-alpha1

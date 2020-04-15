@@ -7,7 +7,7 @@ package: CCEI
 # Required modules
 dependencies:
     - ccei_subject
-    - ccei_landing_page
+    - ccei_highlight
 
 # Required libraries
 libraries: { }

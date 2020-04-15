@@ -1,20 +1,26 @@
+langcode: en
+status: true
+dependencies: {  }
 id: ccei_subjects_taxonomy
-migration_group: ccei
+class: null
+field_plugin_method: null
+cck_plugin_method: null
 migration_tags:
   - Core
+migration_group: ccei
 label: 'CCEI Subjects taxonomy migration'
 source:
   plugin: embedded_data
   data_rows:
     -
       term_id: 1
-      name: 'Commodities'
+      name: Commodities
     -
       term_id: 2
-      name: 'Topics'
+      name: Topics
     -
       term_id: 3
-      name: 'Electricity'
+      name: Electricity
       parent_id: 1
     -
       term_id: 4
@@ -65,3 +71,4 @@ process:
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: ccei_content_subjects
+migration_dependencies: null
