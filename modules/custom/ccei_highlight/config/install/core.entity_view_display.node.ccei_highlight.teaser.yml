@@ -4,7 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.ccei_highlight.body
-    - field.field.node.ccei_highlight.field_image
+    - field.field.node.ccei_highlight.field_background
     - field.field.node.ccei_highlight.field_subject_reference
     - node.type.ccei_highlight
   module:
@@ -29,7 +29,7 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
-  field_image: true
+  field_background: true
   field_subject_reference: true
   langcode: true
   search_api_excerpt: true

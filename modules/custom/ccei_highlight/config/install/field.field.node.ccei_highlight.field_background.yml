@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
+    - field.storage.node.field_background
     - node.type.ccei_highlight
   module:
     - image
-id: node.ccei_highlight.field_image
-field_name: field_image
+id: node.ccei_highlight.field_background
+field_name: field_background
 entity_type: node
 bundle: ccei_highlight
 label: Background

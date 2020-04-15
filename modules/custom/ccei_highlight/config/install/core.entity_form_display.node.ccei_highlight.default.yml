@@ -4,7 +4,7 @@ dependencies:
   config:
     - entity_browser.browser.image_browser
     - field.field.node.ccei_highlight.body
-    - field.field.node.ccei_highlight.field_image
+    - field.field.node.ccei_highlight.field_background
     - field.field.node.ccei_highlight.field_subject_reference
     - node.type.ccei_highlight
   module:
@@ -33,7 +33,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_image:
+  field_background:
     type: entity_browser_file
     weight: 122
     settings:
