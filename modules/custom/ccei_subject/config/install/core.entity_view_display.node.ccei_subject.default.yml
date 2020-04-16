@@ -98,7 +98,7 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 2
+            weight: -8
           400d1a57-a79a-4884-8a23-7d8b16ca6cc5:
             uuid: 400d1a57-a79a-4884-8a23-7d8b16ca6cc5
             region: top
@@ -108,123 +108,83 @@ third_party_settings:
                 entity: layout_builder.entity
               id: 'extra_field_block:node:ccei_subject:links'
             additional: {  }
-            weight: 1
-          8d72669e-ed70-43e7-b9f0-8a85084598b7:
-            uuid: 8d72669e-ed70-43e7-b9f0-8a85084598b7
-            region: bottom
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:ccei_subject:field_subject_tag'
-              formatter:
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-                type: entity_reference_label
-            additional: {  }
-            weight: 1
-          87821c94-4ff4-4212-8e4e-32b483212f66:
-            uuid: 87821c94-4ff4-4212-8e4e-32b483212f66
-            region: top
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:ccei_subject:field_subject_icon'
-              formatter:
-                type: entity_reference_entity_view
-                label: above
-                settings:
-                  view_mode: default
-                  link: false
-                third_party_settings: {  }
-            additional: {  }
-            weight: 0
+            weight: -10
           2bc93d53-3196-4609-aa32-f1210258b2e2:
             uuid: 2bc93d53-3196-4609-aa32-f1210258b2e2
             region: middle
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
               id: 'field_block:node:ccei_subject:field_subject_indicators'
+              label: Indicators
+              provider: layout_builder
+              label_display: '0'
               formatter:
+                label: visually_hidden
                 type: entity_reference_revisions_entity_view
-                label: above
                 settings:
                   view_mode: default
-                  link: ''
                 third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
-            weight: 2
+            weight: 3
           f9db2f58-1af4-4ed0-a3cf-2c57ebd4f53c:
             uuid: f9db2f58-1af4-4ed0-a3cf-2c57ebd4f53c
             region: middle
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
               id: 'field_block:node:ccei_subject:field_subject_powerbi'
+              label: PowerBI
+              provider: layout_builder
+              label_display: '0'
               formatter:
+                label: visually_hidden
                 type: entity_reference_revisions_entity_view
-                label: above
                 settings:
                   view_mode: default
-                  link: ''
                 third_party_settings: {  }
-            additional: {  }
-            weight: 3
-          2b7eb6ac-ec6b-4ffa-a17b-4622578133ab:
-            uuid: 2b7eb6ac-ec6b-4ffa-a17b-4622578133ab
-            region: middle
-            configuration:
-              label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:node:ccei_subject:field_subject_whats_new'
-              formatter:
-                type: entity_reference_revisions_entity_view
-                label: above
-                settings:
-                  view_mode: default
-                  link: ''
-                third_party_settings: {  }
+                view_mode: view_mode
             additional: {  }
             weight: 4
-          70598b78-e5e0-4593-894d-92859abd4703:
-            uuid: 70598b78-e5e0-4593-894d-92859abd4703
-            region: bottom
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:ccei_subject:field_subject_index_ref'
-              formatter:
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-                type: string
-            additional: {  }
-            weight: 0
           abcfa543-e9d4-4b59-a163-24d4a803e949:
             uuid: abcfa543-e9d4-4b59-a163-24d4a803e949
             region: middle
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
               id: 'field_block:node:ccei_subject:field_subject_highlights'
+              label: Highlights
+              provider: layout_builder
+              label_display: '0'
               formatter:
-                label: above
+                label: visually_hidden
+                type: entity_reference_label
                 settings:
                   link: true
                 third_party_settings: {  }
-                type: entity_reference_label
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: 2
+          2b7eb6ac-ec6b-4ffa-a17b-4622578133ab:
+            uuid: 2b7eb6ac-ec6b-4ffa-a17b-4622578133ab
+            region: bottom
+            configuration:
+              id: 'field_block:node:ccei_subject:field_subject_whats_new'
+              label: 'What''s New'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: visually_hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: -10
         third_party_settings: {  }
   layout_library:
     enable: false
