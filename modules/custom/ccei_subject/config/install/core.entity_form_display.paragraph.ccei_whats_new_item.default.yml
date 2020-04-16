@@ -2,12 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.media_browser
     - field.field.paragraph.ccei_whats_new_item.field_background
     - field.field.paragraph.ccei_whats_new_item.field_url
     - paragraphs.paragraphs_type.ccei_whats_new_item
   module:
+    - entity_browser
     - link
-    - media_library
 id: paragraph.ccei_whats_new_item.default
 targetEntityType: paragraph
 bundle: ccei_whats_new_item
