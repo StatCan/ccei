@@ -56,7 +56,6 @@
  * @see html.html.twig
  */
 #}
-<div class="nathan"></div>
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 
 {# Navbar #}
@@ -70,25 +69,39 @@
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : '',
       ]
     %}
-    <header{{ navbar_attributes.addClass(navbar_classes) }} id="navbar">
+    <header{{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
       <div id="wb-bnr" class="{{ container }}">
-        <section id="wb-lng" class="text-right">
+        <section id="wb-lng" class="visible-md visible-lg text-right">
           <h2 class="wb-inv">{{ 'Language selection'|t }}</h2>
-          {{ page.language_toggle }}
+          <div class="row">
+            <div class="col-md-12">
+              {{ page.language_toggle }}
+            </div>
+          </div>
         </section>
         <div class="row">
           {{ page.banner }}
+          <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
+            <h2>{{ 'Search and menus'|t }}</h2>
+            <ul class="list-inline text-right chvrn">
+              <li>
+                <a href="#mb-pnl" title="{{ 'Search and menus'|t }}" aria-controls="mb-pnl" class="overlay-lnk" role="button">
+                  <span class="glyphicon glyphicon-search">
+                    <span class="glyphicon glyphicon-th-list">
+                      <span class="wb-inv">{{ 'Search and menus'|t }}</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <div id="mb-pnl"></div>
+          </section>
           {{ page.search }}
         </div>
       </div>
-      <nav class="gcweb-menu" data-trgt="mb-pnl" typeof="SiteNavigationElement">
-        <div class="{{ container }}">
-          <h2 class="wb-inv">{{ 'Menu'|t }}</h2>
-          <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
-          {{ page.navigation }}
-        </div>
-      </nav>
       {{ page.breadcrumb }}
+      {{ page.navigation }}
+      {{ page.branding }}
     </header>
   {% endblock %}
 {% endif %}
@@ -96,7 +109,7 @@
 {# Main #}
 {% block main %}
 
-  <div class="{{ (is_front and wxt_homepage) ? "container-fluid" : container }}">
+  <div class="{{ container }}">
     <div class="row">
 
       {# Highlighted #}
@@ -115,7 +128,7 @@
           page.sidebar_first is empty and page.sidebar_second is empty ? 'col-md-12'
         ]
       %}
-      <main role="main" property="mainContentOfPage" {{ content_attributes.addClass(content_classes, 'main-container', container, 'js-quickedit-main-content') }}>
+      <main property="mainContentOfPage" typeof="WebPageElement" class="container">
 
       {# Header #}
       {% if page.header %}
@@ -209,32 +222,49 @@
 {% endif %}
 
 {% if page.footer %}
-  {% if gcweb_cdn_footer_enable %}
-    <footer id="wb-info" role="contentinfo" data-ajax-append="{{ gcweb_cdn_footer_url }}{{ language }}.html .brand">
-      <div class="landscape" data-ajax-replace="{{ gcweb_cdn_footer_url }}{{ language }}.html .wb-navcurr"></div>
+  {% block footer %}
+    <footer id="wb-info">
+    <div class="landscape">
+      <nav class="container wb-navcurr">
+        <h2 class="wb-inv">About government</h2>
+          <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+            <li><a href="/en/contact">Contact us</a></li>
+            <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+            <li><a href="https://www.canada.ca/en/government/publicservice.html">Public service and military</a></li>
+            <li><a href="https://www.canada.ca/en/news.html">News</a></li>
+            <li><a href="https://www.canada.ca/en/government/system/laws.html">Treaties, laws and regulations</a></li>
+            <li><a href="https://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
+            <li><a href="https://pm.gc.ca/eng">Prime Minister</a></li>
+            <li><a href="https://www.canada.ca/en/government/system.html">How government works</a></li>
+            <li><a href="https://open.canada.ca/en/">Open government</a></li>
+          </ul>
+       </nav>
+     </div>
+     <div class="{{ container }}">
+       {{ page.footer }}
+     </div>
+     <div class="brand">
+       <div class="{{ container }}">
+         <div class="row ">
+           <nav class="col-md-9 col-lg-10 ftr-urlt-lnk">
+					   <h2 class="wb-inv">About this site</h2>
+					     <ul>
+						     <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+						     <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+						     <li><a href="https://www1.canada.ca/en/newsite.html">About Canada.ca</a></li>
+						     <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+						     <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+					    </ul>
+				   </nav>
+           <div class="col-xs-6 visible-sm visible-xs tofpg">
+             <a href="#wb-cont">{{ 'Top of Page'|t }}<span class="glyphicon glyphicon-chevron-up"></span></a>
+           </div>
+           <div class="col-xs-6 col-md-2 text-right">
+             <img src='{{ logo_bottom_svg }}' alt='{{ 'Symbol of the Government of Canada'|t }}' />
+           </div>
+          </div>
+        </div>
+      </div>
     </footer>
-  {% else %}
-    {% block footer %}
-      <footer id="wb-info">
-        <div class="landscape">
-          <div class="{{ container }}">
-            {{ page.footer }}
-          </div>
-        </div>
-        <div class="brand">
-          <div class="{{ container }}">
-            <div class="row ">
-              {{ page.branding }}
-              <div class="col-xs-6 visible-sm visible-xs tofpg">
-                <a href="#wb-cont">{{ 'Top of Page'|t }}<span class="glyphicon glyphicon-chevron-up"></span></a>
-              </div>
-              <div class="col-xs-6 col-md-2 text-right">
-                <img src='{{ logo_bottom_svg }}' alt='{{ 'Symbol of the Government of Canada'|t }}' />
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    {% endblock %}
-  {% endif %}
+  {% endblock %}
 {% endif %}
