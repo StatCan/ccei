@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ccei_indicators_entity
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: indicators_entity.indicators_entity
+target_entity_type_id: indicators_entity
+target_bundle: indicators_entity
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,103 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.indicators_entity.indicators_entity.field_calculation
+    - field.field.indicators_entity.indicators_entity.field_calculation_desc
+    - field.field.indicators_entity.indicators_entity.field_category
+    - field.field.indicators_entity.indicators_entity.field_indicator_sources
+    - field.field.indicators_entity.indicators_entity.field_preprocess
+    - field.field.indicators_entity.indicators_entity.field_rounding_precision
+    - field.field.indicators_entity.indicators_entity.field_units
+    - field.field.indicators_entity.indicators_entity.field_value_format
+  module:
+    - ccei_indicators_entity
+    - paragraphs
+id: indicators_entity.indicators_entity.default
+targetEntityType: indicators_entity
+bundle: indicators_entity
+mode: default
+content:
+  field_calculation:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_calculation_desc:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_category:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_indicator_sources:
+    type: entity_reference_paragraphs
+    weight: 9
+    settings:
+      title: Source
+      title_plural: Sources
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: indicator_source
+    third_party_settings: {  }
+    region: content
+  field_preprocess:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_rounding_precision:
+    weight: 8
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_units:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_value_format:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Enter the displayed indicator title, should be brief.'
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  user_id: true

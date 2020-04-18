@@ -1,0 +1,5 @@
+entity.indicators_entity.add_form:
+  route_name: entity.indicators_entity.add_form
+  title: 'Add Indicators'
+  appears_on:
+    - entity.indicators_entity.collection

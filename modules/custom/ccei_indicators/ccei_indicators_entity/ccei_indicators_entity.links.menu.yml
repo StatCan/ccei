@@ -1,0 +1,14 @@
+
+# Indicators menu items definition
+entity.indicators_entity.collection:
+  title: 'Indicators list'
+  route_name: entity.indicators_entity.collection
+  description: 'List Indicators entities'
+  parent: system.admin_structure
+  weight: 100
+
+indicators_entity.admin.structure.settings:
+  title: 'Indicators settings'
+  description: 'Configure Indicators entities'
+  route_name: indicators_entity.settings
+  parent: system.admin_structure

@@ -1,0 +1,20 @@
+add indicators entities:
+  title: 'Create new Indicators entities'
+
+administer indicators entities:
+  title: 'Administer Indicators entities'
+  description: 'Allow to access the administration form to configure Indicators entities.'
+  restrict access: true
+
+delete indicators entities:
+  title: 'Delete Indicators entities'
+
+edit indicators entities:
+  title: 'Edit Indicators entities'
+
+view published indicators entities:
+  title: 'View published Indicators entities'
+
+view unpublished indicators entities:
+  title: 'View unpublished Indicators entities'
+

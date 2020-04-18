@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.indicators_entity.field_indicator_sources
+    - paragraphs.paragraphs_type.indicator_source
+  module:
+    - ccei_indicators_entity
+    - entity_reference_revisions
+id: indicators_entity.indicators_entity.field_indicator_sources
+field_name: field_indicator_sources
+entity_type: indicators_entity
+bundle: indicators_entity
+label: 'Indicator sources'
+description: 'One or more data sources for indicators.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      indicator_source: indicator_source
+    target_bundles_drag_drop:
+      indicator_source:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

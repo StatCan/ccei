@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains ccei_indicators_entity.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ccei_indicators_entity_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ccei_indicators_entity module.
+    case 'help.page.ccei_indicators_entity':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides an Entity definition for CCEI Indicators') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.indicators_entity.field_calculation
+  module:
+    - ccei_indicators_entity
+id: indicators_entity.indicators_entity.field_calculation
+field_name: field_calculation
+entity_type: indicators_entity
+bundle: indicators_entity
+label: Calculation
+description: "<p>An optional mathematical formula to calculate the indicator's value. Most mathematical operators can be used such as: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, power (<code>^</code>) operators and brackets: <code>()</code></p>\r\n\r\n<p>Every coordinate used on this indicator is exposed as a variable in the format <code>$src[n]var[n]</code> where '<code>n</code>' is the index value of the source and coordinate respectively, starting at 0.</p>\r\n\r\nFor example:\r\n<ul>\r\n  <li>The first coordinate of the first source would be exposed as: <code>$src0var0</code></li>\r\n  <li>The third coordinate of the second source would be exposed as: <code>$src1var2</code></li>\r\n</ul>\r\n<br>\r\nExample formula could be:\r\n<p>\r\nRepresenting <em>Kilowatts</em> from <em>Megawatts</em>: \r\n<code>$src0var0 / 1000</code>\r\n<br>\r\nRepresenting <em>Cents per kilowatts hours</em> from <em>Dollars (in thousands) / Quantity (megawatt hours) x 100</em>:\r\n<code>$src0var1 / $src0var0 * 100</code>\r\n</p>\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

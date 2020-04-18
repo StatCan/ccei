@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ccei_indicators_entity
+id: indicators_entity.indicators_entity.user_id
+field_name: user_id
+entity_type: indicators_entity
+bundle: indicators_entity
+label: 'Authored by'
+description: 'The user ID of author of the Indicators entity.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

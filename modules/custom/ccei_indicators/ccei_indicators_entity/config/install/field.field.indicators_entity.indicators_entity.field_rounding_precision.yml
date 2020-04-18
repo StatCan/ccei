@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.indicators_entity.field_rounding_precision
+  module:
+    - ccei_indicators_entity
+id: indicators_entity.indicators_entity.field_rounding_precision
+field_name: field_rounding_precision
+entity_type: indicators_entity
+bundle: indicators_entity
+label: 'Rounding precision'
+description: 'How many digits of precision to display for the decimal'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: digit|digits
+field_type: integer

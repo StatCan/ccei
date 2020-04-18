@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.indicators_entity.field_units
+  module:
+    - ccei_indicators_entity
+id: indicators_entity.indicators_entity.field_units
+field_name: field_units
+entity_type: indicators_entity
+bundle: indicators_entity
+label: Units
+description: 'Megawatts, Barrels, Cents per kilowatts hours, etc.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

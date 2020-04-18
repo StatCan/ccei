@@ -1,0 +1,5 @@
+name: 'CCEI Indicators Entity'
+type: module
+description: 'Provides an Entity definition for CCEI Indicators'
+core: 8.x
+package: 'CCEI'

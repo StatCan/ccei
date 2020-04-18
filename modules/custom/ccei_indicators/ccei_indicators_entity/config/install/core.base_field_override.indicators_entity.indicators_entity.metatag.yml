@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ccei_indicators_entity
+id: indicators_entity.indicators_entity.metatag
+field_name: metatag
+entity_type: indicators_entity
+bundle: indicators_entity
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

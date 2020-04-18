@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.indicators_entity.field_calculation_desc
+  module:
+    - ccei_indicators_entity
+id: indicators_entity.indicators_entity.field_calculation_desc
+field_name: field_calculation_desc
+entity_type: indicators_entity
+bundle: indicators_entity
+label: 'Calculation description'
+description: "An optional plain text description of the calculation. Useful for reminding editors of the calculation's purpose.\r\nEx: Dollars (in thousands) / Quantity (megawatt hours) x 100"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

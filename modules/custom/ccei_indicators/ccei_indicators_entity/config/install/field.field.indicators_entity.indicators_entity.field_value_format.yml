@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.indicators_entity.field_value_format
+  module:
+    - ccei_indicators_entity
+    - options
+id: indicators_entity.indicators_entity.field_value_format
+field_name: field_value_format
+entity_type: indicators_entity
+bundle: indicators_entity
+label: 'Value format function'
+description: 'Specify a number formatting operation on the indicator value'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

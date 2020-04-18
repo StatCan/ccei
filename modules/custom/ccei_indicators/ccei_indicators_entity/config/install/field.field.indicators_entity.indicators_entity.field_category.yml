@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.indicators_entity.field_category
+  module:
+    - ccei_indicators_entity
+    - options
+id: indicators_entity.indicators_entity.field_category
+field_name: field_category
+entity_type: indicators_entity
+bundle: indicators_entity
+label: Category
+description: 'The category this indicator will be displayed in.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
