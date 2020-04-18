@@ -4,7 +4,7 @@ types:
   electricity: 'Electricity'
   petroleum: 'Refined Petroleum Products'
   renewable: 'Renewable Energy'
-  energy: 'Overview of the Energy Sector'
+  overview: 'Overview of the Energy Sector'
 indicators:
   - id: elect001
     type: electricity
@@ -98,7 +98,7 @@ indicators:
         coordinates:
           - '1.4'
   - id: elect006
-    type: electricityd
+    type: electricity
     title: 'Average selling price'
     units: 'Cents per kilowatts hours'
     calculation_desc: 'Dollars (in thousands) / Quantity (megawatt hours) *100'
@@ -469,8 +469,8 @@ indicators:
         latestN: 2
         coordinates:
           - '1.2.12.1'
-  - id: energy001
-    type: energy
+  - id: overview001
+    type: overview
     title: 'Direct employment'
     units: 'Number of jobs'
     calculation_desc: ''
@@ -488,8 +488,8 @@ indicators:
         latestN: 2
         coordinates:
           - '1.1.293'
-  - id: energy002
-    type: energy
+  - id: overview002
+    type: overview
     title: 'Contribution to GDP'
     units: '% of total GDP (chained 2012 dollars)'
     calculation_desc: 'Energy sector / All industries * 100'
@@ -508,8 +508,8 @@ indicators:
         coordinates:
           - '1.2.1'
           - '1.2.10'
-  - id: energy003
-    type: energy
+  - id: overview003
+    type: overview
     title: 'Primary energy production'
     units: 'Terajoules'
     calculation_desc: ''
@@ -527,8 +527,8 @@ indicators:
         latestN: 2
         coordinates:
           - '1.2.1'
-  - id: energy004
-    type: energy
+  - id: overview004
+    type: overview
     title: 'Energy consumption'
     units: 'Terajoules'
     calculation_desc: ''
@@ -546,8 +546,8 @@ indicators:
         latestN: 2
         coordinates:
           - '1.1.18'
-  - id: energy005
-    type: energy
+  - id: overview005
+    type: overview
     title: 'Trade balance'
     units: 'Billions of dollars'
     calculation_desc: '(Value of Export - Value of Import (in thousands of dollars)) / 1,000,000'
