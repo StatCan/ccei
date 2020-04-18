@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: indicator_source
+label: 'Indicator source'
+icon_uuid: null
+description: 'Define the source and query parameters of an indicator'
+behavior_plugins: {  }

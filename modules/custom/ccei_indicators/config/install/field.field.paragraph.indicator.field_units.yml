@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_units
+    - paragraphs.paragraphs_type.indicator
+id: paragraph.indicator.field_units
+field_name: field_units
+entity_type: paragraph
+bundle: indicator
+label: Units
+description: 'Megawatts, Barrels, Cents per kilowatts hours, etc.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
