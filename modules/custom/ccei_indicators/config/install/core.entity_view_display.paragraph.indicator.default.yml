@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.indicator.field_calculation
+    - field.field.paragraph.indicator.field_calculation_desc
+    - field.field.paragraph.indicator.field_indicator_sources
+    - field.field.paragraph.indicator.field_indicator_title
+    - field.field.paragraph.indicator.field_preprocess
+    - field.field.paragraph.indicator.field_rounding_precision
+    - field.field.paragraph.indicator.field_units
+    - field.field.paragraph.indicator.field_value_format
+    - paragraphs.paragraphs_type.indicator
+  module:
+    - entity_reference_revisions
+    - options
+id: paragraph.indicator.default
+targetEntityType: paragraph
+bundle: indicator
+mode: default
+content:
+  field_calculation:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_calculation_desc:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_indicator_sources:
+    type: entity_reference_revisions_entity_view
+    weight: 7
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_indicator_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_preprocess:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_rounding_precision:
+    weight: 6
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_units:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_value_format:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden:
+  search_api_excerpt: true

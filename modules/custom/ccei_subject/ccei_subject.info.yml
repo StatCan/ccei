@@ -5,6 +5,7 @@ core: 8.x
 package: CCEI
 dependencies:
   - block_class
+  - ccei_indicators
   - content_moderation
   - content_translation
   - ctools

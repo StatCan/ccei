@@ -1,0 +1,86 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.indicator.field_calculation
+    - field.field.paragraph.indicator.field_calculation_desc
+    - field.field.paragraph.indicator.field_indicator_sources
+    - field.field.paragraph.indicator.field_indicator_title
+    - field.field.paragraph.indicator.field_preprocess
+    - field.field.paragraph.indicator.field_rounding_precision
+    - field.field.paragraph.indicator.field_units
+    - field.field.paragraph.indicator.field_value_format
+    - paragraphs.paragraphs_type.indicator
+  module:
+    - paragraphs
+id: paragraph.indicator.default
+targetEntityType: paragraph
+bundle: indicator
+mode: default
+content:
+  field_calculation:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_calculation_desc:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_indicator_sources:
+    type: entity_reference_paragraphs
+    weight: 7
+    settings:
+      title: Source
+      title_plural: Sources
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: indicator_source
+    third_party_settings: {  }
+    region: content
+  field_indicator_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_preprocess:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_rounding_precision:
+    weight: 6
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_units:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_value_format:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

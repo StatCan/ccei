@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_coordinates
+    - paragraphs.paragraphs_type.indicator_source
+id: paragraph.indicator_source.field_coordinates
+field_name: field_coordinates
+entity_type: paragraph
+bundle: indicator_source
+label: Coordinates
+description: "A line-separated list of coordinates representing time series. A coordinate can have up to 10 numbers separated by dots: 1.0.0.0.0.0.0.0.0.0\r\n\r\nNote that you only need to enter the minimal amounts of relevant numbers. Ex: \r\n<pre>\r\n1.2.1.1\r\n1.2.10.1\r\n1.2.12\r\n</pre>"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
