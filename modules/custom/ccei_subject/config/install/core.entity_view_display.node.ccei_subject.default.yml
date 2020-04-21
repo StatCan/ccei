@@ -12,342 +12,173 @@ dependencies:
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
   module:
-    - entity_reference_revisions
     - field_group
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - slick_entityreference
     - text
     - user
 third_party_settings:
   layout_builder:
     allow_custom: false
-    enabled: true
-    sections:
-      -
-        layout_id: ccei_topic
-        layout_settings:
-          label: ''
-          layout:
-            wrapper: div
-            classes:
-              row: row
-            add_layout_class: 1
-            attributes: ''
-          regions:
-            top:
-              wrapper: div
-              classes:
-                col-sm-12: col-sm-12
-              add_region_classes: 1
-              attributes: ''
-            top_left:
-              wrapper: div
-              classes:
-                col-sm-6: col-sm-6
-              add_region_classes: 1
-              attributes: ''
-            top_right:
-              wrapper: div
-              classes:
-                col-sm-6: col-sm-6
-              add_region_classes: 1
-              attributes: ''
-            middle:
-              wrapper: div
-              classes:
-                col-sm-12: col-sm-12
-              add_region_classes: 1
-              attributes: ''
-            bottom_left:
-              wrapper: div
-              classes:
-                col-sm-4: col-sm-4
-              add_region_classes: 1
-              attributes: ''
-            bottom_middle:
-              wrapper: div
-              classes:
-                col-sm-4: col-sm-4
-              add_region_classes: 1
-              attributes: ''
-            bottom_right:
-              wrapper: div
-              classes:
-                col-sm-4: col-sm-4
-              add_region_classes: 1
-              attributes: ''
-            bottom:
-              wrapper: div
-              classes:
-                col-sm-12: col-sm-12
-              add_region_classes: 1
-              attributes: ''
-        components:
-          b40fbab1-00d7-4b6f-81ca-c262d6bb3f34:
-            uuid: b40fbab1-00d7-4b6f-81ca-c262d6bb3f34
-            region: top
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:ccei_subject:body'
-              formatter:
-                label: hidden
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
-            additional: {  }
-            weight: -8
-          400d1a57-a79a-4884-8a23-7d8b16ca6cc5:
-            uuid: 400d1a57-a79a-4884-8a23-7d8b16ca6cc5
-            region: top
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:ccei_subject:links'
-            additional: {  }
-            weight: -10
-          2bc93d53-3196-4609-aa32-f1210258b2e2:
-            uuid: 2bc93d53-3196-4609-aa32-f1210258b2e2
-            region: middle
-            configuration:
-              id: 'field_block:node:ccei_subject:field_subject_indicators'
-              label: Indicators
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: visually_hidden
-                type: slick_entityreference_vanilla
-                settings:
-                  optionset: default
-                  skin: ''
-                  view_mode: default
-                  override: false
-                  overridables:
-                    arrows: '0'
-                    autoplay: '0'
-                    dots: '0'
-                    draggable: '0'
-                    infinite: '0'
-                    mouseWheel: '0'
-                    randomize: '0'
-                    variableWidth: '0'
-                  cache: 0
-                  current_view_mode: _custom
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 3
-          f9db2f58-1af4-4ed0-a3cf-2c57ebd4f53c:
-            uuid: f9db2f58-1af4-4ed0-a3cf-2c57ebd4f53c
-            region: middle
-            configuration:
-              id: 'field_block:node:ccei_subject:field_subject_powerbi'
-              label: PowerBI
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: visually_hidden
-                type: slick_entityreference_vanilla
-                settings:
-                  optionset: default
-                  skin: ''
-                  view_mode: default
-                  override: false
-                  overridables:
-                    arrows: '0'
-                    autoplay: '0'
-                    dots: '0'
-                    draggable: '0'
-                    infinite: '0'
-                    mouseWheel: '0'
-                    randomize: '0'
-                    variableWidth: '0'
-                  cache: 0
-                  current_view_mode: _custom
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 4
-          abcfa543-e9d4-4b59-a163-24d4a803e949:
-            uuid: abcfa543-e9d4-4b59-a163-24d4a803e949
-            region: middle
-            configuration:
-              id: 'field_block:node:ccei_subject:field_subject_highlights'
-              label: Highlights
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: visually_hidden
-                type: slick_entityreference_vanilla
-                settings:
-                  optionset: default
-                  skin: ''
-                  view_mode: default
-                  override: false
-                  overridables:
-                    arrows: '0'
-                    autoplay: '0'
-                    dots: '0'
-                    draggable: '0'
-                    infinite: '0'
-                    mouseWheel: '0'
-                    randomize: '0'
-                    variableWidth: '0'
-                  cache: 0
-                  current_view_mode: _custom
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 2
-          2b7eb6ac-ec6b-4ffa-a17b-4622578133ab:
-            uuid: 2b7eb6ac-ec6b-4ffa-a17b-4622578133ab
-            region: bottom
-            configuration:
-              id: 'field_block:node:ccei_subject:field_subject_whats_new'
-              label: 'What''s New'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: visually_hidden
-                type: slick_entityreference_vanilla
-                settings:
-                  optionset: default
-                  skin: ''
-                  view_mode: default
-                  override: false
-                  overridables:
-                    arrows: '0'
-                    autoplay: '0'
-                    dots: '0'
-                    draggable: '0'
-                    infinite: '0'
-                    mouseWheel: '0'
-                    randomize: '0'
-                    variableWidth: '0'
-                  cache: 0
-                  current_view_mode: _custom
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: -10
-        third_party_settings: {  }
+    enabled: false
   layout_library:
     enable: false
   layout_builder_restrictions:
     entity_view_mode_restriction:
       allowed_blocks: {  }
       allowed_layouts: {  }
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+    allowed_block_categories: {  }
   field_group:
     group_overview:
-      children: {  }
+      children:
+        - group_highlights
+        - group_indicators
+        - group_powerbi
       parent_name: ''
-      weight: 20
-      format_type: tabs
-      region: hidden
+      weight: 1
+      format_type: accordion
+      region: content
       format_settings:
-        id: ''
-        classes: ''
-        direction: vertical
-      label: Overview
-    group_hl_in_pb:
-      children: {  }
-      parent_name: ''
-      weight: 20
-      format_type: tabs
-      region: hidden
-      format_settings:
-        id: ''
-        classes: ''
         direction: horizontal
-      label: hl-in-pb
+        id: ''
+        classes: ''
+        effect: none
+      label: Overview
+    group_powerbi:
+      children:
+        - field_subject_powerbi
+      parent_name: group_overview
+      weight: 33
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+      label: PowerBI
+    group_indicators:
+      children:
+        - field_subject_indicators
+      parent_name: group_overview
+      weight: 32
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+      label: Indicators
+    group_highlights:
+      children:
+        - field_subject_highlights
+      parent_name: group_overview
+      weight: 31
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: open
+      label: Highlights
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
 mode: default
 content:
   body:
-    label: hidden
+    label: visually_hidden
     type: text_default
-    weight: 101
+    weight: 0
     settings: {  }
     third_party_settings: {  }
     region: content
   field_subject_highlights:
-    weight: 109
-    label: above
+    weight: 21
+    label: visually_hidden
     settings:
-      link: true
+      optionset: default
+      override: false
+      overridables: {  }
+      skin: ''
+      skin_arrows: ''
+      skin_dots: ''
+      cache: 0
+      current_view_mode: ''
+      fx: ''
+      style: ''
+      view_mode: ''
     third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_subject_icon:
-    type: entity_reference_entity_view
-    weight: 103
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    region: content
-  field_subject_index_ref:
-    weight: 108
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
+    type: slick_entityreference_vanilla
     region: content
   field_subject_indicators:
-    type: entity_reference_revisions_entity_view
-    weight: 105
-    label: above
+    type: slick_entityreference_vanilla
+    weight: 22
+    region: content
+    label: visually_hidden
     settings:
       view_mode: default
-      link: ''
+      optionset: default
+      override: false
+      overridables: {  }
+      skin: ''
+      skin_arrows: ''
+      skin_dots: ''
+      cache: 0
+      current_view_mode: ''
+      fx: ''
+      style: ''
     third_party_settings: {  }
-    region: content
   field_subject_powerbi:
-    type: entity_reference_revisions_entity_view
-    weight: 107
-    label: above
+    type: slick_entityreference_vanilla
+    weight: 25
+    label: visually_hidden
     settings:
       view_mode: default
-      link: ''
+      optionset: default
+      override: false
+      overridables: {  }
+      skin: ''
+      skin_arrows: ''
+      skin_dots: ''
+      cache: 0
+      current_view_mode: ''
+      fx: ''
+      style: ''
     third_party_settings: {  }
-    region: content
-  field_subject_tag:
-    weight: 102
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
     region: content
   field_subject_whats_new:
-    type: entity_reference_revisions_entity_view
-    weight: 106
-    label: above
+    type: slick_entityreference_vanilla
+    weight: 2
+    label: visually_hidden
     settings:
       view_mode: default
-      link: ''
+      optionset: default
+      override: false
+      overridables: {  }
+      skin: ''
+      skin_arrows: ''
+      skin_dots: ''
+      cache: 0
+      current_view_mode: ''
+      fx: ''
+      style: ''
     third_party_settings: {  }
     region: content
   links:
-    weight: 100
+    weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
+  field_subject_icon: true
+  field_subject_index_ref: true
+  field_subject_tag: true
   langcode: true
   search_api_excerpt: true

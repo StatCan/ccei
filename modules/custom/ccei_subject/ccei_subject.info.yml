@@ -31,6 +31,7 @@ dependencies:
   - path
   - pathauto
   - redirect
+  - slick_entityreference
   - taxonomy
   - text
   - user
