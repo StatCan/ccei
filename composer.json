@@ -119,7 +119,8 @@
         "cweagans/composer-patches": "^1.6.7",
         "drupalwxt/wxt": "3.0.8",
         "acquia/lightning": "4.1.3",
-        "nxp/math-executor": "^1.1"
+        "nxp/math-executor": "^1.1",
+        "drupal/iframe": "^2.4"
     },
     "autoload": {
         "psr-4": {
