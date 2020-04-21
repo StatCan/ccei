@@ -103,17 +103,25 @@ content:
     weight: 21
     label: visually_hidden
     settings:
-      optionset: default
-      override: false
-      overridables: {  }
+      optionset: three_items
       skin: ''
+      view_mode: default
+      cache: 0
+      current_view_mode: default
+      override: false
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
       skin_arrows: ''
       skin_dots: ''
-      cache: 0
-      current_view_mode: ''
       fx: ''
       style: ''
-      view_mode: ''
     third_party_settings: {  }
     type: slick_entityreference_vanilla
     region: content
@@ -123,15 +131,23 @@ content:
     region: content
     label: visually_hidden
     settings:
-      view_mode: default
-      optionset: default
-      override: false
-      overridables: {  }
+      optionset: three_items
       skin: ''
+      view_mode: default
+      cache: 0
+      current_view_mode: default
+      override: false
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
       skin_arrows: ''
       skin_dots: ''
-      cache: 0
-      current_view_mode: ''
       fx: ''
       style: ''
     third_party_settings: {  }
@@ -140,15 +156,23 @@ content:
     weight: 25
     label: visually_hidden
     settings:
-      view_mode: default
-      optionset: default
-      override: false
-      overridables: {  }
+      optionset: three_items
       skin: ''
+      view_mode: default
+      cache: 0
+      current_view_mode: default
+      override: false
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
       skin_arrows: ''
       skin_dots: ''
-      cache: 0
-      current_view_mode: ''
       fx: ''
       style: ''
     third_party_settings: {  }
@@ -158,15 +182,23 @@ content:
     weight: 2
     label: visually_hidden
     settings:
-      view_mode: default
-      optionset: default
-      override: false
-      overridables: {  }
+      optionset: three_items
       skin: ''
+      view_mode: default
+      cache: 0
+      current_view_mode: default
+      override: false
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
       skin_arrows: ''
       skin_dots: ''
-      cache: 0
-      current_view_mode: ''
       fx: ''
       style: ''
     third_party_settings: {  }
