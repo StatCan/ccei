@@ -37,3 +37,4 @@ dependencies:
   - wxt_core
   - wxt_ext_paragraph
 version: 8.x-1.0-alpha1
+core_incompatible: false
