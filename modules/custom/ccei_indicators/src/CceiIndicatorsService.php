@@ -51,37 +51,30 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
   }
 
   /**
-   * Helper function : return the list of indicator types.
-   *
-   * @return array|mixed|null
-   *   A list of indicator types.
-   */
-  public function getIndicatorTypes() {
-    return $this->configFactory->get('ccei_indicators.indicators')->get('types');
-  }
-
-  /**
    * Retrieve indicators data from API and process them.
    *
-   * @param array $types
-   *   A list of indicator types.
+   * @param array $indicators
+   *   A list of indicators.
    *
    * @return array
    *   A list of indicators
    *
    * @throws \Exception
    */
-  public function getIndicators(array $types = []) {
-    $data = &drupal_static(__METHOD__);
+  public function getIndicators(array $indicators = []) {
+    if (empty($indicators)) {
+      return [];
+    }
+    $indicatorsKey = md5(implode('-', array_column($indicators, 'title')));
+    $cid = 'ccei_indicators:' . $indicatorsKey;
 
-    $typesKey = empty($types) ? 'all' : implode('-', $types);
-    $cid = 'ccei_indicators:' . $typesKey;
+    $data = &drupal_static(__METHOD__ . $indicatorsKey);
 
     if ($cache = \Drupal::cache()->get($cid)) {
       $data = $cache->data;
     }
     else {
-      $data = $this->getIndicatorsData($types);
+      $data = $this->getIndicatorsData($indicators);
       \Drupal::cache()->set($cid, $data);
     }
     return $data;
@@ -90,29 +83,17 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
   /**
    * Retrieve indicators data from API and process them.
    *
-   * @param array $types
-   *   A list of indicator types.
+   * @param array $indicators
+   *   A list of indicators.
    *
    * @return array
    *   A list of indicators
    *
    * @throws \Exception
    */
-  private function getIndicatorsData(array $types = []) {
+  private function getIndicatorsData(array $indicators) {
     // Load list of indicator parameters.
-    $config = $this->configFactory->get('ccei_indicators.indicators')->get('');
-
-    if (empty($types)) {
-      $types = array_keys($config['types']);
-    }
-
-    $filteredTypes = array_filter($config['types'], function ($key) use ($types) {
-      return in_array($key, $types);
-    }, ARRAY_FILTER_USE_KEY);
-
-    $indicators = array_values(array_filter($config['indicators'], function ($var) use ($types) {
-      return in_array($var['type'], $types);
-    }));
+    $urls = $this->configFactory->get('ccei_indicators.indicators')->get('urls');
 
     // Aggregate queries from all indicators in one array.
     // Create a lookup table to match queries with indicators.
@@ -127,7 +108,8 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
           $queriesAccumulator[] = [
             'productId' => $source['productId'],
             'coordinate' => $fullCoordinate,
-            'latestN' => $source['latestN'],
+            // TODO: use more latestN periods when dealing with many sources.
+            'latestN' => 2,
           ];
 
           // The API response doesn't maintain query order.
@@ -149,7 +131,8 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     }
 
     // Call the API once with the list of queries.
-    $responses = $this->queryCoords($config['urls']['url1'], $queriesAccumulator);
+    // TODO: figure out how the url should be handled or user-configured.
+    $responses = $this->queryCoords($urls['url1'], $queriesAccumulator);
 
     // Redistribute API responses to their respective indicators, keeping order.
     foreach ($responses as $key => $response) {
@@ -165,11 +148,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
       $results[] = $this->process($indicator);
     }
 
-    // Return the list.
-    return [
-      'types' => $filteredTypes,
-      'indicators' => $results,
-    ];
+    return $results;
   }
 
   /**
@@ -184,6 +163,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
    *   A list of indicator responses.
    */
   private function queryCoords($url, array $query) {
+    // TODO: Should we use wsdata module to deal with the webservice instead?
     // Guide: https://www.statcan.gc.ca/eng/developers/wds/user-guide#a12-4
     $request = $this->httpClient->post($url,
       [
@@ -230,6 +210,8 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     $latest = $this->calculate($indicator, $datapoints['latest']);
 
     // Format the indicator value.
+    // TODO: refactor, use predefined function instead of trusting user input.
+    // TODO: Implement Rounding and Bankers' rounding.
     if (isset($indicator['valueformat'])) {
       $formattedValue = call_user_func_array(
         $indicator['valueformat']['function'],
@@ -241,7 +223,6 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
 
     return [
       'title' => $indicator['title'],
-      'type' => $indicator['type'],
       'change' => $percentChange . '%',
       'direction' => $percentChange > 0 ? 'up' : ($percentChange == 0 ? 'nil' : 'down'),
       'value' => $formattedValue ?? $latest,
@@ -272,6 +253,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
         foreach ($sourceDatapoints as $key => $datapoint) {
           $variables['src' . $sourceKey . 'var' . $key] = $datapoint ?? 0;
         }
+        // TODO: Verify usage of preprocess parameter.
         if (!empty($indicator['preprocess']) && $indicator['preprocess'] === 'sum') {
           $variables['src' . $sourceKey . 'sum'] = array_sum($sourceDatapoints);
         }
@@ -304,4 +286,3 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
   }
 
 }
-

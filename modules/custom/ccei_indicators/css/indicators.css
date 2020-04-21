@@ -167,3 +167,26 @@
 .ind  .ind-refper {
   font-size: .6em;
 }
+
+/* Temporarily here, should be in theme */
+.flex-align-end {
+  align-items: flex-end;
+}
+.flex-justify-spc-btwn {
+  justify-content: space-between;
+}
+.display-flex {
+  display: flex;
+}
+hr {
+  border-color: #ccc;
+}
+.mb-0 {
+  margin-bottom: 0px !important;
+}
+.mb-2 {
+  margin-bottom: 16px !important;
+}
+.mt-1 {
+  margin-top: 8px !important;
+}
