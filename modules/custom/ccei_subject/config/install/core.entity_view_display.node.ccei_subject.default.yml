@@ -119,9 +119,23 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: visually_hidden
-                type: entity_reference_revisions_entity_view
+                type: slick_entityreference_vanilla
                 settings:
+                  optionset: default
+                  skin: ''
                   view_mode: default
+                  override: false
+                  overridables:
+                    arrows: '0'
+                    autoplay: '0'
+                    dots: '0'
+                    draggable: '0'
+                    infinite: '0'
+                    mouseWheel: '0'
+                    randomize: '0'
+                    variableWidth: '0'
+                  cache: 0
+                  current_view_mode: _custom
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
@@ -138,9 +152,23 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: visually_hidden
-                type: entity_reference_revisions_entity_view
+                type: slick_entityreference_vanilla
                 settings:
+                  optionset: default
+                  skin: ''
                   view_mode: default
+                  override: false
+                  overridables:
+                    arrows: '0'
+                    autoplay: '0'
+                    dots: '0'
+                    draggable: '0'
+                    infinite: '0'
+                    mouseWheel: '0'
+                    randomize: '0'
+                    variableWidth: '0'
+                  cache: 0
+                  current_view_mode: _custom
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
@@ -157,9 +185,23 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: visually_hidden
-                type: entity_reference_label
+                type: slick_entityreference_vanilla
                 settings:
-                  link: true
+                  optionset: default
+                  skin: ''
+                  view_mode: default
+                  override: false
+                  overridables:
+                    arrows: '0'
+                    autoplay: '0'
+                    dots: '0'
+                    draggable: '0'
+                    infinite: '0'
+                    mouseWheel: '0'
+                    randomize: '0'
+                    variableWidth: '0'
+                  cache: 0
+                  current_view_mode: _custom
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
@@ -176,9 +218,23 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: visually_hidden
-                type: entity_reference_revisions_entity_view
+                type: slick_entityreference_vanilla
                 settings:
+                  optionset: default
+                  skin: ''
                   view_mode: default
+                  override: false
+                  overridables:
+                    arrows: '0'
+                    autoplay: '0'
+                    dots: '0'
+                    draggable: '0'
+                    infinite: '0'
+                    mouseWheel: '0'
+                    randomize: '0'
+                    variableWidth: '0'
+                  cache: 0
+                  current_view_mode: _custom
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
@@ -204,6 +260,17 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: Overview
+    group_hl_in_pb:
+      children: {  }
+      parent_name: ''
+      weight: 20
+      format_type: tabs
+      region: hidden
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: hl-in-pb
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
