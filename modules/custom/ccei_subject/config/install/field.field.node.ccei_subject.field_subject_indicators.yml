@@ -11,7 +11,7 @@ id: node.ccei_subject.field_subject_indicators
 field_name: field_subject_indicators
 entity_type: node
 bundle: ccei_subject
-label: 'Subject Indicators'
+label: Indicators
 description: ''
 required: false
 translatable: false
