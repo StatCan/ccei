@@ -111,6 +111,10 @@
                     "2914389 - Allow profiles to exclude dependencies of their parent":
                     "https://www.drupal.org/files/issues/2018-07-09/2914389-8-do-not-test.patch"
                 }
+            },
+            "drupal/wxt": {
+                "wxt-cex for drush 9 https://github.com/drupalwxt/wxt/issues/110":
+                "https://github.com/drupalwxt/wxt/files/4519143/port-wxt-cex-to-drush-9.patch.txt"
             }
         }
     },
