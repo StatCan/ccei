@@ -1,0 +1,12 @@
+services:
+  logger.channel.ccei_indicators:
+    parent: logger.channel_base
+    arguments: ['ccei_indicators']
+  npx.math_executor:
+    class: NXP\MathExecutor
+  ccei_indicators.indicators:
+    class: Drupal\ccei_indicators\CceiIndicatorsService
+    arguments:
+      - '@config.factory'
+      - '@http_client'
+      - '@npx.math_executor'

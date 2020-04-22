@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pid
+    - paragraphs.paragraphs_type.indicator_source
+id: paragraph.indicator_source.field_pid
+field_name: field_pid
+entity_type: paragraph
+bundle: indicator_source
+label: 'Product ID (Cube/Table)'
+description: 'An 8 digit number representing the cube/table. Ex: 25100028'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

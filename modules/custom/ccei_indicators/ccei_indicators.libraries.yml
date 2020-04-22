@@ -1,0 +1,12 @@
+ccei-indicators:
+  version: 1.0
+  css:
+    theme:
+      css/indicators.css: {}
+  js:
+    js/indicators.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+#    - core/drupal
+#    - core/drupalSettings

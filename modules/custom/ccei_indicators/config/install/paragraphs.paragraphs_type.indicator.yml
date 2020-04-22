@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: indicator
+label: Indicator
+icon_uuid: null
+description: 'Defines a CCEI indicator'
+behavior_plugins: {  }

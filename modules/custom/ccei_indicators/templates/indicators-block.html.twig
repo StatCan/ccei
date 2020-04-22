@@ -1,0 +1,52 @@
+{#
+/**
+* @file
+* Default theme implementation to display a block.
+*
+* @see template_preprocess_block()
+*
+* @ingroup themeable
+*/
+#}
+{% set region = 0 %}
+<div class="display-flex flex-justify-spc-btwn flex-align-end">
+  <h2 class="mb-0 h3">{{ title }}</h2>
+  <a href="./indicators-en.html">View all</a>
+</div>
+<hr class="mt-1 mb-2">
+<div class="ccei-indicators">
+  <div class="ind-nav">
+    <button class="btn-ind prev disabled" name="prev" aria-disabled="true"><?xml version="1.0" encoding="iso-8859-1"?>
+      <svg version="1.1" id="ccei-chevron-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 256 256" width="20" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+        <g>
+          <polygon points="207.093,30.187 176.907,0 48.907,128 176.907,256 207.093,225.813 109.28,128 		"/>
+        </g>
+      </svg>
+    </button><button class="btn-ind next" name="next" aria-disabled="false">
+      <?xml version="1.0" encoding="iso-8859-1"?>
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 256 256" width="20" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+        <g>
+          <polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128 		"/>
+        </g>
+      </svg>
+    </button>
+  </div>
+  <ul class="ind-list list-unstyled">
+      {% for indicator in indicators %}
+        <li class="ind" tabindex="0">
+          <p class="ind-title">{{ indicator.title }}</p>
+          <div class="ind-growth-rate ind-dir-{{ indicator.direction }}">
+            <span class="ind-growth">{{ indicator.change }}</span>
+            <span class="ind-arrow ind-arrow-{{ indicator.direction }}"></span>
+          </div>
+          <div class="ind-values">
+            <p class="ind-value">{{ indicator.value }}</p>
+            <p class="ind-unit">{{ indicator.units }}</p>
+          </div>
+          <p class="ind-refper">{{ 'Reference period:'|t }} {{ indicator.refper }}</p>
+        </li>
+      {% endfor %}
+  </ul>
+</div>
