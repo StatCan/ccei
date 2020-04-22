@@ -7,29 +7,30 @@ dependencies:
     - paragraphs.paragraphs_type.ccei_whats_new_item
   module:
     - link
+    - media
 id: paragraph.ccei_whats_new_item.default
 targetEntityType: paragraph
 bundle: ccei_whats_new_item
 mode: default
 content:
   field_background:
-    type: entity_reference_entity_view
-    weight: 1
-    label: above
+    type: media_thumbnail
+    weight: 0
+    label: visually_hidden
     settings:
-      view_mode: default
-      link: false
+      image_style: ''
+      image_link: content
     third_party_settings: {  }
     region: content
   field_url:
-    weight: 0
-    label: above
+    weight: 1
+    label: visually_hidden
     settings:
       trim_length: 80
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
+      rel: '0'
+      target: '0'
     third_party_settings: {  }
     type: link
     region: content

@@ -2,18 +2,18 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_subject_indicators
-    - node.type.ccei_subject
+    - field.storage.paragraph.field_indicator_sources
     - paragraphs.paragraphs_type.indicator
+    - paragraphs.paragraphs_type.indicator_source
   module:
     - entity_reference_revisions
-id: node.ccei_subject.field_subject_indicators
-field_name: field_subject_indicators
-entity_type: node
-bundle: ccei_subject
-label: Indicators
-description: ''
-required: false
+id: paragraph.indicator.field_indicator_sources
+field_name: field_indicator_sources
+entity_type: paragraph
+bundle: indicator
+label: 'Indicator sources'
+description: 'One or more data sources for indicators.'
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -22,18 +22,18 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      indicator: indicator
+      indicator_source: indicator_source
     target_bundles_drag_drop:
       ccei_paragraph:
-        weight: 2
+        weight: 5
         enabled: false
       ccei_whats_new_item:
         weight: 6
         enabled: false
       indicator:
-        enabled: true
         weight: 7
-      indicator_source:
-        weight: 8
         enabled: false
+      indicator_source:
+        enabled: true
+        weight: 8
 field_type: entity_reference_revisions

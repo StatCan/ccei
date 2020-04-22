@@ -1,0 +1,20 @@
+langcode: en
+status: false
+dependencies:
+  enforced:
+    module:
+      - slick
+id: three_items
+name: three_items
+label: 'Three items'
+weight: -10
+group: ''
+skin: default
+breakpoints: 0
+optimized: true
+options:
+  options__active_tab: edit-options-responsives
+  settings:
+    lazyLoad: ondemand
+    slidesPerRow: 3
+    slidesToShow: 3

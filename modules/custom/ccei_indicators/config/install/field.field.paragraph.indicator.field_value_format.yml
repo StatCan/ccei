@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_value_format
+    - paragraphs.paragraphs_type.indicator
+  module:
+    - options
+id: paragraph.indicator.field_value_format
+field_name: field_value_format
+entity_type: paragraph
+bundle: indicator
+label: 'Value format function'
+description: 'Specify a number formatting operation on the indicator value'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

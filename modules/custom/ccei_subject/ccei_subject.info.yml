@@ -5,6 +5,7 @@ core: 8.x
 package: CCEI
 dependencies:
   - block_class
+  - ccei_indicators
   - content_moderation
   - content_translation
   - ctools
@@ -31,6 +32,8 @@ dependencies:
   - path
   - pathauto
   - redirect
+  - slick
+  - slick_entityreference
   - taxonomy
   - text
   - user
@@ -38,3 +41,4 @@ dependencies:
   - wxt_ext_paragraph
   - iframe
 version: 8.x-1.0-alpha1
+core_incompatible: false
