@@ -36,4 +36,5 @@ dependencies:
   - user
   - wxt_core
   - wxt_ext_paragraph
+  - iframe
 version: 8.x-1.0-alpha1
