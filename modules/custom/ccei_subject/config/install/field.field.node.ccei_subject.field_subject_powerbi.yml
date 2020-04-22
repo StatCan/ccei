@@ -4,9 +4,8 @@ dependencies:
   config:
     - field.storage.node.field_subject_powerbi
     - node.type.ccei_subject
-    - paragraphs.paragraphs_type.ccei_paragraph
   module:
-    - entity_reference_revisions
+    - iframe
 id: node.ccei_subject.field_subject_powerbi
 field_name: field_subject_powerbi
 entity_type: node
@@ -14,17 +13,17 @@ bundle: ccei_subject
 label: PowerBI
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:paragraph'
-  handler_settings:
-    negate: 0
-    target_bundles:
-      ccei_paragraph: ccei_paragraph
-    target_bundles_drag_drop:
-      ccei_paragraph:
-        enabled: true
-        weight: 2
-field_type: entity_reference_revisions
+  class: ''
+  frameborder: '0'
+  scrolling: 'no'
+  transparency: '0'
+  allowfullscreen: '0'
+  tokensupport: '0'
+  title: null
+  height: null
+  width: null
+field_type: iframe
