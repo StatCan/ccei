@@ -3,7 +3,6 @@
 namespace Drupal\ccei_indicators\Plugin\Field\FieldFormatter;
 
 use Drupal\ccei_indicators\CceiIndicatorsService;
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;

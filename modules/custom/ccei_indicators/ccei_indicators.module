@@ -18,8 +18,6 @@ function ccei_indicators_help($route_name, RouteMatchInterface $route_match) {
       $output .= '<h3>' . t('About') . '</h3>';
       $output .= '<p>' . t('Provides an indicators block') . '</p>';
       return $output;
-
-    default:
   }
 }
 
@@ -28,17 +26,13 @@ function ccei_indicators_help($route_name, RouteMatchInterface $route_match) {
  */
 function ccei_indicators_theme() {
   return [
-//    'ccei_indicators' => [
-//      'render element' => 'children',
-//    ],
     'indicators_block' => [
       'variables' => [
         'title' => NULL,
         'indicators' => [],
-        'content' => NULL
+        'content' => NULL,
       ],
       'render element' => 'children',
     ],
   ];
 }
-

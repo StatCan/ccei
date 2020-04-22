@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *  admin_label = @Translation("Indicators block"),
  * )
  */
-class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterface{
+class IndicatorsBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
    * An http client.
