@@ -11,7 +11,7 @@ id: node.ccei_subject.field_subject_whats_new
 field_name: field_subject_whats_new
 entity_type: node
 bundle: ccei_subject
-label: 'Subject What''s New'
+label: 'What''s New'
 description: ''
 required: false
 translatable: false

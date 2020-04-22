@@ -11,7 +11,7 @@ id: node.ccei_subject.field_subject_powerbi
 field_name: field_subject_powerbi
 entity_type: node
 bundle: ccei_subject
-label: 'Subject PowerBI'
+label: PowerBI
 description: ''
 required: false
 translatable: false

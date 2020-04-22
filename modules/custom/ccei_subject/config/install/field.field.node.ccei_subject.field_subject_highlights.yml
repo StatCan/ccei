@@ -9,7 +9,7 @@ id: node.ccei_subject.field_subject_highlights
 field_name: field_subject_highlights
 entity_type: node
 bundle: ccei_subject
-label: 'Subject Highlights'
+label: Highlights
 description: ''
 required: false
 translatable: false

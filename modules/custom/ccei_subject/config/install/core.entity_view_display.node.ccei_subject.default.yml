@@ -40,53 +40,91 @@ third_party_settings:
         - group_powerbi
       parent_name: ''
       weight: 1
-      format_type: accordion
+      format_type: html_element
       region: content
       format_settings:
-        direction: horizontal
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
         id: ''
         classes: ''
-        effect: none
       label: Overview
     group_powerbi:
       children:
         - field_subject_powerbi
       parent_name: group_overview
       weight: 33
-      format_type: accordion_item
+      format_type: html_element
       region: content
       format_settings:
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
         id: ''
         classes: ''
-        description: ''
-        formatter: closed
       label: PowerBI
     group_indicators:
       children:
         - field_subject_indicators
       parent_name: group_overview
       weight: 32
-      format_type: accordion_item
+      format_type: html_element
       region: content
       format_settings:
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
         id: ''
         classes: ''
-        description: ''
-        formatter: closed
       label: Indicators
     group_highlights:
       children:
         - field_subject_highlights
       parent_name: group_overview
       weight: 31
-      format_type: accordion_item
+      format_type: html_element
       region: content
       format_settings:
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
         id: ''
         classes: ''
-        description: ''
-        formatter: open
       label: Highlights
+    group_whats_new:
+      children:
+        - field_subject_whats_new
+      parent_name: ''
+      weight: 2
+      format_type: html_element
+      region: content
+      format_settings:
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: ''
+      label: 'What''s New'
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -131,7 +169,7 @@ content:
     region: content
     label: visually_hidden
     settings:
-      optionset: three_items
+      optionset: five_items
       skin: ''
       view_mode: default
       cache: 0
@@ -156,7 +194,7 @@ content:
     weight: 25
     label: visually_hidden
     settings:
-      optionset: three_items
+      optionset: default
       skin: ''
       view_mode: default
       cache: 0
@@ -179,8 +217,8 @@ content:
     region: content
   field_subject_whats_new:
     type: slick_entityreference_vanilla
-    weight: 2
-    label: visually_hidden
+    weight: 3
+    label: above
     settings:
       optionset: three_items
       skin: ''
@@ -203,14 +241,10 @@ content:
       style: ''
     third_party_settings: {  }
     region: content
-  links:
-    weight: 3
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   field_subject_icon: true
   field_subject_index_ref: true
   field_subject_tag: true
   langcode: true
+  links: true
   search_api_excerpt: true
