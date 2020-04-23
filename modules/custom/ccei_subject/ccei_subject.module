@@ -5,12 +5,12 @@
  * Contains ccei_subject.module..
  */
 
- /**
+/**
  * Implements hook_theme().
  */
 function ccei_subject_theme() {
-  return array(
-    'power_bi_formatter' => array(
+  return [
+    'power_bi_formatter' => [
       'variables' => [
         'src' => '',
         'attributes' => [],
@@ -18,6 +18,6 @@ function ccei_subject_theme() {
         'style' => '',
       ],
       'template' => 'power-bi-formatter',
-    ),
-  );
+    ],
+  ];
 }
