@@ -93,6 +93,10 @@
             "drupal/jsonapi": {
                 "3034626 - Fatal error after security update without updating Drupal core.":
                 "https://www.drupal.org/files/issues/2019-02-21/fatal_error_after_updating_the_module-3034626-2.patch"
+            },
+            "drupalwxt/wxt": {
+                "3130149 - Patch to support wxt-cex for drush 9":
+                "https://www.drupal.org/files/issues/2020-04-22/wxt-port-wxt-cex-to-drush-9-3130149-2.patch"
             }
         },
         "patches-ignore": {
@@ -111,10 +115,6 @@
                     "2914389 - Allow profiles to exclude dependencies of their parent":
                     "https://www.drupal.org/files/issues/2018-07-09/2914389-8-do-not-test.patch"
                 }
-            },
-            "drupalwxt/wxt": {
-                "3130149 - Patch to support wxt-cex for drush 9":
-                "https://www.drupal.org/files/issues/2020-04-22/wxt-port-wxt-cex-to-drush-9-3130149-2.patch"
             }
         }
     },
