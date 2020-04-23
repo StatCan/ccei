@@ -3,3 +3,6 @@ type: module
 description: 'Provides an indicators block'
 core: 8.x
 package: 'CCEI'
+dependencies:
+  - entity_reference_revisions
+  - paragraphs
