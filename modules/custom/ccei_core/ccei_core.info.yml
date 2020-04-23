@@ -6,8 +6,9 @@ package: CCEI
 
 # Required modules
 dependencies:
-    - ccei_subject
-    - ccei_highlight
+  - ccei_indicators
+  - ccei_subject
+  - ccei_highlight
 
 # Required libraries
 libraries: { }
