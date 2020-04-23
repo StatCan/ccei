@@ -13,10 +13,14 @@ dependencies:
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
   module:
+    - content_moderation
     - entity_browser
+    - iframe
     - inline_entity_form
     - path
     - text
+_core:
+  default_config_hash: G0uozIGWBFOobtenGlSGVOqYSAA5A0bSzxnkb6qAaCs
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -51,6 +55,7 @@ content:
       allow_new: true
       allow_existing: false
       allow_duplicate: false
+      revision: false
     third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
@@ -91,22 +96,13 @@ content:
       collapsed: false
       allow_existing: false
       allow_duplicate: false
+      revision: false
     third_party_settings: {  }
     region: content
   field_subject_powerbi:
-    type: inline_entity_form_complex
+    type: iframe_urlwidthheight
     weight: 16
-    settings:
-      form_mode: default
-      override_labels: false
-      label_singular: ''
-      label_plural: ''
-      collapsible: false
-      collapsed: false
-      allow_new: true
-      allow_existing: false
-      match_operator: CONTAINS
-      allow_duplicate: false
+    settings: {  }
     third_party_settings: {  }
     region: content
   field_subject_tag:
@@ -129,6 +125,7 @@ content:
       allow_existing: false
       match_operator: CONTAINS
       allow_duplicate: false
+      revision: false
     third_party_settings: {  }
     region: content
   langcode:
