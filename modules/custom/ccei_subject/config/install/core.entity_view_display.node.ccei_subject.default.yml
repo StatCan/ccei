@@ -146,8 +146,8 @@ content:
     label: visually_hidden
     settings:
       optionset: three_items
-      skin: ''
-      view_mode: default
+      skin: classic
+      view_mode: teaser
       cache: 0
       current_view_mode: default
       override: false

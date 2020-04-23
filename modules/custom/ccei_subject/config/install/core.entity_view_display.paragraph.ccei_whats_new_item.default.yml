@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.paragraph.ccei_whats_new_item.field_background
     - field.field.paragraph.ccei_whats_new_item.field_url
+    - image.style.thumbnail
     - paragraphs.paragraphs_type.ccei_whats_new_item
   module:
     - link
@@ -18,7 +19,7 @@ content:
     weight: 0
     label: visually_hidden
     settings:
-      image_style: ''
+      image_style: thumbnail
       image_link: content
     third_party_settings: {  }
     region: content
