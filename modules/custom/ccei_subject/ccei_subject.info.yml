@@ -13,6 +13,7 @@ dependencies:
   - entity_reference_revisions
   - field
   - field_group
+  - iframe
   - inline_entity_form
   - language
   - layout_builder
