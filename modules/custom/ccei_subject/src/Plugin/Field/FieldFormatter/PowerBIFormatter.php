@@ -62,7 +62,7 @@ class PowerBIFormatter extends IframeDefaultFormatter {
     // For best performance, we act only
     // if a quick strpos() pre-check gave a suspicion
     // (because strip_tags() is expensive).
-    if  (!empty($item->title)) {
+    if (!empty($item->title)) {
       $options['title'] = $item->title;
       if (strpos($options['title'], '<') !== FALSE) {
         $options['title'] = strip_tags($options['title']);
