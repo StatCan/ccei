@@ -34,16 +34,16 @@
  */
 #}
 {% block content %}
-<nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-trgt="mb-pnl">
-		<div class="container nvbar">
-			<h2 class="wb-inv">Menu</h2>
-			<div class="row">
-				<ul class="list-inline menu">
-					<li><a role="menuitem" href="/en/subjets">Subjets</a></li>
-					<li><a role="menuitem" href="/en/market_information">Market information</a></li>
-					<li><a role="menuitem" href="/en/tools">Tools</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+  <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="/profiles/ccei/themes/custom/ccei_bootstrap/ajax/ccei-menu-{{ language }}.html" typeof="SiteNavigationElement">
+    <div class="container nvbar">
+      <h2 class="wb-inv">Menu</h2>
+      <div class="row">
+        <ul class="list-inline menu">
+          <li><a role="menuitem" href="/en/subjets">Subjets</a></li>
+          <li><a role="menuitem" href="/en/market_information">Market information</a></li>
+          <li><a role="menuitem" href="/en/tools">Tools</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 {% endblock %}

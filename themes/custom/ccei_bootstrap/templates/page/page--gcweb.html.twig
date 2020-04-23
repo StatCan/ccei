@@ -69,39 +69,26 @@
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : '',
       ]
     %}
-    <header{{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
-      <div id="wb-bnr" class="{{ container }}">
-        <section id="wb-lng" class="visible-md visible-lg text-right">
+    <header>
+      <div id="wb-bnr" class="container">
+        <section id="wb-lng" class="text-right visible-md visible-lg">
           <h2 class="wb-inv">{{ 'Language selection'|t }}</h2>
-          <div class="row">
-            <div class="col-md-12">
-              {{ page.language_toggle }}
-            </div>
-          </div>
+          {{ page.language_toggle }}
         </section>
         <div class="row">
           {{ page.banner }}
-          <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
-            <h2>{{ 'Search and menus'|t }}</h2>
-            <ul class="list-inline text-right chvrn">
-              <li>
-                <a href="#mb-pnl" title="{{ 'Search and menus'|t }}" aria-controls="mb-pnl" class="overlay-lnk" role="button">
-                  <span class="glyphicon glyphicon-search">
-                    <span class="glyphicon glyphicon-th-list">
-                      <span class="wb-inv">{{ 'Search and menus'|t }}</span>
-                    </span>
-                  </span>
-                </a>
-              </li>
-            </ul>
-            <div id="mb-pnl"></div>
-          </section>
           {{ page.search }}
         </div>
       </div>
       {{ page.breadcrumb }}
-      {{ page.navigation }}
-      {{ page.branding }}
+      {% if gcweb_cdn and gcweb_cdn_url %}
+        <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-trgt="mb-pnl">
+          {{ ccei_megamenu | raw }}
+        </nav>
+      {% else %}
+        {{ page.navigation }}
+      {% endif %}
+        {{ page.branding }}
     </header>
   {% endblock %}
 {% endif %}
@@ -109,103 +96,103 @@
 {# Main #}
 {% block main %}
 
-  <div class="{{ container }}">
-    <div class="row">
+<div class="{{ container }}">
+  <div class="row">
 
-      {# Highlighted #}
-      {% if page.highlighted %}
-        {% block highlighted  %}
-          <div class="highlighted">{{ page.highlighted }}</div>
+    {# Highlighted #}
+    {% if page.highlighted %}
+      {% block highlighted  %}
+        <div class="highlighted">{{ page.highlighted }}</div>
+      {% endblock %}
+    {% endif %}
+
+    {# Content #}
+    {%
+      set content_classes = [
+        page.sidebar_first and page.sidebar_second ? 'col-md-6 col-md-push-3',
+        page.sidebar_first and page.sidebar_second is empty ? 'col-md-9 col-md-push-3',
+        page.sidebar_second and page.sidebar_first is empty ? 'col-md-9',
+        page.sidebar_first is empty and page.sidebar_second is empty ? 'col-md-12'
+      ]
+    %}
+    <main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+    {# Header #}
+    {% if page.header %}
+      {% block header %}
+        {{ page.header }}
+      {% endblock %}
+    {% endif %}
+
+    <section>
+
+      {# Breadcrumbs #}
+      {% if breadcrumb %}
+        {% block breadcrumb %}
+          {{ breadcrumb }}
+        {% endblock %}
+      {% endif %}
+
+      {# Action Links #}
+      {% if action_links %}
+        {% block action_links %}
+          <ul class="action-links">{{ action_links }}</ul>
+        {% endblock %}
+      {% endif %}
+
+      {# Help #}
+      {% if page.help %}
+        {% block help %}
+          {{ page.help }}
         {% endblock %}
       {% endif %}
 
       {# Content #}
-      {%
-        set content_classes = [
-          page.sidebar_first and page.sidebar_second ? 'col-md-6 col-md-push-3',
-          page.sidebar_first and page.sidebar_second is empty ? 'col-md-9 col-md-push-3',
-          page.sidebar_second and page.sidebar_first is empty ? 'col-md-9',
-          page.sidebar_first is empty and page.sidebar_second is empty ? 'col-md-12'
-        ]
-      %}
-      <main property="mainContentOfPage" typeof="WebPageElement" class="container">
+      {% block content %}
+        <a id="main-content"></a>
+        {{ page.content }}
+        {{ page.content_footer }}
+      {% endblock %}
+    </section>
 
-      {# Header #}
-      {% if page.header %}
-        {% block header %}
-          {{ page.header }}
-        {% endblock %}
-      {% endif %}
+    </main>
 
-      <section>
+    {# Sidebar First #}
+    {%
+      set sidebar_first_classes = [
+        page.sidebar_first and page.sidebar_second ? 'col-md-3 col-md-pull-6',
+        page.sidebar_first and page.sidebar_second is empty ? 'col-md-3 col-md-pull-9',
+        page.sidebar_second and page.sidebar_first is empty ? 'col-md-3 col-md-pull-9'
+      ]
+    %}
+    {# Sidebar First #}
+    {% if page.sidebar_first %}
+      {% block sidebar_first %}
+        <nav{{ attributes.addClass(sidebar_first_classes) }}>
+          {{ page.sidebar_first }}
+        </nav>
+      {% endblock %}
+    {% endif %}
 
-        {# Breadcrumbs #}
-        {% if breadcrumb %}
-          {% block breadcrumb %}
-            {{ breadcrumb }}
-          {% endblock %}
-        {% endif %}
+    {# Sidebar Second #}
+    {%
+      set sidebar_second_classes = [
+        page.sidebar_first and page.sidebar_second ? 'col-md-3',
+        page.sidebar_first and page.sidebar_second is empty ? 'col-md-3',
+        page.sidebar_second and page.sidebar_first is empty ? 'col-md-3'
+      ]
+    %}
+    {# Sidebar Second #}
+    {% if page.sidebar_second %}
+      {% block sidebar_second %}
+        <nav{{ attributes.removeClass(sidebar_first_classes).addClass(sidebar_second_classes) }}>
+          {{ page.sidebar_second }}
+        </nav>
+      {% endblock %}
+    {% endif %}
 
-        {# Action Links #}
-        {% if action_links %}
-          {% block action_links %}
-            <ul class="action-links">{{ action_links }}</ul>
-          {% endblock %}
-        {% endif %}
-
-        {# Help #}
-        {% if page.help %}
-          {% block help %}
-            {{ page.help }}
-          {% endblock %}
-        {% endif %}
-
-        {# Content #}
-        {% block content %}
-          <a id="main-content"></a>
-          {{ page.content }}
-          {{ page.content_footer }}
-        {% endblock %}
-      </section>
-
-      </main>
-
-      {# Sidebar First #}
-      {%
-        set sidebar_first_classes = [
-          page.sidebar_first and page.sidebar_second ? 'col-md-3 col-md-pull-6',
-          page.sidebar_first and page.sidebar_second is empty ? 'col-md-3 col-md-pull-9',
-          page.sidebar_second and page.sidebar_first is empty ? 'col-md-3 col-md-pull-9'
-        ]
-      %}
-      {# Sidebar First #}
-      {% if page.sidebar_first %}
-        {% block sidebar_first %}
-          <nav{{ attributes.addClass(sidebar_first_classes) }}>
-            {{ page.sidebar_first }}
-          </nav>
-        {% endblock %}
-      {% endif %}
-
-      {# Sidebar Second #}
-      {%
-        set sidebar_second_classes = [
-          page.sidebar_first and page.sidebar_second ? 'col-md-3',
-          page.sidebar_first and page.sidebar_second is empty ? 'col-md-3',
-          page.sidebar_second and page.sidebar_first is empty ? 'col-md-3'
-        ]
-      %}
-      {# Sidebar Second #}
-      {% if page.sidebar_second %}
-        {% block sidebar_second %}
-          <nav{{ attributes.removeClass(sidebar_first_classes).addClass(sidebar_second_classes) }}>
-            {{ page.sidebar_second }}
-          </nav>
-        {% endblock %}
-      {% endif %}
-
-    </div>
   </div>
+</div>
 
 {% endblock %}
 
@@ -222,49 +209,55 @@
 {% endif %}
 
 {% if page.footer %}
+  {% if gcweb_cdn_footer_enable %}
+    <footer id="wb-info" role="contentinfo" data-ajax-append="{{ gcweb_cdn_footer_url }}{{ language }}.html .brand">
+      <div class="landscape" data-ajax-replace="{{ gcweb_cdn_footer_url }}{{ language }}.html .wb-navcurr"></div>
+    </footer>
+  {% else %}
   {% block footer %}
     <footer id="wb-info">
-    <div class="landscape">
-      <nav class="container wb-navcurr">
-        <h2 class="wb-inv">About government</h2>
-          <ul class="list-unstyled colcount-sm-2 colcount-md-3">
-            <li><a href="/en/contact">Contact us</a></li>
-            <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
-            <li><a href="https://www.canada.ca/en/government/publicservice.html">Public service and military</a></li>
-            <li><a href="https://www.canada.ca/en/news.html">News</a></li>
-            <li><a href="https://www.canada.ca/en/government/system/laws.html">Treaties, laws and regulations</a></li>
-            <li><a href="https://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
-            <li><a href="https://pm.gc.ca/eng">Prime Minister</a></li>
-            <li><a href="https://www.canada.ca/en/government/system.html">How government works</a></li>
-            <li><a href="https://open.canada.ca/en/">Open government</a></li>
-          </ul>
-       </nav>
-     </div>
-     <div class="{{ container }}">
-       {{ page.footer }}
-     </div>
-     <div class="brand">
-       <div class="{{ container }}">
-         <div class="row ">
-           <nav class="col-md-9 col-lg-10 ftr-urlt-lnk">
-					   <h2 class="wb-inv">About this site</h2>
-					     <ul>
-						     <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
-						     <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
-						     <li><a href="https://www1.canada.ca/en/newsite.html">About Canada.ca</a></li>
-						     <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
-						     <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
-					    </ul>
-				   </nav>
-           <div class="col-xs-6 visible-sm visible-xs tofpg">
-             <a href="#wb-cont">{{ 'Top of Page'|t }}<span class="glyphicon glyphicon-chevron-up"></span></a>
-           </div>
-           <div class="col-xs-6 col-md-2 text-right">
-             <img src='{{ logo_bottom_svg }}' alt='{{ 'Symbol of the Government of Canada'|t }}' />
-           </div>
+      <div class="landscape">
+        <nav class="container wb-navcurr">
+          <h2 class="wb-inv">About government</h2>
+            <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+              <li><a href="/en/contact">Contact us</a></li>
+              <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+              <li><a href="https://www.canada.ca/en/government/publicservice.html">Public service and military</a></li>
+              <li><a href="https://www.canada.ca/en/news.html">News</a></li>
+              <li><a href="https://www.canada.ca/en/government/system/laws.html">Treaties, laws and regulations</a></li>
+              <li><a href="https://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
+              <li><a href="https://pm.gc.ca/eng">Prime Minister</a></li>
+              <li><a href="https://www.canada.ca/en/government/system.html">How government works</a></li>
+              <li><a href="https://open.canada.ca/en/">Open government</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="{{ container }}">
+          {{ page.footer }}
+        </div>
+        <div class="brand">
+        <div class="{{ container }}">
+          <div class="row ">
+            <nav class="col-md-9 col-lg-10 ftr-urlt-lnk">
+              <h2 class="wb-inv">About this site</h2>
+                <ul>
+                  <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+                  <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+                  <li><a href="https://www1.canada.ca/en/newsite.html">About Canada.ca</a></li>
+                  <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                  <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                </ul>
+              </nav>
+              <div class="col-xs-6 visible-sm visible-xs tofpg">
+                <a href="#wb-cont">{{ 'Top of Page'|t }}<span class="glyphicon glyphicon-chevron-up"></span></a>
+              </div>
+              <div class="col-xs-6 col-md-2 text-right">
+                <img src='{{ logo_bottom_svg }}' alt='{{ 'Symbol of the Government of Canada'|t }}' />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
-  {% endblock %}
+      </footer>
+    {% endblock %}
+  {% endif %}
 {% endif %}
