@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Contains ccei_subject.module..
+ */
+
+ /**
+ * Implements hook_theme().
+ */
+function ccei_subject_theme() {
+  return array(
+    'power_bi_formatter' => array(
+      'variables' => [
+        'src' => '',
+        'attributes' => [],
+        'text' => '',
+        'style' => '',
+      ],
+      'template' => 'power-bi-formatter',
+    ),
+  );
+}
