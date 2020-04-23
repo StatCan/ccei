@@ -10,12 +10,30 @@
 * - style: style Block
 */
 #}
-<div{% if attributes.class is not empty %} class="{{ attributes.class }}"{% endif %}>
-  {% if text is not empty %}
-    <h3 class="iframe_title">{{ text }}</h3>
-  {% endif %}
-  <style type="text/css">{{ style|raw }}</style>
-  <iframe {{ attributes }}>
-    {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({ ':url': src, '@text': text }) }}
-  </iframe>
-</div>
+
+<section>
+  <div class="container">
+    <div{% if attributes.class is not empty %} class="{{ attributes.class }}"{% endif %}>
+      {% if text is not empty %}
+        <h3 class="iframe_title">{{ text }}</h3>
+      {% endif %}
+    </div>
+    <div class="text-center">
+      <a href="#a1-data" class="wb-inv wb-show-onfocus wb-sl">{{ 'Skip the interactive features and go directly to the data tables.'|t }}</a>
+    </div>
+    <div class="wb-inv">{{ 'Start of visual interactive dashboard'|t }}</div>
+    <div class="resp-container">
+      <iframe class="resp-iframe" {{ attributes }}></iframe>
+    </div>
+    <div class="wb-inv">{{ 'End of visual interactive dashboard'|t }}</div>
+    <details class="desc">
+      <summary class="desc">Data</summary>
+      <p id="a1-data" class="mrgn-bttm-0">{{ 'The data used to create this interactive web application is from the following listed data tables: '|t }}</p>
+      <ul>
+        <li>
+          <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3610048001">Table 36-10-0480-01 Labour productivity and related measures by business sector industry and by non-commercial activity consistent with the industry accounts</a>
+        </li>
+      </ul>
+    </details>
+  </div>
+</section>
