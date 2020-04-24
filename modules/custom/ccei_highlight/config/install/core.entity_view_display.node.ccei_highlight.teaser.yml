@@ -7,31 +7,29 @@ dependencies:
     - field.field.node.ccei_highlight.field_background
     - field.field.node.ccei_highlight.field_highlight_tag
     - field.field.node.ccei_highlight.field_subject_reference
+    - image.style.thumbnail
     - node.type.ccei_highlight
   module:
-    - text
+    - image
     - user
 id: node.ccei_highlight.teaser
 targetEntityType: node
 bundle: ccei_highlight
 mode: teaser
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
+  field_background:
+    type: image
+    weight: 0
+    region: content
+    label: visually_hidden
     settings:
-      trim_length: 600
+      image_style: thumbnail
+      image_link: content
     third_party_settings: {  }
-    region: content
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
-    region: content
 hidden:
-  field_background: true
+  body: true
   field_highlight_tag: true
   field_subject_reference: true
   langcode: true
+  links: true
   search_api_excerpt: true
