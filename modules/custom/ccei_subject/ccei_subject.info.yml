@@ -14,6 +14,7 @@ dependencies:
   - field
   - field_group
   - iframe
+  - image
   - inline_entity_form
   - language
   - layout_builder
@@ -33,6 +34,7 @@ dependencies:
   - path
   - pathauto
   - redirect
+  - simple_sitemap
   - slick
   - slick_entityreference
   - taxonomy
@@ -40,6 +42,5 @@ dependencies:
   - user
   - wxt_core
   - wxt_ext_paragraph
-  - iframe
 version: 8.x-1.0-alpha1
 core_incompatible: false

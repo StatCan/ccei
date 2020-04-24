@@ -38,7 +38,7 @@ third_party_settings:
     group_overview:
       children:
         - group_highlights
-        - group_indicators
+        - field_subject_indicators
         - group_powerbi
       parent_name: ''
       weight: 1
@@ -59,7 +59,7 @@ third_party_settings:
       children:
         - field_subject_powerbi
       parent_name: group_overview
-      weight: 33
+      weight: 34
       format_type: html_element
       region: content
       format_settings:
@@ -74,10 +74,9 @@ third_party_settings:
         classes: ''
       label: PowerBI
     group_indicators:
-      children:
-        - field_subject_indicators
-      parent_name: group_overview
-      weight: 32
+      children: {  }
+      parent_name: ''
+      weight: 3
       format_type: html_element
       region: content
       format_settings:
@@ -127,8 +126,6 @@ third_party_settings:
         id: ''
         classes: ''
       label: 'What''s New'
-_core:
-  default_config_hash: Fsz1DCqJkRUsH6WH4KBK4q1qo59ToUmxBntxatU3bsA
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -169,7 +166,7 @@ content:
     region: content
   field_subject_indicators:
     type: indicators_field_formatter
-    weight: 22
+    weight: 33
     region: content
     label: visually_hidden
     settings: {  }

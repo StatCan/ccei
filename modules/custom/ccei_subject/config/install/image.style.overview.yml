@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: overview
+label: 'Overview Icon (350x200)'
+effects:
+  37e473f5-c019-4f91-8f09-de013a63cf54:
+    uuid: 37e473f5-c019-4f91-8f09-de013a63cf54
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 350
+      height: 200
+      anchor: left-top
