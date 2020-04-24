@@ -7,7 +7,7 @@ dependencies:
     - field.field.node.ccei_highlight.field_background
     - field.field.node.ccei_highlight.field_highlight_tag
     - field.field.node.ccei_highlight.field_subject_reference
-    - image.style.thumbnail
+    - image.style.overview
     - node.type.ccei_highlight
   module:
     - image
@@ -23,7 +23,7 @@ content:
     region: content
     label: visually_hidden
     settings:
-      image_style: thumbnail
+      image_style: overview
       image_link: content
     third_party_settings: {  }
 hidden:
