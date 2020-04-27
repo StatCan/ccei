@@ -57,6 +57,8 @@ class PowerBIFormatter extends IframeDefaultFormatter {
     $options = [];
     $allow = [];
     $style = '';
+    $options_link = [];
+    $options_link['attributes'] = [];
 
     // Remove all HTML and PHP tags from a tooltip.
     // For best performance, we act only
@@ -67,6 +69,7 @@ class PowerBIFormatter extends IframeDefaultFormatter {
       if (strpos($options['title'], '<') !== FALSE) {
         $options['title'] = strip_tags($options['title']);
       }
+      $options_link['attributes']['title'] = $options['title'];
     }
 
     if (\Drupal::moduleHandler()->moduleExists('token')) {
@@ -84,9 +87,6 @@ class PowerBIFormatter extends IframeDefaultFormatter {
       }
     }
 
-    $options_link = [];
-    $options_link['attributes'] = [];
-    $options_link['attributes']['title'] = $options['title'];
     $srcuri = Url::fromUri($path, $options_link);
     $src = $srcuri->toString();
     $options['src'] = $src;
