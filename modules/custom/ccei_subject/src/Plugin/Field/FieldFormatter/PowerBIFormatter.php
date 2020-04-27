@@ -56,6 +56,13 @@ class PowerBIFormatter extends IframeDefaultFormatter {
   public static function renderIframe($text, $path, $item) {
     $options = [];
     $allow = [];
+    // Collect styles, but leave it overwritable.
+    $style = '';
+    $itemName = $item->getFieldDefinition()->getName();
+    $htmlid = 'iframe-' . $itemName;
+    if (isset($item->htmlid) && !empty($item->htmlid)) {
+      $htmlid = $item->htmlid;
+    }
     $style = '';
     $options_link = [];
     $options_link['attributes'] = [];
