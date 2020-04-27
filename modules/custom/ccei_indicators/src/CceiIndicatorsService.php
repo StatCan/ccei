@@ -210,13 +210,14 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     $latest = $this->calculate($indicator, $datapoints['latest']);
 
     // Format the indicator value.
-    // TODO: refactor, use predefined function instead of trusting user input.
-    // TODO: Implement Rounding and Bankers' rounding.
-    if (isset($indicator['valueformat'])) {
-      $formattedValue = call_user_func_array(
-        $indicator['valueformat']['function'],
-        [$latest, $indicator['valueformat']['precision']]
-      );
+    if (!empty($indicator['value_format'])) {
+      $precision = $indicator['rounding_precision'] ?? 0;
+      if ($indicator['value_format'] == 'round') {
+        $formattedValue = round($latest, $precision);
+      }
+      elseif ($indicator['value_format'] == 'bankers') {
+        $formattedValue = round($latest, $precision, PHP_ROUND_HALF_EVEN);
+      }
     }
 
     $percentChange = round(($latest - $previous) / $previous * 100, 1);
