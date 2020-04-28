@@ -40,27 +40,9 @@ third_party_settings:
         - group_highlights
         - field_subject_indicators
         - group_powerbi
-      parent_name: ''
-      weight: 1
-      format_type: html_element
-      region: content
-      format_settings:
-        element: div
-        show_label: true
-        label_element: h3
-        label_element_classes: ''
-        attributes: ''
-        effect: none
-        speed: fast
-        id: ''
-        classes: ''
-      label: Overview
-    group_powerbi:
-      children:
-        - field_subject_powerbi
-      parent_name: group_overview
-      weight: 34
-      format_type: html_element
+      parent_name: group_tabs_group
+      weight: 2
+      format_type: fieldset
       region: content
       format_settings:
         element: div
@@ -72,24 +54,27 @@ third_party_settings:
         speed: fast
         id: ''
         classes: ''
-      label: PowerBI
-    group_indicators:
-      children: {  }
-      parent_name: ''
-      weight: 3
+        description: ''
+      label: Overview
+    group_powerbi:
+      children:
+        - field_subject_powerbi
+      parent_name: group_overview
+      weight: 33
       format_type: html_element
       region: content
       format_settings:
-        element: div
-        show_label: true
-        label_element: h3
-        label_element_classes: ''
-        attributes: ''
-        effect: none
-        speed: fast
+        description: ''
         id: ''
         classes: ''
-      label: Indicators
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        effect: none
+        speed: fast
+        attributes: ''
+      label: PowerBI
     group_highlights:
       children:
         - field_subject_highlights
@@ -126,6 +111,105 @@ third_party_settings:
         id: ''
         classes: ''
       label: 'What''s New'
+    group_datasets:
+      children:
+        - group_datasets_block
+      parent_name: group_tabs_group
+      weight: 3
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        open: false
+        required_fields: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        effect: none
+        speed: fast
+        attributes: ''
+      label: Datasets
+    group_publications:
+      children:
+        - group_publications_block
+      parent_name: group_tabs_group
+      weight: 4
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        open: false
+        required_fields: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        effect: none
+        speed: fast
+        attributes: ''
+      label: Publications
+    group_tabs_group:
+      children:
+        - group_overview
+        - group_datasets
+        - group_publications
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      region: content
+      format_settings:
+        description: ''
+        id: ''
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        effect: none
+        speed: fast
+        attributes: ''
+      label: ''
+    group_datasets_block:
+      children: {  }
+      parent_name: group_datasets
+      weight: 20
+      format_type: html_element
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Datasets Block'
+    group_publications_block:
+      children: {  }
+      parent_name: group_publications
+      weight: 20
+      format_type: html_element
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Publications Block'
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -143,7 +227,7 @@ content:
     label: visually_hidden
     settings:
       optionset: three_items
-      skin: classic
+      skin: fullwidth
       view_mode: teaser
       cache: 0
       current_view_mode: default
@@ -166,7 +250,7 @@ content:
     region: content
   field_subject_indicators:
     type: indicators_field_formatter
-    weight: 33
+    weight: 32
     region: content
     label: visually_hidden
     settings: {  }
@@ -174,7 +258,7 @@ content:
   field_subject_powerbi:
     type: power_bi_formatter
     weight: 25
-    label: hidden
+    label: visually_hidden
     settings:
       url: ''
       title: ''
