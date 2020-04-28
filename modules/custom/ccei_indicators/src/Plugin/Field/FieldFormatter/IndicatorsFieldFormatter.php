@@ -108,18 +108,31 @@ class IndicatorsFieldFormatter extends FormatterBase implements ContainerFactory
     $indicators = [];
 
     foreach ($items as $delta => $item) {
-      $indicators[$delta] = $this->viewValue($item);
+      $indicators[$delta] = $this->viewValue($item, $langcode);
     }
 
+    // TODO: deal with empty $response or possible states.
     $response = $this->cceiIndicators->getIndicators($indicators);
 
-    // TODO: deal with empty $response or possible states.
+    // Format numerical values according to locale.
+    $decimalPoint = $langcode == 'fr' ? ',' : '.';
+    $thousandSeparator = $langcode == 'fr' ? ' ' : ',';
+    foreach ($response as $delta => $indicator) {
+      $decimalCount = strlen(substr(strrchr($indicator['value'], "."), 1));
+      $response[$delta]['value'] = number_format($indicator['value'], $decimalCount, $decimalPoint, $thousandSeparator);
+    }
+
     return [
       '#theme' => 'indicators_block',
       '#title' => $this->t('Indicators'),
       '#indicators' => $response,
       '#attached' => [
         'library' => ['ccei_indicators/ccei-indicators'],
+      ],
+      '#cache' => [
+        'contexts' => [
+          'languages',
+        ],
       ],
     ];
   }
@@ -129,12 +142,14 @@ class IndicatorsFieldFormatter extends FormatterBase implements ContainerFactory
    *
    * @param \Drupal\Core\Field\FieldItemInterface $item
    *   One field item.
+   * @param string $langcode
+   *   The language that should be used to render the field.
    *
    * @return array
    *   A prepared but not yet processed indicators.
    */
-  protected function viewValue(FieldItemInterface $item) {
-    // Exit early if this indicator is nto valid.
+  protected function viewValue(FieldItemInterface $item, $langcode) {
+    // Exit early if this indicator is not valid.
     if (!isset($item->entity->field_indicator_title->value)) {
       // Assumes that if the title exists, everything else should.
       // TODO: implement proper error checking.
@@ -152,9 +167,10 @@ class IndicatorsFieldFormatter extends FormatterBase implements ContainerFactory
       ];
     }
 
+    $i18nEntity = $item->entity->getTranslation($langcode);
     return [
-      'title' => $item->entity->field_indicator_title->value,
-      'units' => $item->entity->field_units->value,
+      'title' => $i18nEntity->field_indicator_title->value,
+      'units' => $i18nEntity->field_units->value,
       'calculation' => $item->entity->field_calculation->value,
       'preprocess' => $item->entity->field_preprocess->value,
       'value_format' => $item->entity->field_value_format->value,
