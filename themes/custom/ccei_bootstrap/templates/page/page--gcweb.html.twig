@@ -81,14 +81,19 @@
         </div>
       </div>
       {{ page.breadcrumb }}
-      {% if gcweb_cdn and gcweb_cdn_url %}
-        <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-trgt="mb-pnl">
-          {{ ccei_megamenu | raw }}
-        </nav>
-      {% else %}
-        {{ page.navigation }}
-      {% endif %}
-        {{ page.branding }}
+      {{ page.navigation }}
+      <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
+		    <div class="pnl-strt container nvbar">
+          {{ ccei_menu }}
+        </div>
+      </nav>
+      <div id="ccei-banner" class="hidden-xs hidden-sm">
+        <div class="container">
+          <a href="/home-eng.htm">
+            <img id="ccei-logo" src="/profiles/ccei/themes/custom/ccei_bootstrap/assets/ccei-ccie/logo-sm-eng.png" alt="{{ 'Canadian Center for Energy Information logo'|t }}" />
+          </a>
+        </div>
+      </div>
     </header>
   {% endblock %}
 {% endif %}
