@@ -100,6 +100,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     $queriesAccumulator = [];
     $queriesLookupTable = [];
     foreach ($indicators as $indicatorKey => $indicator) {
+      $hasMultipleSources = count($indicator['sources']) > 1;
       foreach ($indicator['sources'] as $sourceKey => $source) {
         foreach ($source['coordinates'] as $coordinate) {
           // Pad incomplete coordinates to 10 numbers.
@@ -108,8 +109,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
           $queriesAccumulator[] = [
             'productId' => $source['productId'],
             'coordinate' => $fullCoordinate,
-            // TODO: use more latestN periods when dealing with many sources.
-            'latestN' => 2,
+            'latestN' => $hasMultipleSources ? 5 : 2,
           ];
 
           // The API response doesn't maintain query order.
@@ -144,7 +144,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
 
     // Process each indicators.
     $results = [];
-    foreach ($indicators as $key => $indicator) {
+    foreach ($indicators as $indicator) {
       $results[] = $this->process($indicator);
     }
 
@@ -186,15 +186,35 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
    * @throws \Exception
    */
   private function process(array $indicator) {
+    $hasMultipleSources = count($indicator['sources']) > 1;
+    if ($hasMultipleSources) {
+      // Pre-compute the latest common reference period between the sources.
+      $latestPeriodPerSource = [];
+      foreach ($indicator['response'] as $sourceKey => $source) {
+        foreach ($source as $responseDatapoint) {
+          if (!empty($responseDatapoint['object']['vectorDataPoint'])) {
+            // Get first valid response from this source.
+            $latestPeriodPerSource[] = end($responseDatapoint['object']['vectorDataPoint'])['refPer'];
+            break;
+          }
+          // TODO: possible issue if no vectorDataPoint found for a source?
+        }
+      }
+      $commonLatestPeriod = min($latestPeriodPerSource);
+    }
+
     $datapoints = [];
     foreach ($indicator['response'] as $sourceKey => $source) {
-      // Reset responses to numerical array.
+      // Reset responses to numerical array, important for the following search.
       $responseIndicators = array_values($source);
       foreach ($responseIndicators as $key => $responseDatapoint) {
-        if (isset($responseDatapoint['object'])) {
-          $datapoints['values'][$sourceKey][$key] = $responseDatapoint['object']['vectorDataPoint'];
-          $datapoints['previous'][$sourceKey][$key] = reset($datapoints['values'][$sourceKey][$key])['value'];
-          $datapoints['latest'][$sourceKey][$key] = end($datapoints['values'][$sourceKey][$key])['value'];
+        if (!empty($responseDatapoint['object']['vectorDataPoint'])) {
+          $values = $responseDatapoint['object']['vectorDataPoint'];
+          $datapoints['values'][$sourceKey][$key] = $values;
+          // Find matching refPer and use as latest or just use last one.
+          $latestPeriodIndex = $hasMultipleSources ? array_search($commonLatestPeriod, array_column($values, 'refPer')) : array_key_last($values);
+          $datapoints['previous'][$sourceKey][$key] = $values[$latestPeriodIndex - 1]['value'];
+          $datapoints['latest'][$sourceKey][$key] = $values[$latestPeriodIndex]['value'];
         }
         else {
           // On a failed response, treat values as zero.
