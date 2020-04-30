@@ -3,9 +3,10 @@ status: true
 dependencies:
   config:
     - field.field.node.ccei_subject.body
+    - field.field.node.ccei_subject.field_datasets_params
+    - field.field.node.ccei_subject.field_publications_params
     - field.field.node.ccei_subject.field_subject_highlights
     - field.field.node.ccei_subject.field_subject_icon
-    - field.field.node.ccei_subject.field_subject_index_ref
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_powerbi
     - field.field.node.ccei_subject.field_subject_tag
@@ -166,7 +167,7 @@ third_party_settings:
       label: ''
     group_datasets_block:
       children:
-        - field_subject_icon
+        - field_datasets_params
       parent_name: group_datasets
       weight: 20
       format_type: html_element
@@ -184,7 +185,7 @@ third_party_settings:
       label: Datasets
     group_publications_block:
       children:
-        - field_subject_tag
+        - field_publications_params
       parent_name: group_publications
       weight: 20
       format_type: html_element
@@ -212,6 +213,20 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_datasets_params:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_publications_params:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
   field_subject_highlights:
     weight: 21
     label: visually_hidden
@@ -238,14 +253,6 @@ content:
     third_party_settings: {  }
     type: slick_entityreference_vanilla
     region: content
-  field_subject_icon:
-    type: entity_reference_label
-    weight: 0
-    region: content
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
   field_subject_indicators:
     type: indicators_field_formatter
     weight: 32
@@ -271,14 +278,6 @@ content:
       allowfullscreen: '0'
     third_party_settings: {  }
     region: content
-  field_subject_tag:
-    type: entity_reference_label
-    weight: 0
-    region: content
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
   field_subject_whats_new:
     type: slick_entityreference_vanilla
     weight: 3
@@ -306,7 +305,8 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
-  field_subject_index_ref: true
+  field_subject_icon: true
+  field_subject_tag: true
   langcode: true
   links: true
   search_api_excerpt: true

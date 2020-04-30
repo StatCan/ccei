@@ -4,9 +4,10 @@ dependencies:
   config:
     - entity_browser.browser.media_browser
     - field.field.node.ccei_subject.body
+    - field.field.node.ccei_subject.field_datasets_params
+    - field.field.node.ccei_subject.field_publications_params
     - field.field.node.ccei_subject.field_subject_highlights
     - field.field.node.ccei_subject.field_subject_icon
-    - field.field.node.ccei_subject.field_subject_index_ref
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_powerbi
     - field.field.node.ccei_subject.field_subject_tag
@@ -40,6 +41,22 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_datasets_params:
+    weight: 27
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_publications_params:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
   field_subject_highlights:
     weight: 12
     settings:
@@ -72,14 +89,6 @@ content:
       field_widget_replace: false
     region: content
     third_party_settings: {  }
-  field_subject_index_ref:
-    weight: 16
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_subject_indicators:
     type: inline_entity_form_complex
     weight: 13
