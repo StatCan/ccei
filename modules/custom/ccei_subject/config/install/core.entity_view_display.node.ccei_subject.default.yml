@@ -159,7 +159,7 @@ third_party_settings:
       format_type: tabs
       region: content
       format_settings:
-        direction: vertical
+        direction: horizontal
         width_breakpoint: '240'
         id: ''
         classes: ''
