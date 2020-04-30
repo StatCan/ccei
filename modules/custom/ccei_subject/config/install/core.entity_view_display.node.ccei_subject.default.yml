@@ -41,6 +41,7 @@ third_party_settings:
         - group_highlights
         - field_subject_indicators
         - group_powerbi
+        - group_whats_new
       parent_name: group_tabs_group
       weight: 2
       format_type: tab
@@ -91,8 +92,8 @@ third_party_settings:
     group_whats_new:
       children:
         - field_subject_whats_new
-      parent_name: ''
-      weight: 2
+      parent_name: group_overview
+      weight: 34
       format_type: html_element
       region: content
       format_settings:
@@ -110,7 +111,7 @@ third_party_settings:
       children:
         - group_datasets_block
       parent_name: group_tabs_group
-      weight: 3
+      weight: 4
       format_type: tab
       region: content
       format_settings:
@@ -132,7 +133,7 @@ third_party_settings:
       children:
         - group_publications_block
       parent_name: group_tabs_group
-      weight: 4
+      weight: 5
       format_type: tab
       region: content
       format_settings:
