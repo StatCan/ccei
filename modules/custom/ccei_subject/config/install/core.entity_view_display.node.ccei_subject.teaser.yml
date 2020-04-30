@@ -4,9 +4,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.ccei_subject.body
+    - field.field.node.ccei_subject.field_datasets_params
+    - field.field.node.ccei_subject.field_publications_params
     - field.field.node.ccei_subject.field_subject_highlights
     - field.field.node.ccei_subject.field_subject_icon
-    - field.field.node.ccei_subject.field_subject_index_ref
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_powerbi
     - field.field.node.ccei_subject.field_subject_tag
@@ -34,6 +35,8 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_datasets_params: true
+  field_publications_params: true
   field_subject_highlights: true
   field_subject_icon: true
   field_subject_index_ref: true

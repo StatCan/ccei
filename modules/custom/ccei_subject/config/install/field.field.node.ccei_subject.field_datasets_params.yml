@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_datasets_params
+    - node.type.ccei_subject
+id: node.ccei_subject.field_datasets_params
+field_name: field_datasets_params
+entity_type: node
+bundle: ccei_subject
+label: 'Datasets Params'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
