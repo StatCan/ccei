@@ -204,7 +204,7 @@ Feature: CCEI Content Types
         14.1.9
         14.1.10
       """
-    Then I click the '[id^="edit-field-subject-indicators-form-inline-entity-form-actions-ief-add-save"]' element
+    When I scroll down and click the '[id^="edit-field-subject-indicators-form-inline-entity-form-actions-ief-add-save"]' element
     Then I wait 1 seconds
     And I enter "https://dv-vd.cloud.statcan.ca/home/index/CCEI-Overview_en" for "field_powerbi[0][uri]"
     And I enter "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2510002201" for "field_powerbi_data[0][uri]"
