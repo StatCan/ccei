@@ -65,26 +65,25 @@ third_party_settings:
       format_type: html_element
       region: content
       format_settings:
-        description: ''
-        id: ''
-        classes: ''
-        element: div
+        element: section
         show_label: false
         label_element: h3
         label_element_classes: ''
+        attributes: ''
         effect: none
         speed: fast
-        attributes: ''
+        id: ''
+        classes: ''
       label: PowerBI
     group_highlights:
       children:
-        - field_subject_highlights
+        - group_highlights_row
       parent_name: group_overview
       weight: 31
       format_type: html_element
       region: content
       format_settings:
-        element: div
+        element: section
         show_label: true
         label_element: h3
         label_element_classes: ''
@@ -96,13 +95,13 @@ third_party_settings:
       label: Highlights
     group_whats_new:
       children:
-        - field_subject_whats_new
+        - group_whats_new_row
       parent_name: group_overview
       weight: 34
       format_type: html_element
       region: content
       format_settings:
-        element: div
+        element: section
         show_label: true
         label_element: h3
         label_element_classes: ''
@@ -172,11 +171,11 @@ third_party_settings:
       children:
         - field_datasets_params
       parent_name: group_datasets
-      weight: 20
+      weight: 21
       format_type: html_element
       region: content
       format_settings:
-        element: div
+        element: section
         show_label: true
         label_element: h3
         label_element_classes: ''
@@ -194,7 +193,7 @@ third_party_settings:
       format_type: html_element
       region: content
       format_settings:
-        element: div
+        element: section
         show_label: true
         label_element: h3
         label_element_classes: ''
@@ -222,6 +221,42 @@ third_party_settings:
         id: ''
         classes: wb-tabs
       label: ''
+    group_highlights_row:
+      children:
+        - field_subject_highlights
+      parent_name: group_highlights
+      weight: 32
+      format_type: html_element
+      region: content
+      format_settings:
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: row
+      label: ''
+    group_whats_new_row:
+      children:
+        - field_subject_whats_new
+      parent_name: group_whats_new
+      weight: 35
+      format_type: html_element
+      region: content
+      format_settings:
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: row
+      label: ''
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -235,21 +270,21 @@ content:
     third_party_settings: {  }
     region: content
   field_datasets_params:
-    weight: 4
+    weight: 8
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_publications_params:
-    weight: 3
+    weight: 21
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_subject_highlights:
-    weight: 21
+    weight: 33
     label: hidden
     settings:
       view_mode: teaser
@@ -284,7 +319,7 @@ content:
     region: content
   field_subject_whats_new:
     type: entity_reference_revisions_entity_view
-    weight: 3
+    weight: 23
     label: hidden
     settings:
       view_mode: default
