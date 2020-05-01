@@ -2,11 +2,9 @@
 
 namespace Drupal\ccei_subject\Plugin\Field\FieldFormatter;
 
-use Drupal\Core\Template\Attribute;
+use Drupal\link\Plugin\Field\FieldFormatter\LinkFormatter;
+use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Component\Render\HtmlEscapedText;
-use Drupal\iframe\Plugin\Field\FieldFormatter\IframeDefaultFormatter;
-use Drupal\Core\Url;
 
 /**
  * Plugin implementation of the 'power_bi_formatter' formatter.
@@ -15,98 +13,74 @@ use Drupal\Core\Url;
  *  id = "power_bi_formatter",
  *  label = @Translation("Power BI iframe Formatter"),
  *  field_types = {
- *    "iframe"
+ *    "link"
  *  }
  * )
  */
-class PowerBIFormatter extends IframeDefaultFormatter {
+class PowerBIFormatter extends LinkFormatter {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function defaultSettings() {
+    return [
+      'trim_length' => 80,
+      'rel' => '',
+      'target' => '',
+    ] + parent::defaultSettings();
+  }
 
   /**
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $elements = [];
-    $field_settings = $this->getFieldSettings();
-    $settings = $this->getSettings();
+    $element = [];
     $entity = $items->getEntity();
+    $settings = $this->getSettings();
+
     foreach ($items as $delta => $item) {
-      if (empty($item->url)) {
-        continue;
+      // By default use the full URL as the link text.
+      $url = $this->buildUrl($item);
+      $link_title = $url->toString();
+
+      // If the link text field value is available, use it for the text.
+      if (empty($settings['url_only']) && !empty($item->title)) {
+        // Unsanitized token replacement here because the entire link title
+        // gets auto-escaped during link generation in
+        // \Drupal\Core\Utility\LinkGenerator::generate().
+        $link_title = \Drupal::token()->replace($item->title, [$entity->getEntityTypeId() => $entity], ['clear' => TRUE]);
       }
-      if (!isset($item->title)) {
-        $item->title = '';
+
+      // The link_separate formatter has two titles; the link text (as in the
+      // field values) and the URL itself. If there is no link text value,
+      // $link_title defaults to the URL, so it needs to be unset.
+      // The URL version may need to be trimmed as well.
+      if (empty($item->title)) {
+        $link_title = NULL;
       }
-      // Since I can't get the iframe field foramtter settings to work in the
-      // UI. I will override it here for our specific need.
-      $elements[$delta] = self::renderIframe($item->title, $item->url, $item);
-      // Use our own theme template.
-      $elements[$delta]['#theme'] = 'power_bi_formatter';
-      // Tokens can be dynamic, so its not cacheable.
-      if (isset($settings['tokensupport']) && $settings['tokensupport']) {
-        $elements[$delta]['cache'] = ['max-age' => 0];
+      $url_title = $url->toString();
+      if (!empty($settings['trim_length'])) {
+        $link_title = Unicode::truncate($link_title, $settings['trim_length'], FALSE, TRUE);
+        $url_title = Unicode::truncate($url_title, $settings['trim_length'], FALSE, TRUE);
+      }
+
+      $element[$delta] = [
+        '#theme' => 'power_bi_formatter',
+        '#title' => $link_title,
+        '#url_title' => $url_title,
+        '#url' => $url,
+      ];
+
+      if (!empty($item->_attributes)) {
+        // Set our RDFa attributes on the <a> element that is being built.
+        $url->setOption('attributes', $item->_attributes);
+
+        // Unset field item attributes since they have been included in the
+        // formatter output and should not be rendered in the field template.
+        unset($item->_attributes);
       }
     }
-    return $elements;
-  }
-
-  /**
-   * This is a hack because I couldn't get the IframeDefaultFormatter settings
-   * to work properly.
-   */
-  public static function renderIframe($text, $path, $item) {
-    $options = [];
-    $allow = [];
-    // Collect styles, but leave it overwritable.
-    $style = '';
-    $itemName = $item->getFieldDefinition()->getName();
-    $htmlid = 'iframe-' . $itemName;
-    if (isset($item->htmlid) && !empty($item->htmlid)) {
-      $htmlid = $item->htmlid;
-    }
-    $style = '';
-    $options_link = [];
-    $options_link['attributes'] = [];
-
-    // Remove all HTML and PHP tags from a tooltip.
-    // For best performance, we act only
-    // if a quick strpos() pre-check gave a suspicion
-    // (because strip_tags() is expensive).
-    if (!empty($item->title)) {
-      $options['title'] = $item->title;
-      if (strpos($options['title'], '<') !== FALSE) {
-        $options['title'] = strip_tags($options['title']);
-      }
-      $options_link['attributes']['title'] = $options['title'];
-    }
-
-    if (\Drupal::moduleHandler()->moduleExists('token')) {
-      // Token Support for field "url" and "title".
-      $tokensupport = $item->getTokenSupport();
-      $tokencontext = ['user' => \Drupal::currentUser()];
-      if (isset($GLOBALS['node'])) {
-        $tokencontext['node'] = $GLOBALS['node'];
-      }
-      if ($tokensupport > 0) {
-        $text = \Drupal::token()->replace($text, $tokencontext);
-      }
-      if ($tokensupport > 1) {
-        $path = \Drupal::token()->replace($path, $tokencontext);
-      }
-    }
-
-    $srcuri = Url::fromUri($path, $options_link);
-    $src = $srcuri->toString();
-    $options['src'] = $src;
-    $drupal_attributes = new Attribute($options);
-
-    $render_array = [
-      '#theme' => 'iframe',
-      '#src' => $src,
-      '#attributes' => $drupal_attributes,
-      '#text' => (isset($options['html']) && $options['html'] ? $text : new HtmlEscapedText($text)),
-      '#style' => 'iframe#' . $htmlid . ' {' . $style . '}',
-    ];
-    return $render_array;
+    return $element;
   }
 
 }
