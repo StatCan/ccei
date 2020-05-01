@@ -15,11 +15,11 @@ dependencies:
   module:
     - ccei_indicators
     - ccei_subject
+    - entity_reference_revisions
     - field_group
     - layout_builder
     - layout_builder_restrictions
     - layout_library
-    - slick_entityreference
     - text
     - user
 third_party_settings:
@@ -44,12 +44,17 @@ third_party_settings:
         - group_whats_new
       parent_name: group_tabs_group
       weight: 2
-      format_type: tab
+      format_type: html_element
       region: content
       format_settings:
-        description: ''
-        formatter: open
-        id: ''
+        element: details
+        show_label: true
+        label_element: summary
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: tab-overview
         classes: ''
       label: Overview
     group_powerbi:
@@ -112,59 +117,56 @@ third_party_settings:
         - group_datasets_block
       parent_name: group_tabs_group
       weight: 4
-      format_type: tab
+      format_type: html_element
       region: content
       format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        formatter: closed
-        open: false
-        required_fields: false
-        element: div
-        show_label: false
-        label_element: h3
+        element: details
+        show_label: true
+        label_element: summary
         label_element_classes: ''
+        attributes: ''
         effect: none
         speed: fast
-        attributes: ''
+        id: tab-datasets
+        classes: ''
       label: Datasets
     group_publications:
       children:
         - group_publications_block
       parent_name: group_tabs_group
       weight: 5
-      format_type: tab
+      format_type: html_element
       region: content
       format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        formatter: closed
-        open: false
-        required_fields: false
-        element: div
-        show_label: false
-        label_element: h3
+        element: details
+        show_label: true
+        label_element: summary
         label_element_classes: ''
+        attributes: ''
         effect: none
         speed: fast
-        attributes: ''
+        id: tab-publications
+        classes: ''
       label: Publications
     group_tabs_group:
       children:
         - group_overview
         - group_datasets
         - group_publications
-      parent_name: ''
-      weight: 1
-      format_type: tabs
+      parent_name: group_wb_tab_container
+      weight: 2
+      format_type: html_element
       region: content
       format_settings:
-        direction: horizontal
-        width_breakpoint: '240'
+        element: div
+        show_label: false
+        label_element: div
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
         id: ''
-        classes: ''
+        classes: tabpanels
       label: ''
     group_datasets_block:
       children:
@@ -202,6 +204,24 @@ third_party_settings:
         id: ''
         classes: ''
       label: Publications
+    group_wb_tab_container:
+      children:
+        - group_tabs_group
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      region: content
+      format_settings:
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: wb-tabs
+      label: ''
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -230,29 +250,12 @@ content:
     region: content
   field_subject_highlights:
     weight: 21
-    label: visually_hidden
+    label: hidden
     settings:
-      optionset: three_items
-      skin: fullwidth
       view_mode: teaser
-      cache: 0
-      current_view_mode: default
-      override: false
-      overridables:
-        arrows: '0'
-        autoplay: '0'
-        dots: '0'
-        draggable: '0'
-        infinite: '0'
-        mouseWheel: '0'
-        randomize: '0'
-        variableWidth: '0'
-      skin_arrows: ''
-      skin_dots: ''
-      fx: ''
-      style: ''
+      link: false
     third_party_settings: {  }
-    type: slick_entityreference_vanilla
+    type: entity_reference_entity_view
     region: content
   field_subject_indicators:
     type: indicators_field_formatter
@@ -280,29 +283,12 @@ content:
     third_party_settings: {  }
     region: content
   field_subject_whats_new:
-    type: slick_entityreference_vanilla
+    type: entity_reference_revisions_entity_view
     weight: 3
-    label: above
+    label: hidden
     settings:
-      optionset: three_items
-      skin: ''
       view_mode: default
-      cache: 0
-      current_view_mode: default
-      override: false
-      overridables:
-        arrows: '0'
-        autoplay: '0'
-        dots: '0'
-        draggable: '0'
-        infinite: '0'
-        mouseWheel: '0'
-        randomize: '0'
-        variableWidth: '0'
-      skin_arrows: ''
-      skin_dots: ''
-      fx: ''
-      style: ''
+      link: ''
     third_party_settings: {  }
     region: content
 hidden:
