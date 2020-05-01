@@ -96,7 +96,7 @@
             },
             "drupalwxt/wxt": {
                 "3130149 - Patch to support wxt-cex for drush 9":
-                "https://www.drupal.org/files/issues/2020-04-22/wxt-port-wxt-cex-to-drush-9-3130149-2.patch"
+                "https://www.drupal.org/files/issues/2020-05-01/wxt-port-wxt-cex-to-drush-9-3130149-3.patch"
             }
         },
         "patches-ignore": {

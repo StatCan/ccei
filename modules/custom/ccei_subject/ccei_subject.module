@@ -10,14 +10,19 @@
  */
 function ccei_subject_theme() {
   return [
+    // Add template for our powerbi formatter.
     'power_bi_formatter' => [
       'variables' => [
-        'src' => '',
-        'attributes' => [],
-        'text' => '',
-        'style' => '',
+        'title' => NULL,
+        'url_title' => NULL,
+        'url' => NULL,
       ],
       'template' => 'power-bi-formatter',
+    ],
+    // Add field template for powerbi_data.
+    'field__field_powerbi_data' => [
+      'template' => 'field--field-powerbi-data',
+      'base hook' => 'field',
     ],
   ];
 }

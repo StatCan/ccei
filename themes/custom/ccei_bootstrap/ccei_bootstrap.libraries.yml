@@ -2,3 +2,4 @@ framework:
   css:
     theme:
       css/style.css: {}
+      css/global.css: {}

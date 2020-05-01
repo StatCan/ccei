@@ -2,16 +2,16 @@ langcode: en
 status: true
 dependencies:
   module:
-    - iframe
+    - link
     - node
-id: node.field_subject_powerbi
-field_name: field_subject_powerbi
+id: node.field_powerbi_data
+field_name: field_powerbi_data
 entity_type: node
-type: iframe
+type: link
 settings: {  }
-module: iframe
+module: link
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false
