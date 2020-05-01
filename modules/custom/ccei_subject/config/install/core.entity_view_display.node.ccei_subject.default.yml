@@ -16,7 +16,6 @@ dependencies:
   module:
     - ccei_indicators
     - entity_reference_revisions
-    - field_formatter
     - field_group
     - layout_builder
     - layout_builder_restrictions
