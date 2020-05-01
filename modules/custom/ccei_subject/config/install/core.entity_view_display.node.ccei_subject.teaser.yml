@@ -1,3 +1,4 @@
+uuid: 26c45258-c60f-4b63-b62f-1444cbc19d66
 langcode: en
 status: true
 dependencies:
@@ -5,17 +6,20 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.ccei_subject.body
     - field.field.node.ccei_subject.field_datasets_params
+    - field.field.node.ccei_subject.field_powerbi
+    - field.field.node.ccei_subject.field_powerbi_data
     - field.field.node.ccei_subject.field_publications_params
     - field.field.node.ccei_subject.field_subject_highlights
     - field.field.node.ccei_subject.field_subject_icon
     - field.field.node.ccei_subject.field_subject_indicators
-    - field.field.node.ccei_subject.field_subject_powerbi
     - field.field.node.ccei_subject.field_subject_tag
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
   module:
     - text
     - user
+_core:
+  default_config_hash: KY80GeKBLcwQkTXGBHLqY0UKq_bBdlnL2GvylsJDWvM
 id: node.ccei_subject.teaser
 targetEntityType: node
 bundle: ccei_subject
@@ -36,12 +40,13 @@ content:
     third_party_settings: {  }
 hidden:
   field_datasets_params: true
+  field_powerbi: true
+  field_powerbi_data: true
   field_publications_params: true
   field_subject_highlights: true
   field_subject_icon: true
   field_subject_index_ref: true
   field_subject_indicators: true
-  field_subject_powerbi: true
   field_subject_tag: true
   field_subject_whats_new: true
   langcode: true

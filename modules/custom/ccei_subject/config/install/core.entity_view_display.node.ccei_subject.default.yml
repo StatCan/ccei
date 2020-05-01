@@ -1,14 +1,16 @@
+uuid: 71fadd30-1b4e-4c8c-834e-64ede3b09d47
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.ccei_subject.body
     - field.field.node.ccei_subject.field_datasets_params
+    - field.field.node.ccei_subject.field_powerbi
+    - field.field.node.ccei_subject.field_powerbi_data
     - field.field.node.ccei_subject.field_publications_params
     - field.field.node.ccei_subject.field_subject_highlights
     - field.field.node.ccei_subject.field_subject_icon
     - field.field.node.ccei_subject.field_subject_indicators
-    - field.field.node.ccei_subject.field_subject_powerbi
     - field.field.node.ccei_subject.field_subject_tag
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
@@ -19,6 +21,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - link
     - slick_entityreference
     - text
     - user
@@ -54,7 +57,8 @@ third_party_settings:
       label: Overview
     group_powerbi:
       children:
-        - field_subject_powerbi
+        - field_powerbi
+        - field_powerbi_data
       parent_name: group_overview
       weight: 33
       format_type: html_element
@@ -170,7 +174,7 @@ third_party_settings:
       children:
         - field_datasets_params
       parent_name: group_datasets
-      weight: 20
+      weight: 36
       format_type: html_element
       region: content
       format_settings:
@@ -202,6 +206,8 @@ third_party_settings:
         id: ''
         classes: ''
       label: Publications
+_core:
+  default_config_hash: n4_wxZfqDsskTYGxRtILrY5FTby2gl20UwzhbqyvNl4
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -220,6 +226,30 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
+  field_powerbi:
+    weight: 35
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: power_bi_formatter
+    region: content
+  field_powerbi_data:
+    weight: 36
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link
     region: content
   field_publications_params:
     weight: 3
@@ -261,24 +291,6 @@ content:
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
-  field_subject_powerbi:
-    type: power_bi_formatter
-    weight: 25
-    label: visually_hidden
-    settings:
-      url: ''
-      title: ''
-      width: ''
-      height: ''
-      class: ''
-      expose_class: ''
-      frameborder: '0'
-      scrolling: ''
-      transparency: '0'
-      tokensupport: '0'
-      allowfullscreen: '0'
-    third_party_settings: {  }
-    region: content
   field_subject_whats_new:
     type: slick_entityreference_vanilla
     weight: 3
