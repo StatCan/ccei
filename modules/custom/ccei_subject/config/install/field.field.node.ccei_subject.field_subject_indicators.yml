@@ -24,9 +24,6 @@ settings:
     target_bundles:
       indicator: indicator
     target_bundles_drag_drop:
-      ccei_paragraph:
-        weight: 2
-        enabled: false
       ccei_whats_new_item:
         weight: 6
         enabled: false

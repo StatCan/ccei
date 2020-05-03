@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'CCEI Content Subjects'
-vid: ccei_content_subjects
-description: 'Tags for CCEI Subject content'
-weight: 0

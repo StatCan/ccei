@@ -5,7 +5,6 @@ dependencies:
     - entity_browser.browser.image_browser
     - field.field.node.ccei_highlight.body
     - field.field.node.ccei_highlight.field_background
-    - field.field.node.ccei_highlight.field_highlight_tag
     - field.field.node.ccei_highlight.field_subject_reference
     - node.type.ccei_highlight
   module:
@@ -48,12 +47,6 @@ content:
       view_mode: default
     region: content
     third_party_settings: {  }
-  field_highlight_tag:
-    weight: 11
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_subject_reference:
     weight: 12
     settings:

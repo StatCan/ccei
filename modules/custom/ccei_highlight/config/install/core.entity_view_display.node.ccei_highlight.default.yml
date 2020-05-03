@@ -4,7 +4,6 @@ dependencies:
   config:
     - field.field.node.ccei_highlight.body
     - field.field.node.ccei_highlight.field_background
-    - field.field.node.ccei_highlight.field_highlight_tag
     - field.field.node.ccei_highlight.field_subject_reference
     - node.type.ccei_highlight
   module:
@@ -33,7 +32,6 @@ content:
     type: image
     region: content
 hidden:
-  field_highlight_tag: true
   field_subject_reference: true
   langcode: true
   links: true
