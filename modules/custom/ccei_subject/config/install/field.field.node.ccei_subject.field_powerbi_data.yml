@@ -6,8 +6,6 @@ dependencies:
     - node.type.ccei_subject
   module:
     - link
-_core:
-  default_config_hash: NrnWGi5lG8xXyz874f-k8pu_VbDIP0RR76wcuLV2MqU
 id: node.ccei_subject.field_powerbi_data
 field_name: field_powerbi_data
 entity_type: node
