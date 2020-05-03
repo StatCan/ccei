@@ -5,7 +5,6 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.ccei_highlight.body
     - field.field.node.ccei_highlight.field_background
-    - field.field.node.ccei_highlight.field_highlight_tag
     - field.field.node.ccei_highlight.field_subject_reference
     - image.style.overview
     - node.type.ccei_highlight
@@ -28,7 +27,6 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
-  field_highlight_tag: true
   field_subject_reference: true
   langcode: true
   links: true

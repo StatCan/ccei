@@ -24,9 +24,6 @@ settings:
     target_bundles:
       ccei_whats_new_item: ccei_whats_new_item
     target_bundles_drag_drop:
-      ccei_paragraph:
-        weight: 2
-        enabled: false
       ccei_whats_new_item:
         enabled: true
         weight: 4
