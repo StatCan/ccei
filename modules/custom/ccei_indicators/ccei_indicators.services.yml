@@ -10,3 +10,4 @@ services:
       - '@config.factory'
       - '@http_client'
       - '@npx.math_executor'
+      - '@logger.channel.ccei_indicators'

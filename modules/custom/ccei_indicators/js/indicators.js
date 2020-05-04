@@ -18,7 +18,7 @@
               $(this).addClass('disabled')
               $(this).attr('aria-disabled', true)
             }
-            else if (steps < indCount - 1) {
+            if (steps < indCount - 1) {
               wrapper.find('.btn-ind.next').removeClass('disabled')
               wrapper.find('.btn-ind.next').attr('aria-disabled', false)
             }
@@ -33,7 +33,7 @@
               $(this).addClass('disabled')
               $(this).attr('aria-disabled', true)
             }
-            else if (steps > 0) {
+            if (steps > 0) {
               wrapper.find('.btn-ind.prev').removeClass('disabled')
               wrapper.find('.btn-ind.prev').attr('aria-disabled', false)
             }

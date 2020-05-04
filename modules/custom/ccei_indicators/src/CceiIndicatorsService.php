@@ -5,7 +5,9 @@ namespace Drupal\ccei_indicators;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
 use NXP\MathExecutor;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -35,6 +37,13 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
   protected $executor;
 
   /**
+   * Logger service.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   */
+  protected $logger;
+
+  /**
    * Constructs a new CceiIndicatorsService object.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
@@ -43,11 +52,14 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
    *   An HTTP client.
    * @param \NXP\MathExecutor $executor
    *   A mathematical expression parser.
+   * @param \Psr\Log\LoggerInterface $logger
+   *   A logger instance.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, ClientInterface $http_client, MathExecutor $executor) {
+  public function __construct(ConfigFactoryInterface $config_factory, ClientInterface $http_client, MathExecutor $executor, LoggerInterface $logger) {
     $this->configFactory = $config_factory;
     $this->httpClient = $http_client;
     $this->executor = $executor;
+    $this->logger = $logger;
   }
 
   /**
@@ -100,6 +112,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     $queriesAccumulator = [];
     $queriesLookupTable = [];
     foreach ($indicators as $indicatorKey => $indicator) {
+      $hasMultipleSources = count($indicator['sources']) > 1;
       foreach ($indicator['sources'] as $sourceKey => $source) {
         foreach ($source['coordinates'] as $coordinate) {
           // Pad incomplete coordinates to 10 numbers.
@@ -108,8 +121,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
           $queriesAccumulator[] = [
             'productId' => $source['productId'],
             'coordinate' => $fullCoordinate,
-            // TODO: use more latestN periods when dealing with many sources.
-            'latestN' => 2,
+            'latestN' => $hasMultipleSources ? 5 : 2,
           ];
 
           // The API response doesn't maintain query order.
@@ -134,21 +146,24 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     // TODO: figure out how the url should be handled or user-configured.
     $responses = $this->queryCoords($urls['url1'], $queriesAccumulator);
 
-    // Redistribute API responses to their respective indicators, keeping order.
-    foreach ($responses as $key => $response) {
-      $index = $response['object']['productId'] . '-' . $response['object']['coordinate'];
-      $sourceKey = $queriesLookupTable[$index]['source'];
-      $indicatorKey = $queriesLookupTable[$index]['indicator'];
-      $indicators[$indicatorKey]['response'][$sourceKey][$index] = $response;
+    if (!empty($responses)) {
+      // Redistribute API responses to their respective indicators, keep order.
+      foreach ($responses as $key => $response) {
+        $index = $response['object']['productId'] . '-' . $response['object']['coordinate'];
+        $sourceKey = $queriesLookupTable[$index]['source'];
+        $indicatorKey = $queriesLookupTable[$index]['indicator'];
+        $indicators[$indicatorKey]['response'][$sourceKey][$index] = $response;
+      }
+
+      // Process each indicators.
+      $results = [];
+      foreach ($indicators as $indicator) {
+        $results[] = $this->process($indicator);
+      }
+      return $results;
     }
 
-    // Process each indicators.
-    $results = [];
-    foreach ($indicators as $key => $indicator) {
-      $results[] = $this->process($indicator);
-    }
-
-    return $results;
+    return [];
   }
 
   /**
@@ -164,14 +179,25 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
    */
   private function queryCoords($url, array $query) {
     // TODO: Should we use wsdata module to deal with the webservice instead?
-    // Guide: https://www.statcan.gc.ca/eng/developers/wds/user-guide#a12-4
-    $request = $this->httpClient->post($url,
-      [
-        'json' => $query,
-      ]);
-
-    // TODO: Implement http response status validation.
-    return Json::decode($request->getBody()->getContents());
+    try {
+      // Guide: https://www.statcan.gc.ca/eng/developers/wds/user-guide#a12-4
+      $request = $this->httpClient->post($url,
+        [
+          'json' => $query,
+        ]);
+      return Json::decode($request->getBody()->getContents());
+    }
+    catch (RequestException $e) {
+      if ($e->hasResponse()) {
+        $response = $e->getResponse();
+        $this->logger->error('@status @reason_phrase: @message', [
+          '@status' => $response->getStatusCode(),
+          '@reason_phrase' => $response->getReasonPhrase(),
+          '@message' => Json::decode((string) $response->getBody())['message'],
+        ]);
+      }
+      return [];
+    }
   }
 
   /**
@@ -186,19 +212,52 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
    * @throws \Exception
    */
   private function process(array $indicator) {
+    $hasMultipleSources = count($indicator['sources']) > 1;
+    $commonLatestPeriod = '';
+    if ($hasMultipleSources) {
+      // Pre-compute the latest common reference period between the sources.
+      $latestPeriodPerSource = [];
+      foreach ($indicator['response'] as $source) {
+        foreach ($source as $responseDatapoint) {
+          if (!empty($responseDatapoint['object']['vectorDataPoint'])) {
+            // Get first valid response from this source.
+            $latestPeriodPerSource[] = end($responseDatapoint['object']['vectorDataPoint'])['refPer'];
+            break;
+          }
+          // TODO: possible issue if no vectorDataPoint found for a source?
+        }
+      }
+      $commonLatestPeriod = min($latestPeriodPerSource);
+    }
+
     $datapoints = [];
     foreach ($indicator['response'] as $sourceKey => $source) {
-      // Reset responses to numerical array.
+      // Reset responses to numerical array, important for the following search.
       $responseIndicators = array_values($source);
       foreach ($responseIndicators as $key => $responseDatapoint) {
-        if (isset($responseDatapoint['object'])) {
-          $datapoints['values'][$sourceKey][$key] = $responseDatapoint['object']['vectorDataPoint'];
-          $datapoints['previous'][$sourceKey][$key] = reset($datapoints['values'][$sourceKey][$key])['value'];
-          $datapoints['latest'][$sourceKey][$key] = end($datapoints['values'][$sourceKey][$key])['value'];
+        if (!empty($responseDatapoint['object']['vectorDataPoint'])) {
+          $values = $responseDatapoint['object']['vectorDataPoint'];
+          $datapoints['values'][$sourceKey][$key] = $values;
+          if (count($values) < 2) {
+            // On a response with missing refPer, treat values as zero.
+            $this->logger->warning('Not enough reference periods, treating as zero: @indicator', [
+              '@indicator' => Json::encode($responseDatapoint),
+            ]);
+            $datapoints['previous'][$sourceKey][$key] = 0;
+            $datapoints['latest'][$sourceKey][$key] = 0;
+          }
+          else {
+            // Find matching refPer and use as latest or just use last one.
+            $latestPeriodIndex = $hasMultipleSources ? array_search($commonLatestPeriod, array_column($values, 'refPer')) : array_key_last($values);
+            $datapoints['previous'][$sourceKey][$key] = $values[$latestPeriodIndex - 1]['value'];
+            $datapoints['latest'][$sourceKey][$key] = $values[$latestPeriodIndex]['value'];
+          }
         }
         else {
           // On a failed response, treat values as zero.
-          // TODO: log the issue?
+          $this->logger->warning('Failed response, treating as zero: @indicator', [
+            '@indicator' => Json::encode($responseDatapoint),
+          ]);
           $datapoints['previous'][$sourceKey][$key] = 0;
           $datapoints['latest'][$sourceKey][$key] = 0;
         }
@@ -210,13 +269,14 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
     $latest = $this->calculate($indicator, $datapoints['latest']);
 
     // Format the indicator value.
-    // TODO: refactor, use predefined function instead of trusting user input.
-    // TODO: Implement Rounding and Bankers' rounding.
-    if (isset($indicator['valueformat'])) {
-      $formattedValue = call_user_func_array(
-        $indicator['valueformat']['function'],
-        [$latest, $indicator['valueformat']['precision']]
-      );
+    if (!empty($indicator['value_format'])) {
+      $precision = $indicator['rounding_precision'] ?? 0;
+      if ($indicator['value_format'] == 'round') {
+        $formattedValue = round($latest, $precision);
+      }
+      elseif ($indicator['value_format'] == 'bankers') {
+        $formattedValue = round($latest, $precision, PHP_ROUND_HALF_EVEN);
+      }
     }
 
     $percentChange = round(($latest - $previous) / $previous * 100, 1);
