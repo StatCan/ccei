@@ -1,4 +1,3 @@
-uuid: a3648be6-f5ad-4d9d-82e7-82918ddba7b5
 langcode: en
 status: true
 dependencies:
@@ -8,6 +7,8 @@ dependencies:
   module:
     - node
     - user
+_core:
+  default_config_hash: zl7sH1zoJc5QhoHVh7Rtce7GsXYmBnfXnpw4y16l94g
 id: subject_icons
 label: 'Subject Icons'
 module: views
@@ -48,14 +49,22 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: some
+        type: none
         options:
-          items_per_page: 5
           offset: 0
       style:
         type: default
+        options:
+          grouping: {  }
+          row_class: 'col-xs-6 col-sm-3 col-md-2'
+          default_row_class: false
       row:
         type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: true
       fields:
         nid:
           id: nid
@@ -197,7 +206,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"col-xs-6 col-sm-3 col-md-2\">\r\n  <a href=\"./node/{{ nid }}\" class=\"topic-lnk\">\r\n    <i class=\"{{ field_subject_icon_class }}\"></i>\r\n    <span>{{ title__value }}</span>\r\n  </a>\r\n</div>"
+            text: "<a href=\"./node/{{ nid }}\" class=\"topic-lnk\">\r\n  <i class=\"{{ field_subject_icon_class }}\"></i>\r\n  <span>{{ title__value }}</span>\r\n</a>"
             make_link: false
             path: ''
             absolute: false
@@ -290,7 +299,7 @@ display:
           exposed: false
           expose:
             label: ''
-      title: 'Subject Icons'
+      title: 'Browse topics'
       header: {  }
       footer: {  }
       empty: {  }
@@ -315,6 +324,9 @@ display:
       display_extenders:
         metatag_display_extender: {  }
       block_description: 'Subject Icon List'
+      allow:
+        items_per_page: false
+      block_category: 'Lists (Views)'
     cache_metadata:
       max-age: -1
       contexts:

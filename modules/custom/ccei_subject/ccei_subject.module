@@ -24,5 +24,15 @@ function ccei_subject_theme() {
       'template' => 'field--field-powerbi-data',
       'base hook' => 'field',
     ],
+    // Add views block template for subject icons.
+    'block__views_block__subject_icons_block_1' => [
+      'template' => 'block--views-block--subject-icons-block-1',
+      'base hook' => 'views',
+    ],
+    // Add views formatter template for subject icons.
+    'views_view_unformatted__subject_icons' => [
+      'template' => 'views-view-unformatted--subject_icons',
+      'base hook' => 'views_view_unformatted',
+    ],
   ];
 }
