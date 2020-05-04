@@ -209,6 +209,7 @@ Feature: CCEI Content Types
     And I enter "https://dv-vd.cloud.statcan.ca/home/index/CCEI-Overview_en" for "field_powerbi[0][uri]"
     And I enter "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2510002201" for "field_powerbi_data[0][uri]"
     And I enter "Table 25-10-0022-01 Installed plants, annual generating capacity by type of electricity generation" for "field_powerbi_data[0][title]"
+    And I enter "mdi mdi-transmission-tower" for "field_subject_icon_class[0][value]"
     And I check the box "edit-status-value"
     Then I click the "#edit-submit" element
     Then I wait 1 seconds
