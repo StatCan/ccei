@@ -6,6 +6,8 @@ dependencies:
     - node.type.ccei_subject
   module:
     - link
+_core:
+  default_config_hash: FE7f9gMWXNcOo2s0l0v3ilQagFP7lUWRbNLAkHDLUJ0
 id: node.ccei_subject.field_powerbi_data
 field_name: field_powerbi_data
 entity_type: node
@@ -13,7 +15,7 @@ bundle: ccei_subject
 label: 'Power BI Data Table Links'
 description: 'Links that will be displayed below the Power BI visualization.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

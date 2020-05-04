@@ -8,12 +8,13 @@ dependencies:
     - field.field.node.ccei_subject.field_powerbi_data
     - field.field.node.ccei_subject.field_publications_params
     - field.field.node.ccei_subject.field_subject_highlights
-    - field.field.node.ccei_subject.field_subject_icon
+    - field.field.node.ccei_subject.field_subject_icon_class
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
   module:
     - ccei_indicators
+    - ccei_subject
     - entity_reference_revisions
     - field_group
     - layout_builder
@@ -258,6 +259,8 @@ third_party_settings:
         id: ''
         classes: row
       label: ''
+_core:
+  default_config_hash: 2rkwYQpjdMQ5HTcrlmLFMtMG1CTb-jIxau9O5SrTOTk
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -317,6 +320,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
+  field_subject_icon_class:
+    weight: 37
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_subject_indicators:
     type: indicators_field_formatter
     weight: 32
@@ -334,7 +345,6 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
-  field_subject_icon: true
   langcode: true
   links: true
   search_api_excerpt: true

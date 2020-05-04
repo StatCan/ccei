@@ -9,13 +9,15 @@ dependencies:
     - field.field.node.ccei_subject.field_powerbi_data
     - field.field.node.ccei_subject.field_publications_params
     - field.field.node.ccei_subject.field_subject_highlights
-    - field.field.node.ccei_subject.field_subject_icon
+    - field.field.node.ccei_subject.field_subject_icon_class
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
   module:
     - text
     - user
+_core:
+  default_config_hash: vSBp2YETmnm974dvksxBkkT2gS9nslqdbylNLLQFteI
 id: node.ccei_subject.teaser
 targetEntityType: node
 bundle: ccei_subject
@@ -40,7 +42,7 @@ hidden:
   field_powerbi_data: true
   field_publications_params: true
   field_subject_highlights: true
-  field_subject_icon: true
+  field_subject_icon_class: true
   field_subject_index_ref: true
   field_subject_indicators: true
   field_subject_whats_new: true
