@@ -40,6 +40,18 @@
         {
             "type": "composer",
             "url": "https://drupalwxt.github.io/composer-extdeps/"
+        },
+        {
+            "type": "package",
+            "package": {
+              "name": "mdi/materialdesign-webfont",
+              "version": "3.5.94",
+              "type": "drupal-library",
+              "dist": {
+                "url": "https://github.com/Templarian/MaterialDesign-Webfont/archive/v3.5.94.zip",
+                "type": "zip"
+              }
+            }
         }
     ],
     "scripts": {
@@ -124,7 +136,8 @@
         "drupalwxt/wxt": "3.0.8",
         "acquia/lightning": "4.1.3",
         "drupal/iframe": "^2.4",
-        "nxp/math-executor": "^1.1"
+        "nxp/math-executor": "^1.1",
+        "mdi/materialdesign-webfont" : "^3.5.94"
     },
     "autoload": {
         "psr-4": {
