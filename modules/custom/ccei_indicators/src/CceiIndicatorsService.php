@@ -238,14 +238,26 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
         if (!empty($responseDatapoint['object']['vectorDataPoint'])) {
           $values = $responseDatapoint['object']['vectorDataPoint'];
           $datapoints['values'][$sourceKey][$key] = $values;
-          // Find matching refPer and use as latest or just use last one.
-          $latestPeriodIndex = $hasMultipleSources ? array_search($commonLatestPeriod, array_column($values, 'refPer')) : array_key_last($values);
-          $datapoints['previous'][$sourceKey][$key] = $values[$latestPeriodIndex - 1]['value'];
-          $datapoints['latest'][$sourceKey][$key] = $values[$latestPeriodIndex]['value'];
+          if (count($values) < 2) {
+            // On a response with missing refPer, treat values as zero.
+            $this->logger->warning('Not enough reference periods, treating as zero: @indicator', [
+              '@indicator' => Json::encode($responseDatapoint),
+            ]);
+            $datapoints['previous'][$sourceKey][$key] = 0;
+            $datapoints['latest'][$sourceKey][$key] = 0;
+          }
+          else {
+            // Find matching refPer and use as latest or just use last one.
+            $latestPeriodIndex = $hasMultipleSources ? array_search($commonLatestPeriod, array_column($values, 'refPer')) : array_key_last($values);
+            $datapoints['previous'][$sourceKey][$key] = $values[$latestPeriodIndex - 1]['value'];
+            $datapoints['latest'][$sourceKey][$key] = $values[$latestPeriodIndex]['value'];
+          }
         }
         else {
           // On a failed response, treat values as zero.
-          // TODO: log the issue?
+          $this->logger->warning('Failed response, treating as zero: @indicator', [
+            '@indicator' => Json::encode($responseDatapoint),
+          ]);
           $datapoints['previous'][$sourceKey][$key] = 0;
           $datapoints['latest'][$sourceKey][$key] = 0;
         }
