@@ -38,6 +38,18 @@
  * @see template_preprocess_field()
  */
 #}
-{% for item in items %}
-    <div class="col-sm-6 col-md-4 mb-2"><div class="publication-card">{{ item.content }}</div></div>
-{% endfor %}
+{% if label_hidden %}
+  {% if multiple %}
+    {% for item in items %}
+      <p class="publication-text">{{ item.content }}</p>
+    {% endfor %}
+  {% else %}
+    {% for item in items %}
+      <p class="publication-text">{{ item.content }}</p>
+    {% endfor %}
+  {% endif %}
+{% else %}
+    {% for item in items %}
+      <p class="publication-text">{{ item.content }}</p>
+    {% endfor %}
+{% endif %}
