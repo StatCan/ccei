@@ -1,5 +1,4 @@
-{#
-/**
+{# /**
  * @file
  * Theme override to display a node.
  *
@@ -65,20 +64,10 @@
  *   in different view modes.
  */
 #}
-{%
-  set classes = [
-    node.bundle|clean_class,
-    node.isPromoted() ? 'is-promoted',
-    node.isSticky() ? 'is-sticky',
-    not node.isPublished() ? 'is-unpublished',
-    view_mode ? view_mode|clean_class,
-    'clearfix',
-  ]
-%}
-<article{{ attributes.addClass(classes) }}>
-
-  <div{{ content_attributes.addClass('content') }}>
-    {{ content }}
-  </div>
-
-</article>
+<div class="highlight-card">
+  {{ content.field_background }}
+  <a class="btn btn-default" href="{{ url }}"><span class="wb-inv">View highlight</span><i class="mdi mdi-share"></i></a>
+  <a href="{{ url }}">
+  {{ content.body }}
+  </a>
+</div>

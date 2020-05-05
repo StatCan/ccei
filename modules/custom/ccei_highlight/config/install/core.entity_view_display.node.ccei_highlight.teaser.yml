@@ -10,23 +10,31 @@ dependencies:
     - node.type.ccei_highlight
   module:
     - image
+    - text
     - user
 id: node.ccei_highlight.teaser
 targetEntityType: node
 bundle: ccei_highlight
 mode: teaser
 content:
+  body:
+    type: text_summary_or_trimmed
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      trim_length: 140
+    third_party_settings: {  }
   field_background:
     type: image
     weight: 0
     region: content
-    label: visually_hidden
+    label: hidden
     settings:
       image_style: overview
-      image_link: content
+      image_link: ''
     third_party_settings: {  }
 hidden:
-  body: true
   field_subject_reference: true
   langcode: true
   links: true
