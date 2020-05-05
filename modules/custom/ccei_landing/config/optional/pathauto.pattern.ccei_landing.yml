@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: ccei_landing
+label: 'CCEI Landing'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  357097ed-305b-4a11-9bc7-6b80f1688cd2:
+    id: node_type
+    bundles:
+      ccei_landing: ccei_landing
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 357097ed-305b-4a11-9bc7-6b80f1688cd2
+selection_logic: and
+weight: -5
+relationships: {  }

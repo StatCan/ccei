@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.ccei_landing
+  module:
+    - text
+id: node.ccei_landing.body
+field_name: body
+entity_type: node
+bundle: ccei_landing
+label: Description
+description: 'A description of this page, for use in teasers and lists of content.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

@@ -1,0 +1,13 @@
+name: 'CCEI Landing page'
+package: CCEI
+core: 8.x
+core_version_requirement: '^8 || ^9'
+type: module
+description: 'Provides a content type which allows you to build free-form one-off landing pages.'
+dependencies:
+  - drupal:node
+  - lightning_layout:lightning_layout
+
+# Information added by Drupal.org packaging script on 2020-04-28
+version: '8.x-2.x'
+project: 'ccei_landing'

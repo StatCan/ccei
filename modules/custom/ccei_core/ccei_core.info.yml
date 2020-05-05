@@ -9,6 +9,7 @@ dependencies:
   - ccei_indicators
   - ccei_subject
   - ccei_highlight
+  - ccei_landing
 
 # Required libraries
 libraries: { }
