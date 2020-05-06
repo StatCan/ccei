@@ -17,6 +17,7 @@ dependencies:
     - ccei_subject
     - entity_reference_revisions
     - field_group
+    - field_limiter
     - layout_builder
     - layout_builder_restrictions
     - layout_library
@@ -259,8 +260,6 @@ third_party_settings:
         id: ''
         classes: row
       label: ''
-_core:
-  default_config_hash: 8WzTShs5-CiNM5yvmWQIhtPAMt-aRst2Qf77scUI97Q
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -315,10 +314,13 @@ content:
     weight: 33
     label: hidden
     settings:
-      view_mode: teaser
-      link: false
+      type: entity_reference_entity_view
+      settings:
+        view_mode: teaser
+      offset: 0
+      limit: 3
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: field_limiter
     region: content
   field_subject_indicators:
     type: indicators_field_formatter
