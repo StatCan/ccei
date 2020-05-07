@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+  <title>Search - Canadian Center for Energy Information - Canada.ca
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta name="description"
+    content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities">
+  <!--[if gte IE 9 | !IE ]><!-->
+  <link href="../assets/favicon.ico" rel="icon" type="image/x-icon">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/theme.min.css">
+  <link rel="stylesheet" href="../css/material-design-icons/css/materialdesignicons.min.css">
+  <!--<![endif]-->
+  <!--[if lt IE 9]>
+		<link href="../assets/favicon.ico" rel="shortcut icon" />
+		
+		<link rel="stylesheet" href="../css/ie8-theme.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+		<script src="../js/ie8-wet-boew.min.js"></script>
+		<![endif]-->
+  <!--[if lte IE 9]>
+  <![endif]-->
+  <link rel="stylesheet" href="../css/CCEI/utils.css">
+  <link rel="stylesheet" href="../css/CCEI/global.css">
+  <link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+  <link rel="stylesheet" href="../css/CCEI/jquery-ui.css">
+  <noscript>
+    <link rel="stylesheet" href="../css/noscript.min.css" /></noscript>
+</head>
+
+<body class="search page-type-nav" vocab="http://schema.org/" typeof="WebPage">
+  <nav>
+    <ul id="wb-tphp">
+      <li class="wb-slc">
+        <a class="wb-sl" href="#wb-cont">Skip to main content</a>
+      </li>
+      <li class="wb-slc">
+        <a class="wb-sl" href="#wb-info">Skip to "About government"</a>
+      </li>
+    </ul>
+  </nav>
+  <header>
+    <div id="wb-bnr" class="container">
+      <section id="wb-lng" class="text-right">
+        <h2 class="wb-inv">Language selection</h2>
+        <ul class="list-inline mb-0">
+          <li><a lang="fr" hreflang="fr" href="home-fr.html">Français</a></li>
+        </ul>
+      </section>
+      <div class="row">
+        <div class="brand col-xs-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+          <a href="https://www.canada.ca/en.html" property="url"><img src="../assets/sig-blk-en.svg" alt=""
+              property="logo"><span class="wb-inv" property="name"> Government of Canada / <span lang="fr">Gouvernement
+                du Canada</span></span></a>
+          <meta property="areaServed" typeof="Country" content="Canada">
+          <link property="logo" href="../assets/wmms-blk.svg">
+        </div>
+        <section id="wb-srch" class="col-lg-8 text-right">
+          <h2>Search</h2>
+          <form action="#" method="post" name="cse-search-box" role="search" class="form-inline">
+            <div class="form-group">
+              <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+              <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value=""
+                size="34" maxlength="170" placeholder="Search Canada.ca">
+              <datalist id="wb-srch-q-ac">
+              </datalist>
+            </div>
+            <div class="form-group submit">
+              <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span
+                  class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+    <!-- <nav class="gcweb-menu" typeof="SiteNavigationElement">
+      <div class="container">
+        <h2 class="wb-inv">Menu</h2>
+        <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span
+            class="expicon glyphicon glyphicon-chevron-down"></span></button>
+        <ul role="menu" aria-orientation="vertical" data-ajax-replace="../ajax/sitemenu-v5-en.html">
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/jobs.html">Jobs and the
+              workplace</a></li>
+          <li role="presentation"><a role="menuitem"
+              href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+          <li role="presentation"><a role="menuitem" href="https://travel.gc.ca/">Travel and tourism</a></li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/business.html">Business and
+              industry</a></li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/benefits.html">Benefits</a>
+          </li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/health.html">Health</a>
+          </li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+          <li role="presentation"><a role="menuitem"
+              href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/defence.html">National
+              security and defence</a></li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/culture.html">Culture,
+              history and sport</a></li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/policing.html">Policing,
+              justice and emergencies</a></li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/transport.html">Transport
+              and infrastructure</a></li>
+          <li role="presentation"><a role="menuitem"
+              href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/finance.html">Money and
+              finances</a></li>
+          <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/science.html">Science and
+              innovation</a></li>
+        </ul>
+      </div>
+    </nav> -->
+    <nav id="wb-bc" property="breadcrumb">
+      <h2 class="wb-inv">You are here:</h2>
+      <div class="container">
+        <ol class="breadcrumb pl-0">
+          <li><a href='https://www.canada.ca/en.html'>Canada.ca</a></li>
+          <li>
+            <a href='https://www.canada.ca/en/services/environment.html'>Environment and natural resources</a>
+          </li>
+          <li>
+            <a href='https://www.canada.ca/en/services/environment/energy.html'>Energy</a>
+          </li>
+          <li><a href="home-en.html">Canadian Center for Energy Information</a></li>
+        </ol>
+      </div>
+    </nav>
+    <div id="wb-bar">
+      <div class="container">
+        <section class="wb-mb-links col-xs-12" id="wb-glb-mn" hidden>
+          <h2>Search and menus</h2>
+          <ul class="pnl-btn list-inline text-right">
+            <li>
+              <a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl"
+                class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span
+                    class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a>
+            </li>
+          </ul>
+          <div id="mb-pnl"></div>
+        </section>
+      </div>
+    </div>
+    <div id="header">
+      <div class="container">
+        <nav role="navigation" id="wb-sm" data-ajax-fetch="../ajax/CCEI-menu.html" data-trgt="mb-pnl"
+          class="wb-menu height-100" typeof="SiteNavigationElement">
+          <div class="nvbar">
+            <h2>Topics menu</h2>
+            <ul class="list-inline menu">
+              <li><a href="#">Subjects</a></li>
+              <li><a href="#">Market Information</a></li>
+              <li><a href="#">Tools</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div id="subheader">
+      <div class="container">
+        <a class="ccei-logo display-flex flex-align-center" href="home-en.html">
+          <img src="../assets/CCEI/CCEI-EN-SMALL.png" alt="" />
+          <span>Canadian Center for Energy Information</span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <main property="mainContentOfPage" typeof="WebPageElement">
+    <h1 id="wb-cont" class="wb-inv">Search CCEI</h1>
+    <div class="py-4 bg-grey brdr-b-grey">
+      <div class="container">
+        <form action="../CCEI/search-en.html" name="ccei-search" role="search">
+          <label for="search" class="wb-inv">Search</label>
+          <div id="srch-bar" class="input-group">
+            <input id="search" type="text" class="form-control" placeholder="Search CCEI..." />
+            <span class="input-group-btn">
+              <button id="search-sub" class="btn btn-primary" type="submit"><i class="fas fa-search"><span
+                    class="wb-inv">Search</span></i></button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="container mt-3">
+      <div class="row display-flex">
+        <div class="col-md-4 mb-3 left-panel">
+          <section id="filters-list">
+            <h2 class="mt-0"><i class="fas fa-sliders-h pr-1"></i> Filters</h2>
+            <hr>
+            <details>
+              <summary>Topics</summary>
+              <form class="mt-2">
+                <label for="search-topics" class="wb-inv">Search</label>
+                <div class="input-group mb-2">
+                  <input id="search-topics" type="text" class="form-control" placeholder="Search topics" />
+                  <span class="input-group-btn">
+                    <button id="btn-search-topics" class="btn btn-primary" type="submit"><i class="fas fa-search"><span
+                          class="wb-inv">Search</span></i></button>
+                  </span>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-tpc1" id="chk-tpc1">
+                  <label for="chk-tpc1">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-tpc2" id="chk-tpc2">
+                  <label for="chk-tpc2">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-tpc3" id="chk-tpc3">
+                  <label for="chk-tpc3">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-tpc4" id="chk-tpc4">
+                  <label for="chk-tpc4">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-tpc5" id="chk-tpc5">
+                  <label for="chk-tpc5">Example title</label>
+                </div>
+              </form>
+            </details>
+            <details>
+              <summary>Energy Products</summary>
+              <form class="mt-2">
+                <label for="search-commodities" class="wb-inv">Search</label>
+                <div class="input-group mb-2">
+                  <input id="search-commodities" type="text" class="form-control" placeholder="Search energy products" />
+                  <span class="input-group-btn">
+                    <button id="btn-search-commodities" class="btn btn-primary" type="submit"><i
+                        class="fas fa-search"><span class="wb-inv">Search</span></i></button>
+                  </span>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-cmd1" id="chk-cmd1">
+                  <label for="chk-cmd1">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-cmd2" id="chk-cmd2">
+                  <label for="chk-cmd2">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-cmd3" id="chk-cmd3">
+                  <label for="chk-cmd3">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-cmd4" id="chk-cmd4">
+                  <label for="chk-cmd4">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-cmd5" id="chk-cmd5">
+                  <label for="chk-cmd5">Example title</label>
+                </div>
+              </form>
+            </details>
+            <details>
+              <summary>Collection sources</summary>
+              <form class="mt-2">
+                <label for="search-sources" class="wb-inv">Search</label>
+                <div class="input-group mb-2">
+                  <input id="search-sources" type="text" class="form-control" placeholder="Search collection sources" />
+                  <span class="input-group-btn">
+                    <button id="btn-search-sources" class="btn btn-primary" type="submit"><i class="fas fa-search"><span
+                          class="wb-inv">Search</span></i></button>
+                  </span>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-src1" id="chk-src1">
+                  <label for="chk-src1">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-src2" id="chk-src2">
+                  <label for="chk-src2">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-src3" id="chk-src3">
+                  <label for="chk-src3">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-src4" id="chk-src4">
+                  <label for="chk-src4">Example title</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-src5" id="chk-src5">
+                  <label for="chk-src5">Example title</label>
+                </div>
+              </form>
+            </details>
+            <details>
+              <summary>Collection period</summary>
+              <div class="mt-2">
+                <label for="startdate" class="width-100">Start Date<span class="datepicker-format"> (<abbr
+                      title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+                <input type="text" id="startdate" name="startdate" />
+              </div>
+              <div>
+                <label for="enddate" class="width-100">End Date<span class="datepicker-format"> (<abbr
+                      title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+                <input type="text" id="enddate" name="enddate" />
+              </div>
+            </details>
+            <details>
+              <summary>Collection frequency</summary>
+              <form class="mt-2">
+                <div>
+                  <input type="checkbox" name="chk-bi-ann" id="chk-bi-ann">
+                  <label for="chk-bi-ann">Bi-annual</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-ann" id="chk-ann">
+                  <label for="chk-ann">Annual</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-qua" id="chk-qua">
+                  <label for="chk-qua">Quarterly</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-mon" id="chk-mon">
+                  <label for="chk-mon">Monthly</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-occ" id="chk-occ">
+                  <label for="chk-occ">Occasionally</label>
+                </div>
+              </form>
+            </details>
+            <details>
+              <summary>Collection geography</summary>
+              <form class="mt-2">
+                <div>
+                  <input type="checkbox" name="chk-fed" id="chk-fed" class="mb-0">
+                  <label for="chk-fed" class="mb-0">Federal</label>
+                </div>
+                <hr class="my-1">
+                <div>
+                  <input type="checkbox" name="alberta" id="alberta">
+                  <label for="alberta">Alberta</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-bc" id="chk-bc">
+                  <label for="chk-bc">British Columbia</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-man" id="chk-man">
+                  <label for="chk-man">Manitoba</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-nb" id="chk-nb">
+                  <label for="chk-nb">New Brunswick</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-nf-lab" id="chk-nf-lab">
+                  <label for="chk-nf-lab">Newfoundland and Labrador</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-nwt" id="chk-nwt">
+                  <label for="chk-nwt">Northwest Territories</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-ns" id="chk-ns">
+                  <label for="chk-ns">Nova Scotia</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-nun" id="chk-nun">
+                  <label for="chk-nun">Nunavut</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-ont" id="chk-ont">
+                  <label for="chk-ont">Ontario</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-pei" id="chk-pei">
+                  <label for="chk-pei">Prince Edward Island</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-qc" id="chk-qc">
+                  <label for="chk-qc">Quebec</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-sas" id="chk-sas">
+                  <label for="chk-sas">Saskatchewan</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="chk-yuk" id="chk-yuk">
+                  <label for="chk-yuk">Yukon</label>
+                </div>
+              </form>
+            </details>
+          </section>
+        </div>
+        <div class="col-md-8">
+          <section id="results">
+            <div id="filters" class="display-flex flex-align-baseline" style="flex-wrap: wrap;">
+
+              <p class="pr-1">Search results for "Coal" with filters</p>
+              <a href="" title="Remove &quot;Coal&quot; filter"
+                class="btn btn-primary-inverted ndm-facet-button-close display-flex flex-align-center"
+                role="button"><span class="wb-invisible">Remove </span>Coal<i class="fas fa-times-circle pl-1"
+                  role="presentation" aria-hidden="true"></i></a>
+              <a href="" title="Remove &quot;Prices&quot; filter"
+                class="btn btn-primary-inverted ndm-facet-button-close display-flex flex-align-center"
+                role="button"><span class="wb-invisible">Remove </span>Prices<i class="fas fa-times-circle pl-1"
+                  role="presentation" aria-hidden="true"></i></a>
+              <a href="" title="Remove &quot;Date&quot; filter"
+                class="btn btn-primary-inverted ndm-facet-button-close display-flex flex-align-center"
+                role="button"><span class="wb-invisible">Remove </span>Oct 24, 2009 - Mar 10, 2011<i
+                  class="fas fa-times-circle pl-1" role="presentation" aria-hidden="true"></i></a>
+
+              <a href="" title="Clear all filters"
+                class="btn btn-clear-all ndm-facet-button-close display-flex flex-align-center" role="button"><span
+                  class="wb-invisible">Remove </span>Clear all<i class="fas fa-times-circle pl-1" role="presentation"
+                  aria-hidden="true"></i></a>
+            </div>
+          </section>
+          <hr class="mt-1">
+          <!-- <button class="pull-right btn btn-default" id="search-page-more"><i class="mdi mdi-dots-vertical pr-1"></i> More</button> -->
+          <section class="mt-3">
+            <div id="search-tabs" class="wb-tabs">
+              <div class="tabpanels">
+                <details id="search-panel1" open="open">
+                  <summary><i class="fas fa-search"></i> All</summary>
+                  <form>
+                    <label for="all-time" class="mt-2">Sort</label>
+                    <div class="display-flex flex-wrap flex-align-center flex-justify-spc-btwn">
+                      <select class="form-control input-lg mrgn-bttm-md pull-left" id="all-time">
+                        <option value="relevance" selected aria-selected="true">Relevance</option>
+                        <option value="most-popular" aria-selected="false">Most popular </option>
+                        <option value="latest" aria-selected="false">Latest</option>
+                      </select>
+                      <p class="text-muted">437 results (0.78 seconds)</p>
+                    </div>
+                  </form>
+                  <h3>Example search result public dataset title</h3>
+                  <p><small class="text-muted">Jan 1, 2020</small> - Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Quo, debitis! Placeat nam corrupti sed eaque asperiores tenetur quia, molestiae modi quod
+                    provident rem doloribus velit totam, veniam veritatis. Similique quae nihil iure fugiat, rerum
+                    ducimus vero a, omnis ad error magnam! Voluptatibus, porro sequi ut facere recusandae nesciunt?
+                    Tempore, quisquam.</p>
+                  <p><small class="text-muted">0220-000001 provided by Canada Energy Regulator</small></p>
+                  <hr class=m-1>
+                  <div class="tag-list">
+                    <div class="tag"><i class="mdi mdi-table"></i> Public dataset</div>
+                    <div class="tag">Coal</div>
+                    <div class="tag">Prices</div>
+                  </div>
+
+                  <h3>Example search result confidential dataset title</h3>
+                  <p><small class="text-muted">Jan 1, 2020</small> - Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Quo, debitis! Placeat nam corrupti sed eaque asperiores tenetur quia, molestiae modi quod
+                    provident rem doloribus velit totam, veniam veritatis. Similique quae nihil iure fugiat, rerum
+                    ducimus vero a, omnis ad error magnam! Voluptatibus, porro sequi ut facere recusandae nesciunt?
+                    Tempore, quisquam.</p>
+                  <p><small class="text-muted">0220-000001 provided by Canada Energy Regulator</small></p>
+                  <hr class=m-1>
+                  <div class="tag-list">
+                    <div class="tag"><i class="mdi mdi-table"></i> Confidential dataset</div>
+                    <div class="tag">Coal</div>
+                    <div class="tag">Prices</div>
+                  </div>
+
+                  <h3>Example search result publication title</h3>
+                  <p><small class="text-muted">Jan 1, 2020</small> - Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Quo, debitis! Placeat nam corrupti sed eaque asperiores tenetur quia, molestiae modi quod
+                    provident rem doloribus velit totam, veniam veritatis. Similique quae nihil iure fugiat, rerum
+                    ducimus vero a, omnis ad error magnam! Voluptatibus, porro sequi ut facere recusandae nesciunt?
+                    Tempore, quisquam.</p>
+                  <p><small class="text-muted">0220-000001 provided by Canada Energy Regulator</small></p>
+                  <hr class=m-1>
+                  <div class="tag-list">
+                    <div class="tag"><i class="mdi mdi-newspaper"></i> Publication</div>
+                    <div class="tag">Coal</div>
+                    <div class="tag">Prices</div>
+                  </div>
+
+                  <h3>Example search result visualization title</h3>
+                  <p><small class="text-muted">Jan 1, 2020</small> - Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Quo, debitis! Placeat nam corrupti sed eaque asperiores tenetur quia, molestiae modi quod
+                    provident rem doloribus velit totam, veniam veritatis. Similique quae nihil iure fugiat, rerum
+                    ducimus vero a, omnis ad error magnam! Voluptatibus, porro sequi ut facere recusandae nesciunt?
+                    Tempore, quisquam.</p>
+                  <p><small class="text-muted">0220-000001 provided by Canada Energy Regulator</small></p>
+                  <hr class=m-1>
+                  <div class="tag-list">
+                    <div class="tag"><i class="mdi mdi-chart-bar"></i> Visualization</div>
+                    <div class="tag">Coal</div>
+                    <div class="tag">Prices</div>
+                  </div>
+                </details>
+                <details id="search-panel2">
+                  <summary><i class="mdi mdi-table pr-1"></i> Datasets</summary>
+                  <form>
+                    <label for="all-time-data" class="mt-2">Sort</label>
+                    <div class="display-flex flex-wrap flex-align-center flex-justify-spc-btwn">
+                      <select class="form-control input-lg mrgn-bttm-md pull-left" id="all-time-data">
+                        <option value="relevance" selected aria-selected="true">Relevance</option>
+                        <option value="most-popular" aria-selected="false">Most popular </option>
+                        <option value="latest" aria-selected="false">Latest</option>
+                      </select>
+                      <p class="text-muted">437 results (0.78 seconds)</p>
+                    </div>
+                  </form>
+                  <h3>Example search result public dataset title</h3>
+                  <p><small class="text-muted">Jan 1, 2020</small> - Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Quo, debitis! Placeat nam corrupti sed eaque asperiores tenetur quia, molestiae modi quod
+                    provident rem doloribus velit totam, veniam veritatis. Similique quae nihil iure fugiat, rerum
+                    ducimus vero a, omnis ad error magnam! Voluptatibus, porro sequi ut facere recusandae nesciunt?
+                    Tempore, quisquam.</p>
+                  <p><small class="text-muted">0220-000001 provided by Canada Energy Regulator</small></p>
+                  <hr class=m-1>
+                  <div class="tag-list">
+                    <div class="tag"><i class="mdi mdi-table"></i> Public dataset</div>
+                    <div class="tag">Coal</div>
+                    <div class="tag">Prices</div>
+                  </div>
+
+                  <h3>Example search result confidential dataset title</h3>
+                  <p><small class="text-muted">Jan 1, 2020</small> - Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Quo, debitis! Placeat nam corrupti sed eaque asperiores tenetur quia, molestiae modi quod
+                    provident rem doloribus velit totam, veniam veritatis. Similique quae nihil iure fugiat, rerum
+                    ducimus vero a, omnis ad error magnam! Voluptatibus, porro sequi ut facere recusandae nesciunt?
+                    Tempore, quisquam.</p>
+                  <p><small class="text-muted">0220-000001 provided by Canada Energy Regulator</small></p>
+                  <hr class=m-1>
+                  <div class="tag-list">
+                    <div class="tag"><i class="mdi mdi-table"></i> Confidential dataset</div>
+                    <div class="tag">Coal</div>
+                    <div class="tag">Prices</div>
+                  </div>                  
+                </details>
+                <details id="search-panel3">
+                  <summary><i class="mdi mdi-newspaper pr-1"></i> Publications</summary>
+                  
+                  <form>
+                    <label for="all-time-pub" class="mt-2">Sort</label>
+                    <div class="display-flex flex-wrap flex-align-center flex-justify-spc-btwn">
+                      <select class="form-control input-lg mrgn-bttm-md pull-left" id="all-time-pub">
+                        <option value="relevance" selected aria-selected="true">Relevance</option>
+                        <option value="most-popular" aria-selected="false">Most popular </option>
+                        <option value="latest" aria-selected="false">Latest</option>
+                      </select>
+                      <p class="text-muted">437 results (0.78 seconds)</p>
+                    </div>
+                  </form>
+
+                  <h3>Example search result publication title</h3>
+                  <p><small class="text-muted">Jan 1, 2020</small> - Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Quo, debitis! Placeat nam corrupti sed eaque asperiores tenetur quia, molestiae modi quod
+                    provident rem doloribus velit totam, veniam veritatis. Similique quae nihil iure fugiat, rerum
+                    ducimus vero a, omnis ad error magnam! Voluptatibus, porro sequi ut facere recusandae nesciunt?
+                    Tempore, quisquam.</p>
+                  <p><small class="text-muted">0220-000001 provided by Canada Energy Regulator</small></p>
+                  <hr class=m-1>
+                  <div class="tag-list">
+                    <div class="tag"><i class="mdi mdi-newspaper"></i> Publication</div>
+                    <div class="tag">Coal</div>
+                    <div class="tag">Prices</div>
+                  </div>
+                </details>
+                <details id="search-panel4">
+                  <summary><i class="mdi mdi-chart-bar pr-1"></i> Visualizations</summary>
+                  
+                  <form>
+                    <label for="all-time-vis" class="mt-2">Sort</label>
+                    <div class="display-flex flex-wrap flex-align-center flex-justify-spc-btwn">
+                      <select class="form-control input-lg mrgn-bttm-md pull-left" id="all-time-vis">
+                        <option value="relevance" selected aria-selected="true">Relevance</option>
+                        <option value="most-popular" aria-selected="false">Most popular </option>
+                        <option value="latest" aria-selected="false">Latest</option>
+                      </select>
+                      <p class="text-muted">437 results (0.78 seconds)</p>
+                    </div>
+                  </form>
+                  <h3>Example search result visualization title</h3>
+                  <p><small class="text-muted">Jan 1, 2020</small> - Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Quo, debitis! Placeat nam corrupti sed eaque asperiores tenetur quia, molestiae modi quod
+                    provident rem doloribus velit totam, veniam veritatis. Similique quae nihil iure fugiat, rerum
+                    ducimus vero a, omnis ad error magnam! Voluptatibus, porro sequi ut facere recusandae nesciunt?
+                    Tempore, quisquam.</p>
+                  <p><small class="text-muted">0220-000001 provided by Canada Energy Regulator</small></p>
+                  <hr class=m-1>
+                  <div class="tag-list">
+                    <div class="tag"><i class="mdi mdi-chart-bar"></i> Visualization</div>
+                    <div class="tag">Coal</div>
+                    <div class="tag">Prices</div>
+                  </div>
+                </details>
+                <div class="display-flex flex-wrap width-100 mt-5">
+                  <div class="form-group">
+                    <label for="max-results">Results per page</label>
+                    <select name="max-results" id="max-results" class="form-control">
+                      <option value="8">8</option>
+                      <option value="10">10</option>
+                      <option value="all">All</option>
+                    </select>
+                  </div>
+                  <ul class="pagination mx-auto">
+                    <li><a href="#" rel="prev">Previous</a></li>
+                    <li class="active"><a href="#">1 <span class="wb-inv">Go to Page 1</span></a></li>
+                    <li><a href="#">2 <span class="wb-inv">Go to Page 2</span></a></li>
+                    <li><a href="#">3 <span class="wb-inv">Go to Page 3</span></a></li>
+                    <li><a href="#">4 <span class="wb-inv">Go to Page 4</span></a></li>
+                    <li><a href="#">5 <span class="wb-inv">Go to Page 5</span></a></li>
+                    <li><a href="#" rel="next">Next</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="pagedetails">
+        <div class="row">
+          <div class="col-sm-6 col-md-5 col-lg-4">
+            <details class="brdr-0">
+              <summary class="btn btn-default text-center">Report a problem or mistake on this page</summary>
+              <div class="well row">
+                <div class="gc-rprt-prblm">
+                  <div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl" id="wb-auto-5">
+                    <form action="#">
+                      <fieldset>
+                        <legend><span class="field-name">Please select all that apply: </span></legend>
+                        <div class="checkbox">
+                          <label for="problem1"><input type="checkbox" data-reveal="#broken" name="problem"
+                              value="Something is broken" id="problem1">Something is broken</label>
+                        </div>
+                        <div class="form-group hide" id="broken">
+                          <label for="problem1-detail">Provide more details (optional):</label>
+                          <input type="text" class="form-control full-width" id="problem1-detail">
+                        </div>
+                        <div class="checkbox">
+                          <label for="problem2"><input type="checkbox" data-reveal="#spelling" name="problem"
+                              value="It has spelling or grammar mistakes" id="problem2">The page has spelling or grammar
+                            mistakes</label>
+                        </div>
+                        <div class="form-group hide" id="spelling">
+                          <label for="problem2-detail">Provide more details (optional):</label>
+                          <input type="text" class="form-control full-width" id="problem2-detail">
+                        </div>
+                        <div class="checkbox">
+                          <label for="problem3"><input type="checkbox" data-reveal="#wrong" name="problem"
+                              value="The information is wrong" id="problem3">The information is wrong</label>
+                        </div>
+                        <div class="form-group hide" id="wrong">
+                          <label for="problem3-detail">Provide more details (optional):</label>
+                          <input type="text" class="form-control full-width" id="problem3-detail">
+                        </div>
+                        <div class="checkbox">
+                          <label for="problem4"><input type="checkbox" data-reveal="#outdated" name="problem"
+                              value="The information is outdated" id="problem4">The information is outdated</label>
+                        </div>
+                        <div class="form-group hide" id="outdated">
+                          <label for="problem4-detail">Provide more details (optional):</label>
+                          <input type="text" class="form-control full-width" id="problem4-detail">
+                        </div>
+                        <div class="checkbox">
+                          <label for="problem5"><input type="checkbox" data-reveal="#find" name="problem"
+                              value="I can’t find what I’m looking for" id="problem5">I can’t find what I’m looking
+                            for</label>
+                        </div>
+                        <div class="form-group hide" id="find">
+                          <label for="problem5-detail">Describe what you’re looking for (optional):</label>
+                          <input type="text" class="form-control full-width" id="problem5-detail">
+                        </div>
+                        <div class="checkbox">
+                          <label for="problem6"><input type="checkbox" data-reveal="#confusing" name="problem"
+                              value="It’s confusing" id="problem6">Other</label>
+                        </div>
+                        <div class="form-group hide" id="confusing">
+                          <label for="problem6-detail">Provide more details (optional):</label>
+                          <input type="text" class="form-control full-width" id="problem6-detail">
+                        </div>
+                      </fieldset>
+                      <button type="submit" class="btn btn-primary wb-toggle wb-init wb-toggle-inited"
+                        data-toggle="{&quot;stateOff&quot;: &quot;hide&quot;, &quot;stateOn&quot;: &quot;show&quot;, &quot;selector&quot;: &quot;.gc-rprt-prblm-tggl&quot;}"
+                        aria-controls="wb-auto-5 wb-auto-6">Submit</button>
+                    </form>
+                  </div>
+                  <div class="gc-rprt-prblm-thnk gc-rprt-prblm-tggl hide" id="wb-auto-6">
+                    <h3>Thank you for your help!</h3>
+                    <p>You will not receive a reply. For enquiries, please <a
+                        href="https://www.canada.ca/en/contact.html">contact us</a>.</p>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <div
+            class="wb-share col-sm-4 col-md-3 col-sm-offset-2 col-md-offset-4 col-lg-offset-5 wb-init wb-share-inited"
+            id="wb-auto-7">
+            <a href="mailto:" class="shr-opn btn btn-default btn-block" id="wb-auto-8"><i
+                class="mdi mdi-email-edit pr-1"></i>Feedback</a>
+          </div>
+        </div>
+        <dl id="wb-dtmd">
+          <dt>Date modified: </dt>
+          <dd><time property="dateModified">
+              2019-06-05</time></dd>
+        </dl>
+      </div>
+    </div>
+  </main>
+  <footer id="wb-info">
+    <div class="landscape">
+      <nav class="container wb-navcurr">
+        <h2 class="wb-inv">About government</h2>
+        <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+          <li><a href="./contact-en.html">Contact us</a></li>
+          <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+          <li><a href="https://www.canada.ca/en/government/publicservice.html">Public service and military</a></li>
+          <li><a href="http://news.gc.ca/">News</a></li>
+          <li><a href="https://www.canada.ca/en/government/system/laws.html">Treaties, laws and regulations</a></li>
+          <li><a href="https://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
+          <li><a href="http://pm.gc.ca/eng">Prime Minister</a></li>
+          <li><a href="https://www.canada.ca/en/government/system.html">How government works</a></li>
+          <li><a href="http://open.canada.ca/en/">Open government</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="brand">
+      <div class="container">
+        <div class="row">
+          <nav class="col-md-9 col-lg-10 ftr-urlt-lnk">
+            <h2 class="wb-inv">About this site</h2>
+            <ul>
+              <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+              <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+              <li><a href="https://www1.canada.ca/en/newsite.html">About Canada.ca</a></li>
+              <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+              <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+            </ul>
+          </nav>
+          <div class="col-xs-6 visible-sm visible-xs tofpg">
+            <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a>
+          </div>
+          <div class="col-xs-6 col-md-2 text-right">
+            <img src="../assets/wmms-blk.png" alt="Symbol of the Government of Canada">
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- <footer id="wb-info">
+    <div id="footer">
+      <div class="container">
+        <div class="display-flex flex-justify-spc-btwn flex-align-center">
+          <div>
+            <p><i class="mdi mdi-clock pr-1"></i>Monday - Friday 9:00 AM - 5:00 PM EST</p>
+            <p><i class="mdi mdi-phone pr-1"></i>1-800-123-4567</p>
+            <i class="mdi mdi-web pr-1"></i><a href="#">Contact us</a>
+          </div>
+          <button class="btn"><i class="mdi mdi-email-edit pr-1"></i>Feedback</button>
+        </div>
+      </div>
+    </div>
+    <div class="brand">
+      <div class="container">
+        <div class="row">
+          <nav class="col-md-9 col-lg-10 ftr-urlt-lnk">
+            <h2 class="wb-inv">About this site</h2>
+            <ul>
+              <li><a href="#">About CCEI</a></li>
+              <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+              <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+            </ul>
+          </nav>
+          <div class="col-xs-6 visible-sm visible-xs tofpg">
+            <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up pr-2"></span></a>
+          </div>
+          <div class="col-xs-6 col-md-3 col-lg-2 text-right">
+            <img src="../assets/wmms-blk.svg" alt="Symbol of the Government of Canada">
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+  <!--[if gte IE 9 | !IE ]><!-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+  <script src="../js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <script src="../js/jquery/maskedinput.js"></script>
+  <script src="../js/wet-boew.min.js"></script>
+  <!--<![endif]-->
+  <!--[if lt IE 9]>
+		<script src="../js/ie8-wet-boew2.min.js"></script>
+		
+		<![endif]-->
+  <script src="../js/theme.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-collapse.js"></script>
+  <script src="../js/CCEI/scripts.js"></script>
+</body>
+
+</html>

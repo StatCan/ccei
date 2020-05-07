@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:81a54073-2bfa-4c34-bcd5-ecb843f7d30e'
+  module:
+    - block_content
+    - wxt_library
+  theme:
+    - ccei_bootstrap
+id: cceisearch_2
+theme: ccei_bootstrap
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:81a54073-2bfa-4c34-bcd5-ecb843f7d30e'
+settings:
+  id: 'block_content:81a54073-2bfa-4c34-bcd5-ecb843f7d30e'
+  label: 'CCEI search'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  panels_title:
+    id: panels_title
+    enabled: 0
+    negate: false
+    context_mapping: {  }

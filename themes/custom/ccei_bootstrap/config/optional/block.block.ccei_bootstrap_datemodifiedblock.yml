@@ -5,13 +5,12 @@ dependencies:
     - wxt_library
   theme:
     - ccei_bootstrap
-third_party_settings:
-  block_class:
-    classes: 'col-md-12'
+_core:
+  default_config_hash: XXCcdSM9KHryUiebEvZGFY75Lx8JKo4BYkadT05Meg4
 id: ccei_bootstrap_datemodifiedblock
 theme: ccei_bootstrap
 region: content_footer
-weight: -7
+weight: -10
 provider: null
 plugin: date_modified_block
 settings:
@@ -22,4 +21,9 @@ settings:
   date_format:
     page: page
   date_modified: tiny
-visibility: {  }
+visibility:
+  panels_title:
+    id: panels_title
+    enabled: 0
+    negate: false
+    context_mapping: {  }

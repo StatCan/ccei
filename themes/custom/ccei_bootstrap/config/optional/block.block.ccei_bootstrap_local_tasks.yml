@@ -2,14 +2,16 @@ langcode: en
 status: true
 dependencies:
   module:
+    - system
     - wxt_library
   theme:
     - ccei_bootstrap
-third_party_settings: {  }
+_core:
+  default_config_hash: 52cXxnruW735HudmSdSHQrixGyFwGv13lS9epYwolKQ
 id: ccei_bootstrap_local_tasks
 theme: ccei_bootstrap
 region: header
-weight: -8
+weight: -6
 provider: null
 plugin: local_tasks_block
 settings:

@@ -7392,7 +7392,6 @@ var componentName = "wb-menu",
 					$secnav = $( "#wb-sec" ),
 					$language = $( "#wb-lng" ),
 					search = document.getElementById( "wb-srch" ),
-					cceilogo = document.getElementById( "ccei-banner" ), //S.Valentiate
 					panel = "",
 					panelDOM = document.getElementById( target ),
 					$panel = $( panelDOM ),
@@ -7425,13 +7424,6 @@ var componentName = "wb-menu",
 					}
 					panel += "</ul></section>";
 				}
-
-				// Add CCEI-CCIE logo (S.Valentiate Edit)
-				if ( cceilogo !== null ) {
-					panel += cceilogo.innerHTML
-						.replace ( /container/, "clearfix mrgn-lft-md" );
-				}
-
 
 				// Create menu system
 				if ( $secnav.length !== 0 || $menubar.length !== 0 || $info.length !== 0 ) {

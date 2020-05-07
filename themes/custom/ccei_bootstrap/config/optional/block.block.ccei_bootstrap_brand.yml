@@ -5,16 +5,14 @@ dependencies:
     - system.menu.brand
   module:
     - system
-    - wxt_core
   theme:
     - ccei_bootstrap
-third_party_settings:
-  block_class:
-    classes: ''
+_core:
+  default_config_hash: 7-hAtXBKjvdidEP68HPweyAFtmnhcCaaQg4GtgRip08
 id: ccei_bootstrap_brand
 theme: ccei_bootstrap
 region: branding
-weight: 0
+weight: -10
 provider: null
 plugin: 'system_menu_block:brand'
 settings:
@@ -24,4 +22,5 @@ settings:
   label_display: visible
   level: 1
   depth: 0
+  expand_all_items: false
 visibility: {  }
