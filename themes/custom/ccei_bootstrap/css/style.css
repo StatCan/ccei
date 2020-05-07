@@ -229,7 +229,8 @@
  	overflow: hidden;
  	border: 1px solid #ccc;
  }
- .highlight-card a {
+*/
+ .highlight-card a.btn {
  	position: absolute;
  	font-size: 1.25em;
  	padding: 5px 12px;
@@ -238,6 +239,7 @@
  	z-index: 400;
  	color: black;
  }
+/*
  .highlight-card img {
  	width: 100%;
  }
@@ -285,7 +287,8 @@
  	overflow: hidden;
  	border: 1px solid #ccc;
  }
- .publication-card a {
+*/
+ .publication-card a.btn {
  	position: absolute;
  	font-size: 1.25em;
  	padding: 5px 12px;
@@ -294,6 +297,7 @@
  	top: 8px;
  	z-index: 400;
  }
+/*
  .publication-card img {
  	width: 100%;
  }
