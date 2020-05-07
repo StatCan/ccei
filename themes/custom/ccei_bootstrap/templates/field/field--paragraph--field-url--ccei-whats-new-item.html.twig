@@ -41,15 +41,18 @@
 {% if label_hidden %}
   {% if multiple %}
     {% for item in items %}
+      <a class="btn btn-default" href="{{ item.content['#url'].uri }}"><span class="wb-inv">View publication</span><i class="mdi mdi-share"></i></a>
       <p class="publication-text">{{ item.content }}</p>
     {% endfor %}
   {% else %}
     {% for item in items %}
+      <a class="btn btn-default" href="{{ item.content['#url'].uri }}"><span class="wb-inv">View publication</span><i class="mdi mdi-share"></i></a>
       <p class="publication-text">{{ item.content }}</p>
     {% endfor %}
   {% endif %}
 {% else %}
     {% for item in items %}
+      <a class="btn btn-default" href="{{ item.content['#url'].uri }}"><span class="wb-inv">View publication</span><i class="mdi mdi-share"></i></a>
       <p class="publication-text">{{ item.content }}</p>
     {% endfor %}
 {% endif %}
