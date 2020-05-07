@@ -128,7 +128,7 @@ class IndicatorsFieldFormatter extends FormatterBase implements ContainerFactory
       '#theme' => 'indicators_block',
       '#title' => $this->t('Indicators'),
       '#indicators' => $response,
-      '#display_header' => $this->settings['display_header'],
+      '#display_header' => $this->getSetting('display_header'),
       '#attached' => [
         'library' => ['ccei_indicators/ccei-indicators'],
       ],
