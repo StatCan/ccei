@@ -5,10 +5,12 @@ dependencies:
     - system
   theme:
     - ccei_bootstrap
+_core:
+  default_config_hash: rAauYUPFYLR8niGqi9UUjnlR10BCywWdrjiWSz765RA
 id: ccei_bootstrap_content
 theme: ccei_bootstrap
 region: content
-weight: -7
+weight: -10
 provider: null
 plugin: system_main_block
 settings:

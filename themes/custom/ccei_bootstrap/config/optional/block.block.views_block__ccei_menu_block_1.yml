@@ -1,0 +1,29 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.ccei_menu
+  module:
+    - views
+    - wxt_library
+  theme:
+    - ccei_bootstrap
+id: views_block__ccei_menu_block_1
+theme: ccei_bootstrap
+region: navigation
+weight: 0
+provider: null
+plugin: 'views_block:ccei_menu-block_1'
+settings:
+  id: 'views_block:ccei_menu-block_1'
+  label: 'Energy Products'
+  provider: views
+  label_display: visible
+  views_label: 'Energy Products'
+  items_per_page: none
+visibility:
+  panels_title:
+    id: panels_title
+    enabled: 0
+    negate: false
+    context_mapping: {  }

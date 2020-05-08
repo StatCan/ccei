@@ -7,10 +7,12 @@ dependencies:
     - system
   theme:
     - ccei_bootstrap
+_core:
+  default_config_hash: 4cquvDeHm6F-kq8Pwqmdya64It1YzUrCuo1Wj0892jo
 id: ccei_bootstrap_account_menu
 theme: ccei_bootstrap
 region: navigation_collapsible
-weight: -7
+weight: -8
 provider: null
 plugin: 'system_menu_block:account'
 settings:
@@ -20,4 +22,5 @@ settings:
   label_display: '0'
   level: 1
   depth: 2
+  expand_all_items: false
 visibility: {  }

@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:d87a99a5-b4b6-46e6-8490-bc8df580b65e'
+  module:
+    - block_content
+    - wxt_library
+  theme:
+    - ccei_bootstrap
+id: cceiproblemfeedback
+theme: ccei_bootstrap
+region: content_footer
+weight: -11
+provider: null
+plugin: 'block_content:d87a99a5-b4b6-46e6-8490-bc8df580b65e'
+settings:
+  id: 'block_content:d87a99a5-b4b6-46e6-8490-bc8df580b65e'
+  label: 'CCEI problem & feedback'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  panels_title:
+    id: panels_title
+    enabled: 0
+    negate: false
+    context_mapping: {  }
