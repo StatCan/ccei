@@ -65,7 +65,6 @@
  */
 #}
 <div class="highlight-card">
-  {{ content.field_background }}
-  <a class="btn btn-default" href="{{ url }}"><span class="wb-inv">View highlight</span><i class="mdi mdi-share"></i></a>
-  {{ content.body }}
+  <a href="{{ url }}">{{ content.field_background }}<span class="wb-inv">View highlight: {{ content.body[0]['#text'] | striptags }}</span></a>
+  <a class="btn btn-default" href="#"><span class="wb-inv">Share highlight: {{ content.body[0]['#text'] | striptags }}</span><i class="mdi mdi-share"></i></a>
 </div>

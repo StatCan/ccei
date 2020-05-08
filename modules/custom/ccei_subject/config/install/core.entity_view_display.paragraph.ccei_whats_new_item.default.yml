@@ -20,7 +20,7 @@ content:
     label: visually_hidden
     settings:
       image_style: overview
-      image_link: content
+      image_link: ''
     third_party_settings: {  }
     region: content
   field_url:

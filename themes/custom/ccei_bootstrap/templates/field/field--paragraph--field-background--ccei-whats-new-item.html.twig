@@ -39,6 +39,5 @@
  */
 #}
 {% for item in items %}
-    <a class="btn btn-default" href="#"><span class="wb-inv">View publication: {{ item.content['#title'] }}</span><i class="mdi mdi-share"></i></a>
-    <p class="publication-text">{{ item.content }}</p>
+    {{ item.content }}
 {% endfor %}
