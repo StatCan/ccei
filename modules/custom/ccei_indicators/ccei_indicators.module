@@ -25,14 +25,22 @@ function ccei_indicators_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_theme().
  */
 function ccei_indicators_theme() {
-  return [
-    'indicators_block' => [
-      'variables' => [
-        'title' => NULL,
-        'indicators' => [],
-        'content' => NULL,
-      ],
-      'render element' => 'children',
+  $items['indicators_block'] = [
+    'variables' => [
+      'title' => NULL,
+      'indicators' => [],
+      'display_header' => TRUE,
+      'content' => NULL,
     ],
+    'render element' => 'children',
   ];
+
+  $items['ccei_indicators_details_summary'] = [
+    'preprocess functions' => [
+      'template_preprocess_ccei_indicators_details_summary',
+    ],
+    'file' => 'ccei_indicators.theme.inc',
+  ];
+
+  return $items;
 }

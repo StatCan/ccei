@@ -78,7 +78,7 @@ class IndicatorsFieldFormatter extends FormatterBase implements ContainerFactory
    */
   public static function defaultSettings() {
     return [
-      // Implement default settings.
+      'display_header' => TRUE,
     ] + parent::defaultSettings();
   }
 
@@ -87,7 +87,11 @@ class IndicatorsFieldFormatter extends FormatterBase implements ContainerFactory
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
     return [
-      // Implement settings form.
+      'display_header' => [
+        '#title' => $this->t('Display the indicators header'),
+        '#type' => 'checkbox',
+        '#default_value' => $this->getSetting('display_header'),
+      ],
     ] + parent::settingsForm($form, $form_state);
   }
 
@@ -96,8 +100,6 @@ class IndicatorsFieldFormatter extends FormatterBase implements ContainerFactory
    */
   public function settingsSummary() {
     $summary = [];
-    // Implement settings summary.
-
     return $summary;
   }
 
@@ -126,6 +128,7 @@ class IndicatorsFieldFormatter extends FormatterBase implements ContainerFactory
       '#theme' => 'indicators_block',
       '#title' => $this->t('Indicators'),
       '#indicators' => $response,
+      '#display_header' => $this->getSetting('display_header'),
       '#attached' => [
         'library' => ['ccei_indicators/ccei-indicators'],
       ],

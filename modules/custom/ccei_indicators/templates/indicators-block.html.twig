@@ -9,11 +9,13 @@
 */
 #}
 {% set region = 0 %}
+{% if display_header %}
 <div class="display-flex flex-justify-spc-btwn flex-align-end">
   <h2 class="mb-0 h3">{{ title }}</h2>
-  <a href="./indicators-en.html">View all</a>
+  <a href="{{ path('view.indicators.page_1') }}">{{ 'View all'|t }}</a>
 </div>
 <hr class="mt-1 mb-2">
+{% endif %}
 <div class="ccei-indicators">
   {% if indicators is not empty %}
   <div class="ind-nav">
