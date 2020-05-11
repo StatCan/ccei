@@ -36,6 +36,7 @@ dependencies:
   - path
   - pathauto
   - redirect
+  - search_api
   - search_api_solr
   - simple_sitemap
   - slick

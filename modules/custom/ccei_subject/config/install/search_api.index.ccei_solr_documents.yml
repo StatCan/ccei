@@ -1,0 +1,222 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - search_api_solr
+    - search_api
+  config:
+    - search_api.server.external_solr_docs
+third_party_settings:
+  search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
+    advanced:
+      index_prefix: ''
+      collection: ''
+      timezone: ''
+id: ccei_solr_documents
+name: 'CCEI Solr Documents'
+description: ''
+read_only: false
+field_settings:
+  ccei_id:
+    label: 'Ccei id'
+    datasource_id: solr_document
+    property_path: ccei_id
+    type: string
+  ccei_taxonomies_en:
+    label: 'Ccei taxonomies en'
+    datasource_id: solr_document
+    property_path: ccei_taxonomies_en
+    type: string
+  ccei_taxonomies_fr:
+    label: 'Ccei taxonomies fr'
+    datasource_id: solr_document
+    property_path: ccei_taxonomies_fr
+    type: string
+  description_search_en:
+    label: 'Description search en'
+    datasource_id: solr_document
+    property_path: description_search_en
+    type: text
+  description_search_fr:
+    label: 'Description search fr'
+    datasource_id: solr_document
+    property_path: description_search_fr
+    type: text
+  dimension_members_en:
+    label: 'Dimension members en'
+    datasource_id: solr_document
+    property_path: dimension_members_en
+    type: string
+  dimension_members_fr:
+    label: 'Dimension members fr'
+    datasource_id: solr_document
+    property_path: dimension_members_fr
+    type: string
+  document_types_en:
+    label: 'Document types en'
+    datasource_id: solr_document
+    property_path: document_types_en
+    type: string
+  document_types_fr:
+    label: 'Document types fr'
+    datasource_id: solr_document
+    property_path: document_types_fr
+    type: string
+  end_date:
+    label: 'End date'
+    datasource_id: solr_document
+    property_path: end_date
+    type: date
+  frequency_en:
+    label: 'Frequency en'
+    datasource_id: solr_document
+    property_path: frequency_en
+    type: string
+  frequency_fr:
+    label: 'Frequency fr'
+    datasource_id: solr_document
+    property_path: frequency_fr
+    type: string
+  geographies_en:
+    label: 'Geographies en'
+    datasource_id: solr_document
+    property_path: geographies_en
+    type: string
+  geographies_fr:
+    label: 'Geographies fr'
+    datasource_id: solr_document
+    property_path: geographies_fr
+    type: string
+  geographies_search_en:
+    label: 'Geographies search en'
+    datasource_id: solr_document
+    property_path: geographies_search_en
+    type: text
+  geographies_search_fr:
+    label: 'Geographies search fr'
+    datasource_id: solr_document
+    property_path: geographies_search_fr
+    type: text
+  id:
+    label: Id
+    datasource_id: solr_document
+    property_path: id
+    type: string
+  product_id:
+    label: 'Product id'
+    datasource_id: solr_document
+    property_path: product_id
+    type: string
+  publication_year:
+    label: 'Publication year'
+    datasource_id: solr_document
+    property_path: publication_year
+    type: string
+  release_date:
+    label: 'Release date'
+    datasource_id: solr_document
+    property_path: release_date
+    type: date
+  search_en:
+    label: 'Search en'
+    datasource_id: solr_document
+    property_path: search_en
+    type: text
+  search_fr:
+    label: 'Search fr'
+    datasource_id: solr_document
+    property_path: search_fr
+    type: text
+  show_in_metadata_search:
+    label: 'Show in metadata search'
+    datasource_id: solr_document
+    property_path: show_in_metadata_search
+    type: boolean
+  sources_en:
+    label: 'Sources en'
+    datasource_id: solr_document
+    property_path: sources_en
+    type: string
+  sources_fr:
+    label: 'Sources fr'
+    datasource_id: solr_document
+    property_path: sources_fr
+    type: string
+  start_date:
+    label: 'Start date'
+    datasource_id: solr_document
+    property_path: start_date
+    type: date
+  title_search_en:
+    label: 'Title search en'
+    datasource_id: solr_document
+    property_path: title_search_en
+    type: text
+  title_search_fr:
+    label: 'Title search fr'
+    datasource_id: solr_document
+    property_path: title_search_fr
+    type: text
+  url_en:
+    label: 'Url en'
+    datasource_id: solr_document
+    property_path: url_en
+    type: string
+  url_fr:
+    label: 'Url fr'
+    datasource_id: solr_document
+    property_path: url_fr
+    type: string
+datasource_settings:
+  solr_document:
+    id_field: _version_
+    request_handler: ''
+    default_query: '*:*'
+    label_field: ''
+    language_field: ''
+    url_field: ''
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  language_with_fallback: {  }
+  rendered_item: {  }
+  solr_date_range: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: external_solr_docs
