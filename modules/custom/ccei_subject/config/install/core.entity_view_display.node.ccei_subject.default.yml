@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
+    - views.view.subject_page_tabs
   module:
     - ccei_indicators
     - ccei_subject
@@ -24,6 +25,7 @@ dependencies:
     - link
     - text
     - user
+    - views_field_formatter
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -275,9 +277,18 @@ content:
   field_datasets_params:
     weight: 8
     label: hidden
-    settings: {  }
+    settings:
+      view: 'subject_page_tabs::block_1'
+      arguments:
+        -
+          checked: '1'
+          weight: '0'
+          token: '[node:field_datasets_params]'
+      implode_character: ''
+      hide_empty: 0
+      multiple: 0
     third_party_settings: {  }
-    type: basic_string
+    type: views_field_formatter
     region: content
   field_powerbi:
     weight: 35
@@ -306,9 +317,18 @@ content:
   field_publications_params:
     weight: 21
     label: hidden
-    settings: {  }
+    settings:
+      view: 'subject_page_tabs::block_2'
+      arguments:
+        -
+          checked: '1'
+          weight: '0'
+          token: '[node:field_publications_params]'
+      implode_character: ''
+      hide_empty: 0
+      multiple: 0
     third_party_settings: {  }
-    type: basic_string
+    type: views_field_formatter
     region: content
   field_subject_highlights:
     weight: 33

@@ -12,6 +12,7 @@ dependencies:
   - entity_browser
   - entity_reference_revisions
   - entityqueue
+  - facets
   - field
   - field_group
   - field_limiter
@@ -35,6 +36,7 @@ dependencies:
   - path
   - pathauto
   - redirect
+  - search_api_solr
   - simple_sitemap
   - slick
   - slick_entityreference
