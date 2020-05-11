@@ -9,6 +9,16 @@
           const indCount = indList.children().length
           let steps = 0 // Number of indicators to shift.
 
+          // PowerBI integration
+          const powerbi = document.getElementsByClassName('resp-iframe').item(0).contentWindow;
+          indList.find('.ind').on('click keyup', function (e) {
+            let pbiBkm = $(this).find('.ind-powerbi').text();
+            if (pbiBkm !== undefined && pbiBkm !== "" && powerbi !== undefined) {
+              powerbi.postMessage("setbkm=" + pbiBkm, "https://trywebserver3.azurewebsites.net");
+            }
+          });
+
+          // Navigation
           wrapper.find('.btn-ind').on('click', function (e) {
             let stepsPerScreen = Math.floor((indList.width() - wrapper.width()) / translateX)
             if (e.target.name === 'prev') {

@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.indicator.field_calculation_desc
     - field.field.paragraph.indicator.field_indicator_sources
     - field.field.paragraph.indicator.field_indicator_title
+    - field.field.paragraph.indicator.field_powerbi_bookmark
     - field.field.paragraph.indicator.field_preprocess
     - field.field.paragraph.indicator.field_rounding_precision
     - field.field.paragraph.indicator.field_units
@@ -36,7 +37,7 @@ content:
     region: content
   field_indicator_sources:
     type: entity_reference_paragraphs
-    weight: 7
+    weight: 8
     settings:
       title: Source
       title_plural: Sources
@@ -48,6 +49,14 @@ content:
     region: content
   field_indicator_title:
     weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_powerbi_bookmark:
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -81,6 +90,11 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  translation:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   status: true

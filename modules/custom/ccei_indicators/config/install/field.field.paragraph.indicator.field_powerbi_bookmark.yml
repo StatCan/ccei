@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_powerbi_bookmark
+    - paragraphs.paragraphs_type.indicator
+id: paragraph.indicator.field_powerbi_bookmark
+field_name: field_powerbi_bookmark
+entity_type: paragraph
+bundle: indicator
+label: 'PowerBI bookmark'
+description: "A string used to reference a PowerBI bookmark. When an Indicator will be clicked it will trigger the PowerBI field to display the related data on PowerBI.\r\n\r\nEx: <code>1 - Installed capacity - Chart</code>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -290,6 +290,7 @@ class CceiIndicatorsService implements CceiIndicatorsServiceInterface {
       // TODO: API failures might prevent $datapoints['values'][0] from
       // existing. Need to find better solution.
       'refper' => reset($datapoints['values'][0][0])['refPer'],
+      'powerbi_bookmark' => $indicator['powerbi_bookmark'],
     ];
   }
 
