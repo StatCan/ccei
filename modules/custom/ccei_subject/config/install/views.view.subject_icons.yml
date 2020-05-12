@@ -8,7 +8,7 @@ dependencies:
     - node
     - user
 _core:
-  default_config_hash: zl7sH1zoJc5QhoHVh7Rtce7GsXYmBnfXnpw4y16l94g
+  default_config_hash: Qud4W1bGDrRMCKYwA9Pgm9pgepYijI_rqem99ngbi0M
 id: subject_icons
 label: 'Subject Icons'
 module: views
@@ -206,7 +206,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<a href=\"./node/{{ nid }}\" class=\"topic-lnk\">\r\n  <i class=\"{{ field_subject_icon_class }}\"></i>\r\n  <span>{{ title__value }}</span>\r\n</a>"
+            text: "<a href=\"/node/{{ nid }}\" class=\"topic-lnk\">\r\n  <i class=\"{{ field_subject_icon_class }}\"></i>\r\n  <span>{{ title__value }}</span>\r\n</a>"
             make_link: false
             path: ''
             absolute: false
