@@ -5,10 +5,12 @@ dependencies:
     - system
   theme:
     - ccei_bootstrap
+_core:
+  default_config_hash: FN4GhYnSRjawgaQHLaq_i9wRVovPFxGNSd8QKoh3oYs
 id: ccei_bootstrap_messages
 theme: ccei_bootstrap
 region: highlighted
-weight: -8
+weight: -10
 provider: null
 plugin: system_messages_block
 settings:
