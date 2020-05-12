@@ -7,18 +7,18 @@ dependencies:
     - field.field.node.ccei_subject.field_powerbi
     - field.field.node.ccei_subject.field_powerbi_data
     - field.field.node.ccei_subject.field_publications_params
-    - field.field.node.ccei_subject.field_subject_highlights
     - field.field.node.ccei_subject.field_subject_icon_class
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
   module:
     - content_moderation
-    - entityqueue
     - inline_entity_form
     - link
     - path
     - text
+_core:
+  default_config_hash: YR3VhLJa2L_50QUIjLcdP1SLIlnI03YsIB0Uw5RqCLQ
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -71,18 +71,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
-    region: content
-  field_subject_highlights:
-    weight: 12
-    settings:
-      match_operator: CONTAINS
-      match_limit: '10'
-      size: '60'
-      placeholder: ''
-      link_to_entity: '1'
-      link_to_edit_form: '1'
-    third_party_settings: {  }
-    type: entityqueue_dragtable
     region: content
   field_subject_icon_class:
     weight: 26

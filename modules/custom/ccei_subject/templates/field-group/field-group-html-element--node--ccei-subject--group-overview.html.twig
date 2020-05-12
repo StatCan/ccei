@@ -18,11 +18,12 @@
 
 <{{ wrapper_element }} {{ attributes }}>
   {% if title %}
-  <{{ title_element }}{{ title_attributes }}>{{ title }}</{{ title_element }}><hr class="mt-1 mb-2">
+  <{{ title_element }}{{ title_attributes }}>{{ title }}</{{ title_element }}>
   {% endif %}
   {% if collapsible %}
   <div class="field-group-wrapper">
   {% endif %}
+  {{ drupal_view('subject_highlights', 'block_1') }}
   {{children}}
   {% if collapsible %}
   </div>
