@@ -129,7 +129,8 @@
         "nxp/math-executor": "^1.1",
         "mdi/materialdesign-webfont" : "^3.5.94",
         "drupal/field_limiter": "^1.0",
-        "drupal/views_field_formatter": "2.x-dev"
+        "drupal/views_field_formatter": "2.x-dev",
+        "drupal/twig_tweak": "^2.5"
     },
     "autoload": {
         "psr-4": {
