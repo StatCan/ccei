@@ -1,5 +1,6 @@
 framework:
   css:
     theme:
-      css/global.css: {}
       /libraries/materialdesign-webfont/css/materialdesignicons.min.css: {}
+      css/utils.css: {}
+      css/global.css: {}

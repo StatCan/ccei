@@ -4,13 +4,11 @@ dependencies:
   module:
     - system
     - user
-    - wxt_core
     - wxt_library
   theme:
     - ccei_bootstrap
-third_party_settings:
-  block_class:
-    classes: ''
+_core:
+  default_config_hash: G79CbUVO2BSiAHTOqI0zn8sI1GphcBwUHjGvaoUSc6g
 id: ccei_bootstrap_user_account_block
 theme: ccei_bootstrap
 region: header

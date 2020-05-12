@@ -19,6 +19,13 @@ class Page extends WxtPagePreprocess {
   public function preprocess(array &$variables, $hook, array $info) {
 
     parent::preprocess($variables, $hook, $info);
+
+    // Load block megamenu
+    $block = \Drupal\block\Entity\Block::load('views_block__ccei_megamenu_block_1');
+    $variables['ccei_megamenu'] = \Drupal::entityTypeManager()
+    ->getViewBuilder('block')
+    ->view($block);
+
   }
 
 }

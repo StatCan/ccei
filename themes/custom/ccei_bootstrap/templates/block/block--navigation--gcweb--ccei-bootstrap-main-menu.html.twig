@@ -34,16 +34,14 @@
  */
 #}
 {% block content %}
-  <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="/profiles/ccei/themes/custom/ccei_bootstrap/ajax/ccei-menu-{{ language }}.html" typeof="SiteNavigationElement">
-    <div class="container nvbar">
-      <h2 class="wb-inv">Menu</h2>
-      <div class="row">
-        <ul class="list-inline menu">
-          <li><a role="menuitem" href="/en/subjets">Subjets</a></li>
-          <li><a role="menuitem" href="/en/market_information">Market information</a></li>
-          <li><a role="menuitem" href="/en/tools">Tools</a></li>
-        </ul>
-      </div>
+  <nav role="navigation" id="wb-sm" data-ajax-fetch="/profiles/ccei/themes/custom/ccei_bootstrap/ajax/CCEI-menu.html" data-trgt="mb-pnl" class="wb-menu height-100" typeof="SiteNavigationElement">
+    <div class="nvbar">
+      <h2>Topics menu</h2>
+      <ul class="list-inline menu">
+        <li><a href="#">Energy Products</a></li>
+        <li><a href="#">Market Information</a></li>
+        <li><a href="#">Tools</a></li>
+      </ul>
     </div>
   </nav>
 {% endblock %}
