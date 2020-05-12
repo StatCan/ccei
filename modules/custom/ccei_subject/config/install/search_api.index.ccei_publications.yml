@@ -5,7 +5,7 @@ dependencies:
     - search_api_solr
     - search_api
   config:
-    - search_api.server.external_solr_docs
+    - search_api.server.ccei_publications
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -44,8 +44,8 @@ third_party_settings:
       index_prefix: ''
       collection: ''
       timezone: ''
-id: ccei_solr_documents
-name: 'CCEI Solr Documents'
+id: ccei_publications
+name: 'CCEI Publications Index'
 description: ''
 read_only: false
 field_settings:
@@ -219,4 +219,4 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
-server: external_solr_docs
+server: ccei_publications

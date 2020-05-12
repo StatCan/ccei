@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
     - views.view.ccei_solr_datasets
+    - views.view.ccei_solr_publications
   module:
     - ccei_indicators
     - ccei_subject
@@ -281,7 +282,7 @@ content:
     weight: 21
     label: hidden
     settings:
-      view: 'ccei_solr_datasets::publications'
+      view: 'ccei_solr_publications::publications'
       arguments:
         -
           checked: '1'

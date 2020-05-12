@@ -2,17 +2,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - search_api.index.ccei_datasets
+    - search_api.index.ccei_publications
   module:
     - search_api
 _core:
-  default_config_hash: I4WIS2WWA0NwiQGcaNNy1uS00E_P14pOIIvhDaZFlos
-id: ccei_solr_datasets
-label: 'CCEI Solr Datasets'
+  default_config_hash: b6Xz5J-VML4UAWWNmJmfeOrKrAIfvvWCt0-8G2Ti5Y8
+id: ccei_solr_publications
+label: 'CCEI Solr Publications'
 module: views
 description: ''
 tag: ''
-base_table: search_api_index_ccei_datasets
+base_table: search_api_index_ccei_publications
 base_field: search_api_id
 display:
   default:
@@ -81,7 +81,7 @@ display:
       fields:
         ccei_id:
           id: ccei_id
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: ccei_id
           relationship: none
           group_type: group
@@ -136,7 +136,7 @@ display:
           plugin_id: search_api
         ccei_taxonomies_en:
           id: ccei_taxonomies_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: ccei_taxonomies_en
           relationship: none
           group_type: group
@@ -189,7 +189,7 @@ display:
           plugin_id: search_api
         ccei_taxonomies_fr:
           id: ccei_taxonomies_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: ccei_taxonomies_fr
           relationship: none
           group_type: group
@@ -242,7 +242,7 @@ display:
           plugin_id: search_api
         description_search_en:
           id: description_search_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: description_search_en
           relationship: none
           group_type: group
@@ -295,7 +295,7 @@ display:
           plugin_id: search_api
         description_search_fr:
           id: description_search_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: description_search_fr
           relationship: none
           group_type: group
@@ -348,7 +348,7 @@ display:
           plugin_id: search_api
         dimension_members_en:
           id: dimension_members_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: dimension_members_en
           relationship: none
           group_type: group
@@ -401,7 +401,7 @@ display:
           plugin_id: search_api
         dimension_members_fr:
           id: dimension_members_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: dimension_members_fr
           relationship: none
           group_type: group
@@ -454,7 +454,7 @@ display:
           plugin_id: search_api
         document_types_en:
           id: document_types_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: document_types_en
           relationship: none
           group_type: group
@@ -507,7 +507,7 @@ display:
           plugin_id: search_api
         document_types_fr:
           id: document_types_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: document_types_fr
           relationship: none
           group_type: group
@@ -560,7 +560,7 @@ display:
           plugin_id: search_api
         end_date:
           id: end_date
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: end_date
           relationship: none
           group_type: group
@@ -613,7 +613,7 @@ display:
           plugin_id: search_api
         frequency_en:
           id: frequency_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: frequency_en
           relationship: none
           group_type: group
@@ -666,7 +666,7 @@ display:
           plugin_id: search_api
         frequency_fr:
           id: frequency_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: frequency_fr
           relationship: none
           group_type: group
@@ -719,7 +719,7 @@ display:
           plugin_id: search_api
         geographies_en:
           id: geographies_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: geographies_en
           relationship: none
           group_type: group
@@ -772,7 +772,7 @@ display:
           plugin_id: search_api
         geographies_fr:
           id: geographies_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: geographies_fr
           relationship: none
           group_type: group
@@ -825,7 +825,7 @@ display:
           plugin_id: search_api
         geographies_search_en:
           id: geographies_search_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: geographies_search_en
           relationship: none
           group_type: group
@@ -878,7 +878,7 @@ display:
           plugin_id: search_api
         geographies_search_fr:
           id: geographies_search_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: geographies_search_fr
           relationship: none
           group_type: group
@@ -931,7 +931,7 @@ display:
           plugin_id: search_api
         id:
           id: id
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: id
           relationship: none
           group_type: group
@@ -984,7 +984,7 @@ display:
           plugin_id: search_api
         product_id:
           id: product_id
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: product_id
           relationship: none
           group_type: group
@@ -1037,7 +1037,7 @@ display:
           plugin_id: search_api
         publication_year:
           id: publication_year
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: publication_year
           relationship: none
           group_type: group
@@ -1090,7 +1090,7 @@ display:
           plugin_id: search_api
         release_date:
           id: release_date
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: release_date
           relationship: none
           group_type: group
@@ -1143,7 +1143,7 @@ display:
           plugin_id: search_api
         search_en:
           id: search_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: search_en
           relationship: none
           group_type: group
@@ -1196,7 +1196,7 @@ display:
           plugin_id: search_api
         search_fr:
           id: search_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: search_fr
           relationship: none
           group_type: group
@@ -1249,7 +1249,7 @@ display:
           plugin_id: search_api
         show_in_metadata_search:
           id: show_in_metadata_search
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: show_in_metadata_search
           relationship: none
           group_type: group
@@ -1306,7 +1306,7 @@ display:
           plugin_id: search_api_boolean
         sources_en:
           id: sources_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: sources_en
           relationship: none
           group_type: group
@@ -1359,7 +1359,7 @@ display:
           plugin_id: search_api
         sources_fr:
           id: sources_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: sources_fr
           relationship: none
           group_type: group
@@ -1412,7 +1412,7 @@ display:
           plugin_id: search_api
         start_date:
           id: start_date
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: start_date
           relationship: none
           group_type: group
@@ -1465,7 +1465,7 @@ display:
           plugin_id: search_api
         title_search_en:
           id: title_search_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: title_search_en
           relationship: none
           group_type: group
@@ -1518,7 +1518,7 @@ display:
           plugin_id: search_api
         title_search_fr:
           id: title_search_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: title_search_fr
           relationship: none
           group_type: group
@@ -1571,7 +1571,7 @@ display:
           plugin_id: search_api
         url_en:
           id: url_en
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: url_en
           relationship: none
           group_type: group
@@ -1624,7 +1624,7 @@ display:
           plugin_id: search_api
         url_fr:
           id: url_fr
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: url_fr
           relationship: none
           group_type: group
@@ -1694,7 +1694,7 @@ display:
       arguments:
         search_api_fulltext:
           id: search_api_fulltext
-          table: search_api_index_ccei_datasets
+          table: search_api_index_ccei_publications
           field: search_api_fulltext
           relationship: none
           group_type: group
@@ -1735,12 +1735,12 @@ display:
         - url
         - url.query_args
       tags:
-        - 'config:search_api.index.ccei_datasets'
-  datasets:
+        - 'config:search_api.index.ccei_publications'
+  publications:
     display_plugin: block
-    id: datasets
-    display_title: Datasets
-    position: 1
+    id: publications
+    display_title: Publications
+    position: 2
     display_options:
       display_extenders:
         metatag_display_extender: {  }
@@ -1752,4 +1752,4 @@ display:
         - url
         - url.query_args
       tags:
-        - 'config:search_api.index.ccei_datasets'
+        - 'config:search_api.index.ccei_publications'
