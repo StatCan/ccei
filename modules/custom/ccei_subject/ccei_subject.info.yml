@@ -41,6 +41,7 @@ dependencies:
   - taxonomy
   - text
   - token
+  - twig_tweak
   - user
   - views
   - views_field_formatter
