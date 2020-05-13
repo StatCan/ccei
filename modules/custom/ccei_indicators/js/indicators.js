@@ -10,7 +10,8 @@
           let steps = 0 // Number of indicators to shift.
 
           // PowerBI integration
-          const powerbi = document.getElementsByClassName('resp-iframe').item(0).contentWindow;
+          // TODO: Possibly find a less brittle selector for the specific PowerBI window.
+          const powerbi = wrapper.parent().parent().find('.resp-iframe')[0].contentWindow;
           indList.find('.ind').on('click keyup', function (e) {
             let pbiBkm = $(this).find('.ind-powerbi').text();
             if (pbiBkm !== undefined && pbiBkm !== "" && powerbi !== undefined) {
