@@ -36,8 +36,6 @@ dependencies:
   - pathauto
   - redirect
   - simple_sitemap
-  - slick
-  - slick_entityreference
   - taxonomy
   - text
   - token
