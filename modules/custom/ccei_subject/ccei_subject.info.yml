@@ -39,8 +39,6 @@ dependencies:
   - search_api
   - search_api_solr
   - simple_sitemap
-  - slick
-  - slick_entityreference
   - taxonomy
   - text
   - token
