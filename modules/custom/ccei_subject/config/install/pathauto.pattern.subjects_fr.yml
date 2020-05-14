@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: subjects_fr
+label: 'Subjects FR'
+type: 'canonical_entities:node'
+pattern: 'sujets/[node:title]'
+selection_criteria:
+  660237d2-8998-4c81-bf81-062ec71a1f97:
+    id: node_type
+    bundles:
+      ccei_subject: ccei_subject
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 660237d2-8998-4c81-bf81-062ec71a1f97
+  61ebaf84-191e-443f-8917-7b5b882e9fed:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 61ebaf84-191e-443f-8917-7b5b882e9fed
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language
