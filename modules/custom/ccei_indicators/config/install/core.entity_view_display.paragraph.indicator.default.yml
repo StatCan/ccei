@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.indicator.field_calculation_desc
     - field.field.paragraph.indicator.field_indicator_sources
     - field.field.paragraph.indicator.field_indicator_title
+    - field.field.paragraph.indicator.field_powerbi_bookmark
     - field.field.paragraph.indicator.field_preprocess
     - field.field.paragraph.indicator.field_rounding_precision
     - field.field.paragraph.indicator.field_units
@@ -46,6 +47,14 @@ content:
     region: content
   field_indicator_title:
     weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_powerbi_bookmark:
+    weight: 8
     label: above
     settings:
       link_to_entity: false

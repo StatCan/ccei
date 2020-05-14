@@ -179,6 +179,7 @@ class IndicatorsFieldFormatter extends FormatterBase implements ContainerFactory
       'preprocess' => $entity->field_preprocess->value,
       'value_format' => $entity->field_value_format->value,
       'rounding_precision' => $entity->field_rounding_precision->value,
+      'powerbi_bookmark' => $entity->field_powerbi_bookmark->value,
       'sources' => $sources,
     ];
   }
