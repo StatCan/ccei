@@ -3,18 +3,28 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.full
+    - field.field.node.ccei_landing.body
+    - field.field.node.ccei_landing.field_meta_tags
+    - field.field.node.ccei_landing.layout_builder__layout
+    - field.field.node.ccei_landing.layout_builder__translation
+    - field.field.node.ccei_landing.layout_selection
     - node.type.ccei_landing
   module:
     - layout_builder
     - layout_builder_restrictions
+    - layout_discovery
+    - layout_library
+    - metatag
+    - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
+    allow_custom: true
     enabled: true
     sections:
       -
         layout_id: layout_onecol
-        layout_settings: {  }
+        layout_settings:
+          label: ''
         components: {  }
         third_party_settings: {  }
   layout_library:
@@ -32,19 +42,23 @@ third_party_settings:
         'Entity Browser':
           - 'entity_browser_block:media_browser'
         Help: {  }
-        'Lists (Views)': {  }
+        'Lists (Views)':
+          - 'views_block:subject_icons-block_1'
         Menus: {  }
         'Moderation Dashboard': {  }
         System:
           - system_breadcrumb_block
         User: {  }
-        'User fields': {  }
         Views: {  }
+        core:
+          - page_title_block
       allowed_layouts:
         - layout_onecol
         - layout_twocol_section
         - layout_threecol_section
         - layout_fourcol_section
+      blacklisted_blocks: {  }
+    allowed_block_categories: {  }
 id: node.ccei_landing.full
 targetEntityType: node
 bundle: ccei_landing
@@ -59,4 +73,10 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  content_moderation_control: true
+  langcode: true
+  layout_builder__layout: true
+  layout_builder__translation: true
+  layout_selection: true
   links: true
+  search_api_excerpt: true
