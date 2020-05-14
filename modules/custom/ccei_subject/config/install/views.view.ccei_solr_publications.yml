@@ -6,7 +6,7 @@ dependencies:
   module:
     - search_api
 _core:
-  default_config_hash: 3wiFFuoutj7kIwNRROimtXaOkPiHxvbf7Sqbz4Ev45g
+  default_config_hash: 1Ug_yYPUaGF1dGvSPqR6Ewortys4cWYiJTfwYOex9to
 id: ccei_solr_publications
 label: 'CCEI Solr Publications'
 module: views
@@ -735,10 +735,10 @@ display:
       empty: {  }
       relationships: {  }
       arguments:
-        search_api_fulltext:
-          id: search_api_fulltext
+        ccei_taxonomies_en:
+          id: ccei_taxonomies_en
           table: search_api_index_ccei_publications
-          field: search_api_fulltext
+          field: ccei_taxonomies_en
           relationship: none
           group_type: group
           admin_label: ''
@@ -765,10 +765,7 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
-          parse_mode: direct
-          fields: {  }
-          conjunction: AND
-          plugin_id: search_api_fulltext
+          plugin_id: search_api
       display_extenders:
         metatag_display_extender: {  }
     cache_metadata:
