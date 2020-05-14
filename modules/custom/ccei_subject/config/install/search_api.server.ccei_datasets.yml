@@ -1,6 +1,7 @@
 langcode: en
 status: true
 dependencies:
+  config:
   module:
     - search_api_solr
 id: ccei_datasets
@@ -8,10 +9,10 @@ name: 'CCEI Datasets Server'
 description: ''
 backend: search_api_solr
 backend_config:
-  connector: basic_auth
+  connector: solr_cloud
   connector_config:
     scheme: https
-    host: solr2.ext.govcloud.ca
+    host: solr.dev.cloud.statcan.ca
     port: 443
     path: /
     core: ccei
@@ -20,12 +21,12 @@ backend_config:
     optimize_timeout: 10
     finalize_timeout: 30
     commit_within: 1000
-    username: solr
-    password: StatCanSolr2020
     solr_version: ''
     http_method: AUTO
     jmx: false
     solr_install_dir: ''
+    checkpoints_collection: ''
+    stats_cache: org.apache.solr.search.stats.LRUStatsCache
   disabled_field_types: {  }
   disabled_caches: {  }
   disabled_request_handlers:

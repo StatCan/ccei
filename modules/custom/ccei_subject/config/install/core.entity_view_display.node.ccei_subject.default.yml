@@ -224,8 +224,6 @@ third_party_settings:
         id: ''
         classes: row
       label: ''
-_core:
-  default_config_hash: YtZI0_Q3yupTd_nYq-g-B4Mj_fqdh-oIZ8URlyI-1aI
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
