@@ -5,6 +5,8 @@ dependencies:
     - search_api.index.ccei_publications
   module:
     - search_api
+_core:
+  default_config_hash: 3wiFFuoutj7kIwNRROimtXaOkPiHxvbf7Sqbz4Ev45g
 id: ccei_solr_publications
 label: 'CCEI Solr Publications'
 module: views
@@ -65,17 +67,20 @@ display:
       style:
         type: default
         options:
-          grouping: {  }
+          grouping:
+            -
+              field: publication_year
+              rendered: true
+              rendered_strip: false
           row_class: ''
-          default_row_class: true
-          uses_fields: false
+          default_row_class: false
       row:
         type: fields
         options:
+          default_field_elements: false
           inline: {  }
           separator: ''
           hide_empty: false
-          default_field_elements: true
       fields:
         ccei_id:
           id: ccei_id
@@ -85,7 +90,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -113,7 +118,7 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: h3
+          element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
@@ -140,7 +145,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -193,7 +198,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -246,7 +251,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -352,7 +357,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -405,7 +410,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -458,7 +463,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -511,7 +516,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -564,7 +569,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -617,7 +622,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -662,6 +667,55 @@ display:
           multi_type: separator
           multi_separator: ', '
           plugin_id: search_api
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<div class=\"col-md-4 mb-2\">\r\n  <div class=\"publication-card\">\r\n    <a href=\"{{url_en}}\"><img src=\"https://via.placeholder.com/400\" alt=\"\" width=\"400\" height=\"400\"></a>\r\n    <a class=\"btn btn-default\" href=\"mailto:\">\r\n     <span class=\"wb-inv\">Share publication: {{title_search_en}}</span>\r\n     <i class=\"mdi mdi-share\"></i>\r\n    </a>\r\n    <p class=\"publication-text\"><a href=\"{{url_en}}\">{{title_search_en}}</a></p>\r\n   </div>\r\n </div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          plugin_id: custom
       filters: {  }
       sorts:
         release_date:
