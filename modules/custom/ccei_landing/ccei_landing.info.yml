@@ -7,6 +7,7 @@ description: 'Provides a content type which allows you to build free-form one-of
 dependencies:
   - drupal:node
   - lightning_layout:lightning_layout
+  - metatag
 
 # Information added by Drupal.org packaging script on 2020-04-28
 version: '8.x-2.x'
