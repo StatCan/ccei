@@ -1,0 +1,25 @@
+uuid: 17141fce-ee24-41a3-8dcf-ac7708ef2b90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meta_tags
+    - node.type.ccei_landing
+  module:
+    - metatag
+_core:
+  default_config_hash: ipTAWVMxuVZlDK8Fnew0ZwvppZ6beFUnVsNBRrkJhVs
+id: node.ccei_landing.field_meta_tags
+field_name: field_meta_tags
+entity_type: node
+bundle: ccei_landing
+label: 'Meta tags'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 'a:1:{s:5:"title";s:34:"[current-page:title] | [site:name]";}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

@@ -1,0 +1,21 @@
+uuid: 93a1b06d-92e4-4113-842a-988a48af079e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_builder__translation
+    - node.type.ccei_landing
+  module:
+    - layout_builder_st
+id: node.ccei_landing.layout_builder__translation
+field_name: layout_builder__translation
+entity_type: node
+bundle: ccei_landing
+label: 'Layout Labels'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_translation

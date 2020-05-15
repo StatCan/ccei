@@ -1,0 +1,21 @@
+uuid: 2c213918-5922-48f5-a1df-ba3620a3ead9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_builder__layout
+    - node.type.ccei_landing
+  module:
+    - layout_builder
+id: node.ccei_landing.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: node
+bundle: ccei_landing
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section

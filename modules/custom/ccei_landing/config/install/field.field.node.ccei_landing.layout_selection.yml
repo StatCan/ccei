@@ -1,0 +1,21 @@
+uuid: c8e5c761-c1af-41cd-8e56-f51bfc34905e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_selection
+    - node.type.ccei_landing
+id: node.ccei_landing.layout_selection
+field_name: layout_selection
+entity_type: node
+bundle: ccei_landing
+label: Layout
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: layout_library
+  handler_settings: {  }
+field_type: entity_reference
