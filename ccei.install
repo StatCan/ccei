@@ -5,6 +5,8 @@
  * Install and uninstall functions for the CCEI installation profile.
  */
 
+use Drupal\node\Entity\Node;
+
 /**
  * Implements hook_install().
  *
@@ -15,6 +17,7 @@
 function ccei_install() {
   _ccei_setup_branding();
   _ccei_setup_base_configurations();
+  _ccei_setup_default_content();
 }
 
 /**
@@ -62,4 +65,26 @@ function _ccei_setup_branding() {
       'use_default' => FALSE,
     ])
     ->save(TRUE);
+}
+
+/**
+ * Set up the default initial content.
+ */
+function _ccei_setup_default_content() {
+  $content_array = array(
+    array(
+      'type' => 'ccei_landing',
+      'title' => 'Homepage',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+    ),
+  );
+
+  foreach ($content_array as $content) {
+    $node = Node::create($content);
+    $node->save();
+  }
+
+  watchdog('ccei site install dev', 'this function was processed', array());
 }
