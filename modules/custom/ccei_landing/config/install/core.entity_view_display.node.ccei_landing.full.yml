@@ -1,3 +1,4 @@
+uuid: 4ec0e110-7e32-479a-b0db-159ae65c02d0
 langcode: en
 status: true
 dependencies:
@@ -32,17 +33,14 @@ third_party_settings:
   layout_builder_restrictions:
     entity_view_mode_restriction:
       whitelisted_blocks:
-        'Chaos tools': {  }
-        Content: {  }
         'Content fields':
           - 'field_block:node:ccei_landing:uid'
           - 'field_block:node:ccei_landing:created'
-        core:
-          - page_title_block
         'Entity Browser':
           - 'entity_browser_block:media_browser'
         Help: {  }
         'Lists (Views)':
+          - 'views_block:subject_highlights-block_1'
           - 'views_block:subject_icons-block_1'
         Menus: {  }
         'Moderation Dashboard': {  }
@@ -59,6 +57,8 @@ third_party_settings:
         - layout_fourcol_section
       blacklisted_blocks: {  }
     allowed_block_categories: {  }
+_core:
+  default_config_hash: 0q_4NkV38Lbr1_tTy5JGURcXuEjORZJcC1_I-1_f_zk
 id: node.ccei_landing.full
 targetEntityType: node
 bundle: ccei_landing

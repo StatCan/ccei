@@ -1,0 +1,13 @@
+name: 'Drupal Install Profile (ccei)'
+mail: admin@example.com
+slogan: 'Collaborative open source project led by the Government of Canada'
+page:
+  403: /system/404
+  404: /system/404
+  front: /homepage
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: uNOHaKWnoIbi-Q7d7NTqX2PeF_cwCaM9tTmwBoM2COA
