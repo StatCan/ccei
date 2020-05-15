@@ -78,6 +78,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-barrel',
     ),
     array(
       'type' => 'ccei_subject',
@@ -85,6 +86,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-transmission-tower',
     ),
     array(
       'type' => 'ccei_subject',
@@ -92,6 +94,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-fire',
     ),
     array(
       'type' => 'ccei_subject',
@@ -99,6 +102,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-water',
     ),
     array(
       'type' => 'ccei_subject',
@@ -106,6 +110,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-solar-power',
     ),
     array(
       'type' => 'ccei_subject',
@@ -113,6 +118,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-leaf',
     ),
     array(
       'type' => 'ccei_subject',
@@ -120,6 +126,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-transfer',
     ),
     array(
       'type' => 'ccei_subject',
@@ -127,6 +134,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-chart-timeline-variant',
     ),
     array(
       'type' => 'ccei_subject',
@@ -134,6 +142,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-home-currency-usd',
     ),
     array(
       'type' => 'ccei_subject',
@@ -141,6 +150,7 @@ function _ccei_setup_default_content() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
+      'field_subject_icon_class' => 'mdi mdi-lightbulb',
     ),
     array(
       'type' => 'ccei_landing',
@@ -154,7 +164,6 @@ function _ccei_setup_default_content() {
   foreach ($content_array as $content) {
     $node = Node::create($content);
     $node->save();
+    pathauto_entity_insert($node);
   }
-
-  watchdog('ccei site install dev', 'this function was processed', array());
 }
