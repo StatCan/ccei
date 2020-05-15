@@ -74,6 +74,26 @@ field_settings:
     datasource_id: solr_document
     property_path: description_search_fr
     type: text
+  dimension_members_en:
+    label: 'Dimension members en'
+    datasource_id: solr_document
+    property_path: dimension_members_en
+    type: string
+  dimension_members_fr:
+    label: 'Dimension members fr'
+    datasource_id: solr_document
+    property_path: dimension_members_fr
+    type: string
+  document_types_en:
+    label: 'Document types en'
+    datasource_id: solr_document
+    property_path: document_types_en
+    type: string
+  document_types_fr:
+    label: 'Document types fr'
+    datasource_id: solr_document
+    property_path: document_types_fr
+    type: string
   end_date:
     label: 'End date'
     datasource_id: solr_document
@@ -114,16 +134,21 @@ field_settings:
     datasource_id: solr_document
     property_path: id
     type: string
-  search_en:
-    label: 'Search en'
+  product_id:
+    label: 'Product id'
     datasource_id: solr_document
-    property_path: search_en
-    type: text
-  search_fr:
-    label: 'Search fr'
+    property_path: product_id
+    type: string
+  publication_year:
+    label: 'Publication year'
     datasource_id: solr_document
-    property_path: search_fr
-    type: text
+    property_path: publication_year
+    type: string
+  release_date:
+    label: 'Release date'
+    datasource_id: solr_document
+    property_path: release_date
+    type: date
   show_in_metadata_search:
     label: 'Show in metadata search'
     datasource_id: solr_document
