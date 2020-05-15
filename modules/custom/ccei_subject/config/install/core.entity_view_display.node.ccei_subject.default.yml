@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
+    - views.view.ccei_search_docs
   module:
     - ccei_indicators
     - ccei_subject
@@ -22,6 +23,7 @@ dependencies:
     - link
     - text
     - user
+    - views_field_formatter
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -158,7 +160,7 @@ third_party_settings:
       region: content
       format_settings:
         element: section
-        show_label: true
+        show_label: false
         label_element: h2
         label_element_classes: ''
         attributes: ''
@@ -176,7 +178,7 @@ third_party_settings:
       region: content
       format_settings:
         element: section
-        show_label: true
+        show_label: false
         label_element: h2
         label_element_classes: ''
         attributes: ''
@@ -222,7 +224,7 @@ third_party_settings:
         classes: row
       label: ''
 _core:
-  default_config_hash: YtZI0_Q3yupTd_nYq-g-B4Mj_fqdh-oIZ8URlyI-1aI
+  default_config_hash: P7en4VaxpoAOzr4urT-qnKvYxJKyU_5Ad3W1Amg8a68
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -238,9 +240,18 @@ content:
   field_datasets_params:
     weight: 8
     label: hidden
-    settings: {  }
+    settings:
+      view: 'ccei_search_docs::datasets'
+      arguments:
+        -
+          checked: '1'
+          weight: '0'
+          token: '[node:field_datasets_params]'
+      implode_character: ''
+      hide_empty: 0
+      multiple: 0
     third_party_settings: {  }
-    type: basic_string
+    type: views_field_formatter
     region: content
   field_powerbi:
     weight: 35
@@ -269,9 +280,18 @@ content:
   field_publications_params:
     weight: 21
     label: hidden
-    settings: {  }
+    settings:
+      view: 'ccei_search_docs::publications'
+      arguments:
+        -
+          checked: '1'
+          weight: '0'
+          token: '[node:field_publications_params]'
+      implode_character: ''
+      hide_empty: 0
+      multiple: 0
     third_party_settings: {  }
-    type: basic_string
+    type: views_field_formatter
     region: content
   field_subject_indicators:
     type: indicators_field_formatter
