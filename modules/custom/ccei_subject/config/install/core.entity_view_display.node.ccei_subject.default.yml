@@ -11,8 +11,7 @@ dependencies:
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
-    - views.view.ccei_solr_datasets
-    - views.view.ccei_solr_publications
+    - views.view.ccei_search_docs
   module:
     - ccei_indicators
     - ccei_subject
@@ -225,7 +224,7 @@ third_party_settings:
         classes: row
       label: ''
 _core:
-  default_config_hash: _ZyqWKcqoxoCdX54aDh1GYtN55h7b4gLxiKYFG9i4ao
+  default_config_hash: P7en4VaxpoAOzr4urT-qnKvYxJKyU_5Ad3W1Amg8a68
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -242,7 +241,7 @@ content:
     weight: 8
     label: hidden
     settings:
-      view: 'ccei_solr_datasets::datasets'
+      view: 'ccei_search_docs::datasets'
       arguments:
         -
           checked: '1'
@@ -282,7 +281,7 @@ content:
     weight: 21
     label: hidden
     settings:
-      view: 'ccei_solr_publications::publications'
+      view: 'ccei_search_docs::publications'
       arguments:
         -
           checked: '1'

@@ -5,7 +5,7 @@ dependencies:
     - search_api_solr
     - search_api
   config:
-    - search_api.server.ccei_publications
+    - search_api.server.ccei_docs_server
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -44,10 +44,10 @@ third_party_settings:
       index_prefix: ''
       collection: ''
       timezone: ''
-id: ccei_publications
-name: 'CCEI Publications Index'
+id: ccei_docs_index
+name: 'CCEI Docs Index'
 description: ''
-read_only: false
+read_only: true
 field_settings:
   ccei_id:
     label: 'Ccei id'
@@ -74,26 +74,6 @@ field_settings:
     datasource_id: solr_document
     property_path: description_search_fr
     type: text
-  dimension_members_en:
-    label: 'Dimension members en'
-    datasource_id: solr_document
-    property_path: dimension_members_en
-    type: string
-  dimension_members_fr:
-    label: 'Dimension members fr'
-    datasource_id: solr_document
-    property_path: dimension_members_fr
-    type: string
-  document_types_en:
-    label: 'Document types en'
-    datasource_id: solr_document
-    property_path: document_types_en
-    type: string
-  document_types_fr:
-    label: 'Document types fr'
-    datasource_id: solr_document
-    property_path: document_types_fr
-    type: string
   end_date:
     label: 'End date'
     datasource_id: solr_document
@@ -134,21 +114,6 @@ field_settings:
     datasource_id: solr_document
     property_path: id
     type: string
-  product_id:
-    label: 'Product id'
-    datasource_id: solr_document
-    property_path: product_id
-    type: string
-  publication_year:
-    label: 'Publication year'
-    datasource_id: solr_document
-    property_path: publication_year
-    type: string
-  release_date:
-    label: 'Release date'
-    datasource_id: solr_document
-    property_path: release_date
-    type: date
   search_en:
     label: 'Search en'
     datasource_id: solr_document
@@ -212,11 +177,13 @@ processor_settings:
   aggregated_field: {  }
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo
 options:
-  index_directly: true
+  index_directly: false
   cron_limit: 50
-server: ccei_publications
+server: ccei_docs_server

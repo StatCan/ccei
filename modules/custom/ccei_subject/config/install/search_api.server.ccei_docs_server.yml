@@ -4,8 +4,8 @@ dependencies:
   config:
   module:
     - search_api_solr
-id: ccei_publications
-name: 'CCEI Publications Server'
+id: ccei_docs_server
+name: 'CCEI Docs Server'
 description: ''
 backend: search_api_solr
 backend_config:
