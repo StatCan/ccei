@@ -32,7 +32,7 @@ display:
         options:
           bypass_access: false
           skip_access: false
-          preserve_facet_query_args: false
+          preserve_facet_query_args: 1
       exposed_form:
         type: basic
         options:
@@ -1831,6 +1831,130 @@ display:
           min_length: null
           fields: {  }
           plugin_id: search_api_fulltext
+          start_date:
+            id: start_date
+            table: search_api_index_ccei_docs_index
+            field: start_date
+            relationship: none
+            group_type: group
+            admin_label: ''
+            operator: '>='
+            value:
+              min: ''
+              max: ''
+              value: ''
+              type: date
+            group: 1
+            exposed: true
+            expose:
+              operator_id: start_date_op
+              label: 'Start date'
+              description: ''
+              use_operator: true
+              operator: start_date_op
+              operator_limit_selection: false
+              operator_list: {  }
+              identifier: start_date
+              required: false
+              remember: false
+              multiple: false
+              remember_roles:
+                authenticated: authenticated
+                anonymous: '0'
+                administrator: '0'
+                layout_manager: '0'
+                ccei_highlight_creator: '0'
+                creator: '0'
+                ccei_highlight_reviewer: '0'
+                reviewer: '0'
+                ccei_landing_creator: '0'
+                media_creator: '0'
+                ccei_landing_reviewer: '0'
+                media_manager: '0'
+                ccei_subject_creator: '0'
+                ccei_subject_reviewer: '0'
+                page_creator: '0'
+                page_reviewer: '0'
+                landing_page_creator: '0'
+                landing_page_reviewer: '0'
+              placeholder: ''
+              min_placeholder: ''
+              max_placeholder: ''
+            is_grouped: false
+            group_info:
+              label: ''
+              description: ''
+              identifier: ''
+              optional: true
+              widget: select
+              multiple: false
+              remember: false
+              default_group: All
+              default_group_multiple: {  }
+              group_items: {  }
+            plugin_id: search_api_date
+          end_date:
+          id: end_date
+          table: search_api_index_ccei_docs_index
+          field: end_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: end_date_op
+            label: 'End date'
+            description: ''
+            use_operator: true
+            operator: end_date_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: end_date
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              layout_manager: '0'
+              ccei_highlight_creator: '0'
+              creator: '0'
+              ccei_highlight_reviewer: '0'
+              reviewer: '0'
+              ccei_landing_creator: '0'
+              media_creator: '0'
+              ccei_landing_reviewer: '0'
+              media_manager: '0'
+              ccei_subject_creator: '0'
+              ccei_subject_reviewer: '0'
+              page_creator: '0'
+              page_reviewer: '0'
+              landing_page_creator: '0'
+              landing_page_reviewer: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_date
       defaults:
         filters: false
         filter_groups: false
