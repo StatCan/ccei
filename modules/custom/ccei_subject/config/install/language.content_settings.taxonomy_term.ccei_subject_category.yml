@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ccei_subject_category
+id: taxonomy_term.ccei_subject_category
+target_entity_type_id: taxonomy_term
+target_bundle: ccei_subject_category
+default_langcode: site_default
+language_alterable: false

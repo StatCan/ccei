@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'CCEI Subject Category'
+vid: ccei_subject_category
+description: 'Description for ccei subjects categories.'
+weight: 0
