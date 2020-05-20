@@ -6,6 +6,8 @@ dependencies:
   module:
     - search_api
     - user
+_core:
+  default_config_hash: KKNi2W7CBdcy81Z2Q29H0DUAp1NIOpx2UoNlXIT06Mo
 id: ccei_search_docs
 label: 'CCEI Search Docs'
 module: views
@@ -1383,6 +1385,9 @@ display:
         arguments: false
         fields: false
         cache: false
+        pager: false
+        style: false
+        row: false
       fields:
         sources_en:
           id: sources_en
@@ -1702,6 +1707,108 @@ display:
           multi_type: separator
           multi_separator: ', '
           plugin_id: search_api
+        ccei_taxonomies_en:
+          id: ccei_taxonomies_en
+          table: search_api_index_ccei_docs_index
+          field: ccei_taxonomies_en
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          link_to_item: false
+          use_highlighting: false
+          multi_type: separator
+          multi_separator: ', '
+          plugin_id: search_api
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: 'Last term'
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ ccei_taxonomies_en | split(",") | last | trim("|") | split("|") | last }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          plugin_id: custom
         nothing:
           id: nothing
           table: views
@@ -1713,7 +1820,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"display-table-row\">\r\n <div class=\"pr-2 display-table-cell table-lnk\">\r\n  <a href=\"{{url_en}}\">{{title_search_en}}</a>\r\n </div>\r\n <div class=\"brdr-l-grey pl-2 display-table-cell\">Provided by {{sources_en}}</div>\r\n</div>\r\n{#\r\n<div class=\"display-table-row\">\r\n <div class=\"pr-2 display-table-cell table-lnk\">\r\n  <a href=\"{{url_en}}\">{{title_search_en}}</a>\r\n </div>\r\n <div class=\"brdr-l-grey pl-2 display-table-cell\">Provided by {{sources_en}}</div>\r\n</div>\r\n#}"
+            text: "<div class=\"display-table-row\">\r\n <span class=\"pr-2 display-table-cell table-lnk\">\r\n  <a href=\"{{url_en}}\">{{title_search_en}}</a>\r\n </span>\r\n <span class=\"brdr-l-grey pl-2 display-table-cell\">Provided by {{sources_en}}</span>\r\n</div>\r\n{#\r\n<div class=\"display-table-row\">\r\n <div class=\"pr-2 display-table-cell table-lnk\">\r\n  <a href=\"{{url_en}}\">{{title_search_en}}</a>\r\n </div>\r\n <div class=\"brdr-l-grey pl-2 display-table-cell\">Provided by {{sources_en}}</div>\r\n</div>\r\n#}"
             make_link: false
             path: ''
             absolute: false
@@ -1754,12 +1861,32 @@ display:
       cache:
         type: none
         options: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      style:
+        type: default
+        options:
+          grouping:
+            -
+              field: nothing_1
+              rendered: true
+              rendered_strip: false
+          row_class: ''
+          default_row_class: false
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: ''
+          hide_empty: false
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_interface'
         - url
-        - url.query_args
         - user.permissions
       tags:
         - 'config:search_api.index.ccei_docs_index'
@@ -1893,68 +2020,7 @@ display:
               default_group_multiple: {  }
               group_items: {  }
             plugin_id: search_api_date
-          end_date:
-          id: end_date
-          table: search_api_index_ccei_docs_index
-          field: end_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '<='
-          value:
-            min: ''
-            max: ''
-            value: ''
-            type: date
-          group: 1
-          exposed: true
-          expose:
-            operator_id: end_date_op
-            label: 'End date'
-            description: ''
-            use_operator: true
-            operator: end_date_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: end_date
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              layout_manager: '0'
-              ccei_highlight_creator: '0'
-              creator: '0'
-              ccei_highlight_reviewer: '0'
-              reviewer: '0'
-              ccei_landing_creator: '0'
-              media_creator: '0'
-              ccei_landing_reviewer: '0'
-              media_manager: '0'
-              ccei_subject_creator: '0'
-              ccei_subject_reviewer: '0'
-              page_creator: '0'
-              page_reviewer: '0'
-              landing_page_creator: '0'
-              landing_page_reviewer: '0'
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: search_api_date
+          end_date: null
       defaults:
         filters: false
         filter_groups: false
@@ -2405,6 +2471,8 @@ display:
         filter_groups: false
         sorts: false
         pager: false
+        style: false
+        row: false
       fields:
         publication_year:
           id: publication_year
@@ -2723,7 +2791,51 @@ display:
       cache:
         type: none
         options: {  }
-      filters: {  }
+      filters:
+        publication_year:
+          id: publication_year
+          table: search_api_index_ccei_docs_index
+          field: publication_year
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: 'not empty'
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
       filter_groups:
         operator: AND
         groups:
@@ -2754,32 +2866,31 @@ display:
             label: ''
           plugin_id: search_api
       pager:
-        type: full
+        type: none
         options:
-          items_per_page: 9
           offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: ‹‹
-            next: ››
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 9
+      style:
+        type: default
+        options:
+          grouping:
+            -
+              field: publication_year
+              rendered: true
+              rendered_strip: false
+          row_class: ''
+          default_row_class: false
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: ''
+          hide_empty: false
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_interface'
         - url
-        - url.query_args
         - user.permissions
       tags:
         - 'config:search_api.index.ccei_docs_index'
