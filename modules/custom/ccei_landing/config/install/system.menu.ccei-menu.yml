@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ccei-menu
+label: 'CCEI Menu'
+description: 'Description for the CCEI Menu.'
+locked: false
