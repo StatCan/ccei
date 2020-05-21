@@ -284,9 +284,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_subject_highlights:
-    weight: 33
-    label: hidden
   field_publications_params:
     weight: 21
     label: hidden
