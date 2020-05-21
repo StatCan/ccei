@@ -6,13 +6,13 @@ dependencies:
     - views.view.ccei_search_page
   module:
     - search_api
-id: frequency_en
-name: 'Frequency en'
-url_alias: frequency_en
+id: sources_en
+name: 'Sources en'
+url_alias: sources_en
 weight: 0
 min_count: 1
 show_only_one_result: false
-field_identifier: frequency_en
+field_identifier: sources_en
 facet_source_id: 'search_api:views_page__ccei_search_page__page_search'
 widget:
   type: links

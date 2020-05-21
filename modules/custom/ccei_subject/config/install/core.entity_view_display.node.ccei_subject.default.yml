@@ -11,7 +11,7 @@ dependencies:
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
-    - views.view.ccei_search_docs
+    - views.view.ccei_search_tabs
   module:
     - ccei_indicators
     - ccei_subject
@@ -224,7 +224,7 @@ third_party_settings:
         classes: row
       label: ''
 _core:
-  default_config_hash: P7en4VaxpoAOzr4urT-qnKvYxJKyU_5Ad3W1Amg8a68
+  default_config_hash: HXcjhgGm0g4SwpUlPYEHeCCSoat2GbxrWc4KHQ2NM9s
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -241,7 +241,7 @@ content:
     weight: 8
     label: hidden
     settings:
-      view: 'ccei_search_docs::datasets'
+      view: 'ccei_search_tabs::datasets'
       arguments:
         -
           checked: '1'
@@ -281,7 +281,7 @@ content:
     weight: 21
     label: hidden
     settings:
-      view: 'ccei_search_docs::publications'
+      view: 'ccei_search_tabs::publications'
       arguments:
         -
           checked: '1'
