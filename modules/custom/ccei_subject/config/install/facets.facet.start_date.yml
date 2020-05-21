@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - search_api.index.ccei_docs_index
-    - views.view.ccei_search_docs
+    - views.view.ccei_search_page
   module:
     - search_api
 id: start_date
@@ -13,7 +13,7 @@ weight: 0
 min_count: 1
 show_only_one_result: false
 field_identifier: start_date
-facet_source_id: 'search_api:views_page__ccei_search_docs__page_search'
+facet_source_id: 'search_api:views_page__ccei_search_page__page_search'
 widget:
   type: links
   config:
