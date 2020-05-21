@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Contains ccei_highlight.module..
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function ccei_highlight_theme() {
+  // Get the module path.
+  $module_handler = \Drupal::service('module_handler');
+  $module_path = $module_handler->getModule('ccei_highlight')->getPath();
+  return [
+    // Field templates.
+    'field__node__body__ccei_highlight' => [
+      'path' => $module_path . '/templates/field',
+      'template' => 'field--node--body--ccei-highlight',
+      'base hook' => 'field',
+    ],
+    'field__node__field_background__ccei_highlight' => [
+      'path' => $module_path . '/templates/field',
+      'template' => 'field--node--field-background--ccei-highlight',
+      'base hook' => 'field',
+    ],
+    // Add views template for subject highlights.
+    'views_view__subject_highlights' => [
+      'path' => $module_path . '/templates/views',
+      'template' => 'views-view--subject_highlights',
+      'base hook' => 'views_view',
+    ],
+  ];
+}

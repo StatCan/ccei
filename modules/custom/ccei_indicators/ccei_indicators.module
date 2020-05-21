@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 
 /**
  * Implements hook_help().
@@ -25,14 +26,34 @@ function ccei_indicators_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_theme().
  */
 function ccei_indicators_theme() {
-  return [
-    'indicators_block' => [
-      'variables' => [
-        'title' => NULL,
-        'indicators' => [],
-        'content' => NULL,
-      ],
-      'render element' => 'children',
+  $items['indicators_block'] = [
+    'variables' => [
+      'title' => NULL,
+      'indicators' => [],
+      'display_header' => TRUE,
+      'content' => NULL,
     ],
+    'render element' => 'children',
   ];
+
+  $items['ccei_indicators_details_summary'] = [
+    'preprocess functions' => [
+      'template_preprocess_ccei_indicators_details_summary',
+    ],
+    'file' => 'ccei_indicators.theme.inc',
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function ccei_indicators_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+
+  if ($bundle === 'indicator_source') {
+    if (isset($fields['field_coordinates'])) {
+      $fields['field_coordinates']->addConstraint('cube_coordinates', []);
+    }
+  }
 }

@@ -9,6 +9,9 @@
  * Implements hook_theme().
  */
 function ccei_subject_theme() {
+  // Get the module path.
+  $module_handler = \Drupal::service('module_handler');
+  $module_path = $module_handler->getModule('ccei_subject')->getPath();
   return [
     // Add template for our powerbi formatter.
     'power_bi_formatter' => [
@@ -17,22 +20,59 @@ function ccei_subject_theme() {
         'url_title' => NULL,
         'url' => NULL,
       ],
+      'path' => $module_path . '/templates/formatter',
       'template' => 'power-bi-formatter',
-    ],
-    // Add field template for powerbi_data.
-    'field__field_powerbi_data' => [
-      'template' => 'field--field-powerbi-data',
-      'base hook' => 'field',
     ],
     // Add views block template for subject icons.
     'block__views_block__subject_icons_block_1' => [
+      'path' => $module_path . '/templates/views',
       'template' => 'block--views-block--subject-icons-block-1',
       'base hook' => 'views',
     ],
     // Add views formatter template for subject icons.
     'views_view_unformatted__subject_icons' => [
+      'path' => $module_path . '/templates/views',
       'template' => 'views-view-unformatted--subject_icons',
       'base hook' => 'views_view_unformatted',
+    ],
+    // Field templates.
+    'field__field_powerbi_data' => [
+      'path' => $module_path . '/templates/field',
+      'template' => 'field--field-powerbi-data',
+      'base hook' => 'field',
+    ],
+    'field__node__field_subject_whats_new' => [
+      'path' => $module_path . '/templates/field',
+      'template' => 'field--node--field-subject-whats-new',
+      'base hook' => 'field',
+    ],
+    'field__paragraph__field_background__ccei_whats_new_item' => [
+      'path' => $module_path . '/templates/field',
+      'template' => 'field--paragraph--field-background--ccei-whats-new-item',
+      'base hook' => 'field',
+    ],
+    'field__paragraph__field_url__ccei_whats_new_item' => [
+      'path' => $module_path . '/templates/field',
+      'template' => 'field--paragraph--field-url--ccei-whats-new-item',
+      'base hook' => 'field',
+    ],
+    // Field-group templates.
+    'field_group_html_element__node__ccei_subject__group_overview' => [
+      'path' => $module_path . '/templates/field-group',
+      'template' => 'field-group-html-element--node--ccei-subject--group-overview',
+      'base hook' => 'field_group_html_element',
+    ],
+
+    'field_group_html_element__group_whats_new' => [
+      'path' => $module_path . '/templates/field-group',
+      'template' => 'field-group-html-element--group-whats-new',
+      'base hook' => 'field_group_html_element',
+    ],
+    // Paragraph templates.
+    'paragraph__ccei_whats_new_item__default' => [
+      'path' => $module_path . '/templates/paragraph',
+      'template' => 'paragraph--ccei-whats-new-item--default',
+      'base hook' => 'paragraph',
     ],
   ];
 }

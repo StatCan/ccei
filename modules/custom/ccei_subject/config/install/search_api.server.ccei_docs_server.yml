@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config: {  }
+  module:
+    - search_api_solr
+id: ccei_docs_server
+name: 'CCEI Docs Server'
+description: ''
+backend: search_api_solr
+backend_config:
+  connector: solr_cloud
+  connector_config:
+    scheme: https
+    host: solr.dev.cloud.statcan.ca
+    port: 443
+    path: /
+    core: ccei
+    timeout: 5
+    index_timeout: 5
+    optimize_timeout: 10
+    finalize_timeout: 30
+    commit_within: 1000
+    solr_version: ''
+    http_method: AUTO
+    jmx: false
+    solr_install_dir: ''
+    checkpoints_collection: ''
+    stats_cache: org.apache.solr.search.stats.LRUStatsCache
+  disabled_field_types: {  }
+  disabled_caches: {  }
+  disabled_request_handlers: {  }
+  disabled_request_dispatchers: {  }
+  rows: 10
+  retrieve_data: true
+  highlight_data: false
+  skip_schema_check: false
+  server_prefix: ''
+  domain: generic
+  environment: default
+  optimize: false
+  site_hash: false

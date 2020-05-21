@@ -6,7 +6,6 @@ ccei-indicators:
   js:
     js/indicators.js: {}
   dependencies:
+    - wxt_library/wet-boew
     - core/jquery
     - core/jquery.once
-#    - core/drupal
-#    - core/drupalSettings

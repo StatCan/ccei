@@ -8,23 +8,23 @@ dependencies:
     - field.field.node.ccei_subject.field_powerbi_data
     - field.field.node.ccei_subject.field_publications_params
     - field.field.node.ccei_subject.field_subject_category
-    - field.field.node.ccei_subject.field_subject_highlights
     - field.field.node.ccei_subject.field_subject_icon_class
     - field.field.node.ccei_subject.field_subject_indicators
     - field.field.node.ccei_subject.field_subject_whats_new
     - node.type.ccei_subject
+    - views.view.ccei_search_tabs
   module:
     - ccei_indicators
     - ccei_subject
     - entity_reference_revisions
     - field_group
-    - field_limiter
     - layout_builder
     - layout_builder_restrictions
     - layout_library
     - link
     - text
     - user
+    - views_field_formatter
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -41,7 +41,6 @@ third_party_settings:
   field_group:
     group_overview:
       children:
-        - group_highlights
         - field_subject_indicators
         - group_powerbi
         - group_whats_new
@@ -79,24 +78,6 @@ third_party_settings:
         id: ''
         classes: ''
       label: PowerBI
-    group_highlights:
-      children:
-        - group_highlights_row
-      parent_name: group_overview
-      weight: 31
-      format_type: html_element
-      region: content
-      format_settings:
-        element: section
-        show_label: true
-        label_element: h2
-        label_element_classes: ''
-        attributes: ''
-        effect: none
-        speed: fast
-        id: ''
-        classes: ''
-      label: Highlights
     group_whats_new:
       children:
         - group_whats_new_row
@@ -180,7 +161,7 @@ third_party_settings:
       region: content
       format_settings:
         element: section
-        show_label: true
+        show_label: false
         label_element: h2
         label_element_classes: ''
         attributes: ''
@@ -198,7 +179,7 @@ third_party_settings:
       region: content
       format_settings:
         element: section
-        show_label: true
+        show_label: false
         label_element: h2
         label_element_classes: ''
         attributes: ''
@@ -225,24 +206,6 @@ third_party_settings:
         id: ''
         classes: wb-tabs
       label: ''
-    group_highlights_row:
-      children:
-        - field_subject_highlights
-      parent_name: group_highlights
-      weight: 32
-      format_type: html_element
-      region: content
-      format_settings:
-        element: div
-        show_label: false
-        label_element: h3
-        label_element_classes: ''
-        attributes: ''
-        effect: none
-        speed: fast
-        id: ''
-        classes: row
-      label: ''
     group_whats_new_row:
       children:
         - field_subject_whats_new
@@ -261,8 +224,6 @@ third_party_settings:
         id: ''
         classes: row
       label: ''
-_core:
-  default_config_hash: YtZI0_Q3yupTd_nYq-g-B4Mj_fqdh-oIZ8URlyI-1aI
 id: node.ccei_subject.default
 targetEntityType: node
 bundle: ccei_subject
@@ -278,9 +239,18 @@ content:
   field_datasets_params:
     weight: 8
     label: hidden
-    settings: {  }
+    settings:
+      view: 'ccei_search_tabs::datasets'
+      arguments:
+        -
+          checked: '1'
+          weight: '0'
+          token: '[node:field_datasets_params]'
+      implode_character: ''
+      hide_empty: 0
+      multiple: 0
     third_party_settings: {  }
-    type: basic_string
+    type: views_field_formatter
     region: content
   field_powerbi:
     weight: 35
@@ -306,13 +276,6 @@ content:
     third_party_settings: {  }
     type: link
     region: content
-  field_publications_params:
-    weight: 21
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
   field_subject_category:
     weight: 37
     label: above
@@ -324,21 +287,29 @@ content:
   field_subject_highlights:
     weight: 33
     label: hidden
+  field_publications_params:
+    weight: 21
+    label: hidden
     settings:
-      type: entity_reference_entity_view
-      settings:
-        view_mode: teaser
-      offset: 0
-      limit: 3
+      view: 'ccei_search_tabs::publications'
+      arguments:
+        -
+          checked: '1'
+          weight: '0'
+          token: '[node:field_publications_params]'
+      implode_character: ''
+      hide_empty: 0
+      multiple: 0
     third_party_settings: {  }
-    type: field_limiter
+    type: views_field_formatter
     region: content
   field_subject_indicators:
     type: indicators_field_formatter
     weight: 32
     region: content
     label: visually_hidden
-    settings: {  }
+    settings:
+      display_header: true
     third_party_settings: {  }
   field_subject_whats_new:
     type: entity_reference_revisions_entity_view

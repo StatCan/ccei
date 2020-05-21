@@ -1,0 +1,10 @@
+<div id="{{ id }}" {{ attributes.addClass(classes) }}>
+  {% for key, row in rows -%}
+  <details id="{{ id }}-collapse-{{ key }}">
+    <summary>
+      {{row.title}}
+    </summary>
+    {{row.content}}
+  </details>
+  {%- endfor %}
+</div>

@@ -77,6 +77,7 @@
   padding: 10px;
   margin-right: 10px;
   border: 1px solid transparent;
+  cursor: pointer;
 }
 
 .ccei-indicators .ind:hover,
@@ -166,6 +167,10 @@
 
 .ind  .ind-refper {
   font-size: .6em;
+}
+
+.ind-powerbi {
+  display: none;
 }
 
 /* Temporarily here, should be in theme */

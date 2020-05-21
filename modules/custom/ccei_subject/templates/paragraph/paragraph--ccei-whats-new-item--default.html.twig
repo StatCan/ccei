@@ -38,11 +38,5 @@
  * @ingroup themeable
  */
 #}
-{#
-<a href="{{ content.field_url[0]['#url'].uri }}">
-#}
-{{ content.field_background }}
-{#
-</a>
-#}
+<a href="{{ content.field_url[0]['#url'].uri }}">{{ content.field_background }}</a>
 {{ content.field_url }}
