@@ -13,7 +13,7 @@
         "phing/phing": "^2.14",
         "drupal/console": "~1.9.0",
         "drupal/core-composer-scaffold": "*",
-        "drupal/devel": "^1.0",
+        "drupal/devel": "^2.1",
         "drupal/drupal-extension": "~3.4.0",
         "drush/drush": "^9.0",
         "grasmash/yaml-cli": "^1.0",
