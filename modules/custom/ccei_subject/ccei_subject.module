@@ -35,6 +35,18 @@ function ccei_subject_theme() {
       'template' => 'views-view-unformatted--subject_icons',
       'base hook' => 'views_view_unformatted',
     ],
+    // Add views formatter template for Datasets Subject tab.
+    'views_view_unformatted__ccei_search_tabs__datasets' => [
+      'path' => $module_path . '/templates/views',
+      'template' => 'views-view-unformatted--ccei_search_tabs--datasets',
+      'base hook' => 'views_view_unformatted',
+    ],
+    // Add views formatter template for Publications Subject tab.
+    'views_view_unformatted__ccei_search_tabs__publications' => [
+      'path' => $module_path . '/templates/views',
+      'template' => 'views-view-unformatted--ccei_search_tabs--publications',
+      'base hook' => 'views_view_unformatted',
+    ],
     // Field templates.
     'field__field_powerbi_data' => [
       'path' => $module_path . '/templates/field',
