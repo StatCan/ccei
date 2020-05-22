@@ -6,8 +6,6 @@ dependencies:
   module:
     - menu_block
     - wxt_library
-  theme:
-    - ccei_bootstrap
 id: cceimenu
 theme: ccei_bootstrap
 region: navigation
