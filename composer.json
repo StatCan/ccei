@@ -130,7 +130,8 @@
         "mdi/materialdesign-webfont" : "^3.5.94",
         "drupal/field_limiter": "^1.0",
         "drupal/views_field_formatter": "2.x-dev",
-        "drupal/twig_tweak": "^2.5"
+        "drupal/twig_tweak": "^2.5",
+        "drupal/token_language": "^1.0"
     },
     "autoload": {
         "psr-4": {
