@@ -123,8 +123,8 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.7",
-        "drupalwxt/wxt": "3.0.10",
-        "acquia/lightning": "4.1.3",
+        "drupalwxt/wxt": "3.0.11",
+        "acquia/lightning": "4.1.4",
         "drupal/facets": "^1.0",
         "nxp/math-executor": "^1.1",
         "mdi/materialdesign-webfont" : "^3.5.94",
