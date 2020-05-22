@@ -7,7 +7,7 @@ dependencies:
     - search_api
     - user
 _core:
-  default_config_hash: yx3mwgHdr4GM7k8SQATJTNxTZsJ6Lo480qv9J9bygKs
+  default_config_hash: UEX6oR-1BP2fO5RR67XvinjRbHfnxq9vSs0yme5UCu4
 id: ccei_search_tabs
 label: 'CCEI Search Tabs'
 module: views
@@ -1873,7 +1873,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% set the_path = url_en %}\r\n{% set the_title = title_search_en %}\r\n{% set the_source = 'Provided by ' ~ sources_en %}\r\n{% if (drupal_token('current-language:code') == 'fr') %}\r\n{% set the_path = url_fr %}\r\n{% set the_title = title_search_fr %}\r\n{% set the_source = 'Fourni par ' ~ sources_fr %}\r\n{% endif %}\r\n<div class=\"display-table-row\">\r\n <span class=\"pr-2 display-table-cell table-lnk\">\r\n  <a href=\"{{the_path}}\">{{the_title}}</a>\r\n </span>\r\n <span class=\"brdr-l-grey pl-2 display-table-cell\">{{the_source}}</span>\r\n</div>\r\n"
+            text: "{% set the_path = url_en %}\r\n{% set the_title = title_search_en %}\r\n{% set the_source = 'Provided by ' ~ sources_en %}\r\n{% if (drupal_token('current-language:code') == 'fr') %}\r\n{% set the_path = url_fr %}\r\n{% set the_title = title_search_fr %}\r\n{% set the_source = 'Fourni par ' ~ sources_fr %}\r\n{% endif %}\r\n  <div class=\"display-table-row\">\r\n    <div class=\"pr-2 display-table-cell\">\r\n      <a href=\"{{the_path}}\">{{the_title}}</a>\r\n    </div>\r\n    <div class=\"brdr-l-grey pl-2 display-table-cell\">{{the_source}}</div>\r\n  </div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -2272,7 +2272,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% set the_path = url_en %}\r\n{% set the_title = title_search_en %}\r\n{% set the_source = 'Share publication: ' ~ title_search_en %}\r\n{% if (drupal_token('current-language:code') == 'fr') %}\r\n{% set the_path = url_fr %}\r\n{% set the_title = title_search_fr %}\r\n{% set the_source = 'Partager le publication: ' ~ title_search_fr %}\r\n{% endif %}\r\n<div class=\"col-md-4 mb-2\">\r\n  <div class=\"publication-card\">\r\n    <a href=\"{{the_path}}\"><img src=\"https://via.placeholder.com/400\" alt=\"\" width=\"400\" height=\"400\"></a>\r\n    <a class=\"btn btn-default\" href=\"mailto:\">\r\n     <span class=\"wb-inv\">{{the_source}}</span>\r\n     <i class=\"mdi mdi-share\"></i>\r\n    </a>\r\n    <p class=\"publication-text\"><a href=\"{{the_path}}\">{{the_title}}</a></p>\r\n   </div>\r\n </div>\r\n{#\r\n<div class=\"col-md-4 mb-2\">\r\n  <div class=\"publication-card\">\r\n    <a href=\"{{url_en}}\"><img src=\"https://via.placeholder.com/400\" alt=\"\" width=\"400\" height=\"400\"></a>\r\n    <a class=\"btn btn-default\" href=\"mailto:\">\r\n     <span class=\"wb-inv\">Share publication: {{title_search_en}}</span>\r\n     <i class=\"mdi mdi-share\"></i>\r\n    </a>\r\n    <p class=\"publication-text\"><a href=\"{{url_en}}\">{{title_search_en}}</a></p>\r\n   </div>\r\n </div>\r\n#}"
+            text: "{% set the_path = url_en %}\r\n{% set the_title = title_search_en %}\r\n{% set the_source = 'Share publication: ' ~ title_search_en %}\r\n{% if (drupal_token('current-language:code') == 'fr') %}\r\n{% set the_path = url_fr %}\r\n{% set the_title = title_search_fr %}\r\n{% set the_source = 'Partager le publication: ' ~ title_search_fr %}\r\n{% endif %}\r\n<div class=\"col-md-4 mb-2\">\r\n  <div class=\"publication-card\">\r\n    <a href=\"{{the_path}}\"><img src=\"https://via.placeholder.com/400\" alt=\"\" width=\"400\" height=\"400\"></a>\r\n    <a class=\"btn btn-default\" href=\"mailto:\">\r\n     <span class=\"wb-inv\">{{the_source}}</span>\r\n     <i class=\"mdi mdi-share\"></i>\r\n    </a>\r\n    <p class=\"publication-text\"><a href=\"{{the_path}}\">{{the_title}}</a></p>\r\n   </div>\r\n </div>"
             make_link: false
             path: ''
             absolute: false
