@@ -1,0 +1,8 @@
+uuid: 02fd2c04-560c-4e57-93af-769b24068f82
+langcode: en
+status: true
+dependencies: {  }
+id: power_bi
+label: 'Power BI'
+revision: 1
+description: 'A Power BI block that displays a graph built from a Power BI Link field.'

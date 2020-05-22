@@ -1,0 +1,23 @@
+uuid: 672e5b2a-cb3d-4373-9fe8-5f15c3e6c394
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.power_bi
+    - field.storage.block_content.field_power_bi_block_data
+  module:
+    - link
+id: block_content.power_bi.field_power_bi_block_data
+field_name: field_power_bi_block_data
+entity_type: block_content
+bundle: power_bi
+label: 'Power BI Data Table Links'
+description: 'Links that will be displayed below the Power BI visualization.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 2
+field_type: link

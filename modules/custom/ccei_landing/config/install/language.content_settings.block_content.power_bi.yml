@@ -1,0 +1,16 @@
+uuid: 00dd8700-f8b0-43f4-9ba5-6e60c969c8d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.power_bi
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.power_bi
+target_entity_type_id: block_content
+target_bundle: power_bi
+default_langcode: site_default
+language_alterable: true

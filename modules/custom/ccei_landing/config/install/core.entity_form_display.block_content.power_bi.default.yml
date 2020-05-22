@@ -1,0 +1,52 @@
+uuid: dc1d2990-bd48-44f5-bbec-bfaa58157d53
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.power_bi
+    - field.field.block_content.power_bi.field_power_bi_block_data
+    - field.field.block_content.power_bi.field_power_bi_block_link
+  module:
+    - link
+id: block_content.power_bi.default
+targetEntityType: block_content
+bundle: power_bi
+mode: default
+content:
+  field_power_bi_block_data:
+    weight: 28
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_power_bi_block_link:
+    weight: 27
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

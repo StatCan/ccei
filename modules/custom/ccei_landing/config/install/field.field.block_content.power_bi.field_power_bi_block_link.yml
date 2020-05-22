@@ -1,0 +1,23 @@
+uuid: 3210c018-5522-441d-9bb6-15b585765e55
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.power_bi
+    - field.storage.block_content.field_power_bi_block_link
+  module:
+    - link
+id: block_content.power_bi.field_power_bi_block_link
+field_name: field_power_bi_block_link
+entity_type: block_content
+bundle: power_bi
+label: 'Power BI Link'
+description: 'Link to the Power BI visualization that will be embedded on the page.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

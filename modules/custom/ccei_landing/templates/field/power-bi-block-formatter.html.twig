@@ -1,0 +1,20 @@
+{#
+/**
+* @file
+* Theme implementation to display a link field (powerbi) in an iframe.
+*
+* Available variables:
+* - title
+* - url_title
+* - url
+*/
+#}
+
+<div class="text-center">
+  <a href="#a1-data" class="wb-inv wb-show-onfocus wb-sl">{{ 'Skip the interactive features and go directly to the data tables.'|t }}</a>
+</div>
+<div class="wb-inv">{{ 'Start of visual interactive dashboard'|t }}</div>
+<div class="resp-container">
+  <iframe class="resp-iframe" src="{{ url }}"></iframe>
+</div>
+<div class="wb-inv">{{ 'End of visual interactive dashboard'|t }}</div>

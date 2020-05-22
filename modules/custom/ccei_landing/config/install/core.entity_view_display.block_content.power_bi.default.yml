@@ -1,0 +1,42 @@
+uuid: 2269dd14-286f-4aaa-9c06-2ad3613b9cd4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.power_bi
+    - field.field.block_content.power_bi.field_power_bi_block_data
+    - field.field.block_content.power_bi.field_power_bi_block_link
+  module:
+    - link
+id: block_content.power_bi.default
+targetEntityType: block_content
+bundle: power_bi
+mode: default
+content:
+  field_power_bi_block_data:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_power_bi_block_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: power_bi_formatter
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

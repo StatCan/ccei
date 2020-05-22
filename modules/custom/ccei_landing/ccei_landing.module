@@ -11,6 +11,28 @@ use Drupal\node\Entity\NodeType;
 use Drupal\workflows\WorkflowInterface;
 
 /**
+ * Implements hook_theme().
+ */
+function ccei_landing_theme() {
+  return [
+    // Add template for our powerbi formatter.
+    'power_bi_block_formatter' => [
+      'variables' => [
+        'title' => NULL,
+        'url_title' => NULL,
+        'url' => NULL,
+      ],
+      'template' => 'power-bi-block-formatter',
+    ],
+    // Add field template for powerbi_data.
+    'field__field_powerbi_block_data' => [
+      'template' => 'field--field-powerbi-block-data',
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
  * Implements hook_modules_installed().
  */
 function ccei_landing_modules_installed(array $modules) {
