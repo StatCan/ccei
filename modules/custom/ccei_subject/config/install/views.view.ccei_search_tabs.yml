@@ -7,7 +7,7 @@ dependencies:
     - search_api
     - user
 _core:
-  default_config_hash: cq5IJggkOLhw42Eo8prja3hyD0n4tJwiSkQMtopOcCs
+  default_config_hash: yx3mwgHdr4GM7k8SQATJTNxTZsJ6Lo480qv9J9bygKs
 id: ccei_search_tabs
 label: 'CCEI Search Tabs'
 module: views
@@ -1760,6 +1760,59 @@ display:
           multi_type: separator
           multi_separator: ', '
           plugin_id: search_api
+        ccei_taxonomies_fr:
+          id: ccei_taxonomies_fr
+          table: search_api_index_ccei_docs_index
+          field: ccei_taxonomies_fr
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          link_to_item: false
+          use_highlighting: false
+          multi_type: separator
+          multi_separator: ', '
+          plugin_id: search_api
         nothing_1:
           id: nothing_1
           table: views
@@ -1771,7 +1824,7 @@ display:
           exclude: true
           alter:
             alter_text: true
-            text: '{{ ccei_taxonomies_en | split(",") | last | trim("|") | split("|") | last }}'
+            text: "{% if (drupal_token('current-language:code') == 'fr') %}\r\n{{ ccei_taxonomies_fr | split(\",\") | last | trim(\"|\") | split(\"|\") | last }}\r\n{% else %}\r\n{{ ccei_taxonomies_en | split(\",\") | last | trim(\"|\") | split(\"|\") | last }}\r\n{% endif %}\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -1820,7 +1873,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"display-table-row\">\r\n <span class=\"pr-2 display-table-cell table-lnk\">\r\n  <a href=\"{{url_en}}\">{{title_search_en}}</a>\r\n </span>\r\n <span class=\"brdr-l-grey pl-2 display-table-cell\">Provided by {{sources_en}}</span>\r\n</div>\r\n{#\r\n<div class=\"display-table-row\">\r\n <div class=\"pr-2 display-table-cell table-lnk\">\r\n  <a href=\"{{url_en}}\">{{title_search_en}}</a>\r\n </div>\r\n <div class=\"brdr-l-grey pl-2 display-table-cell\">Provided by {{sources_en}}</div>\r\n</div>\r\n#}"
+            text: "{% set the_path = url_en %}\r\n{% set the_title = title_search_en %}\r\n{% set the_source = 'Provided by ' ~ sources_en %}\r\n{% if (drupal_token('current-language:code') == 'fr') %}\r\n{% set the_path = url_fr %}\r\n{% set the_title = title_search_fr %}\r\n{% set the_source = 'Fourni par ' ~ sources_fr %}\r\n{% endif %}\r\n<div class=\"display-table-row\">\r\n <span class=\"pr-2 display-table-cell table-lnk\">\r\n  <a href=\"{{the_path}}\">{{the_title}}</a>\r\n </span>\r\n <span class=\"brdr-l-grey pl-2 display-table-cell\">{{the_source}}</span>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -2219,7 +2272,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"col-md-4 mb-2\">\r\n  <div class=\"publication-card\">\r\n    <a href=\"{{url_en}}\"><img src=\"https://via.placeholder.com/400\" alt=\"\" width=\"400\" height=\"400\"></a>\r\n    <a class=\"btn btn-default\" href=\"mailto:\">\r\n     <span class=\"wb-inv\">Share publication: {{title_search_en}}</span>\r\n     <i class=\"mdi mdi-share\"></i>\r\n    </a>\r\n    <p class=\"publication-text\"><a href=\"{{url_en}}\">{{title_search_en}}</a></p>\r\n   </div>\r\n </div>\r\n{#\r\n<div class=\"col-md-4 mb-2\">\r\n  <div class=\"publication-card\">\r\n    <a href=\"{{url_en}}\"><img src=\"https://via.placeholder.com/400\" alt=\"\" width=\"400\" height=\"400\"></a>\r\n    <a class=\"btn btn-default\" href=\"mailto:\">\r\n     <span class=\"wb-inv\">Share publication: {{title_search_en}}</span>\r\n     <i class=\"mdi mdi-share\"></i>\r\n    </a>\r\n    <p class=\"publication-text\"><a href=\"{{url_en}}\">{{title_search_en}}</a></p>\r\n   </div>\r\n </div>\r\n#}"
+            text: "{% set the_path = url_en %}\r\n{% set the_title = title_search_en %}\r\n{% set the_source = 'Share publication: ' ~ title_search_en %}\r\n{% if (drupal_token('current-language:code') == 'fr') %}\r\n{% set the_path = url_fr %}\r\n{% set the_title = title_search_fr %}\r\n{% set the_source = 'Partager le publication: ' ~ title_search_fr %}\r\n{% endif %}\r\n<div class=\"col-md-4 mb-2\">\r\n  <div class=\"publication-card\">\r\n    <a href=\"{{the_path}}\"><img src=\"https://via.placeholder.com/400\" alt=\"\" width=\"400\" height=\"400\"></a>\r\n    <a class=\"btn btn-default\" href=\"mailto:\">\r\n     <span class=\"wb-inv\">{{the_source}}</span>\r\n     <i class=\"mdi mdi-share\"></i>\r\n    </a>\r\n    <p class=\"publication-text\"><a href=\"{{the_path}}\">{{the_title}}</a></p>\r\n   </div>\r\n </div>\r\n{#\r\n<div class=\"col-md-4 mb-2\">\r\n  <div class=\"publication-card\">\r\n    <a href=\"{{url_en}}\"><img src=\"https://via.placeholder.com/400\" alt=\"\" width=\"400\" height=\"400\"></a>\r\n    <a class=\"btn btn-default\" href=\"mailto:\">\r\n     <span class=\"wb-inv\">Share publication: {{title_search_en}}</span>\r\n     <i class=\"mdi mdi-share\"></i>\r\n    </a>\r\n    <p class=\"publication-text\"><a href=\"{{url_en}}\">{{title_search_en}}</a></p>\r\n   </div>\r\n </div>\r\n#}"
             make_link: false
             path: ''
             absolute: false
