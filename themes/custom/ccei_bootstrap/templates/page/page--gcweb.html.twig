@@ -70,8 +70,8 @@
       ]
     %}
     <header>
-      <div id="wb-bnr" class="container">
-        <section id="wb-lng" class="text-right visible-md visible-lg">
+      <div id="wb-bnr" class="{{ container }}">
+        <section id="wb-lng" class="text-right">
           <h2 class="wb-inv">{{ 'Language selection'|t }}</h2>
           {{ page.language_toggle }}
         </section>
@@ -81,14 +81,43 @@
         </div>
       </div>
       {{ page.breadcrumb }}
-      {% if gcweb_cdn and gcweb_cdn_url %}
-        <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-trgt="mb-pnl">
-          {{ ccei_megamenu | raw }}
-        </nav>
-      {% else %}
-        {{ page.navigation }}
-      {% endif %}
-        {{ page.branding }}
+      <div id="wb-bar">
+        <div class="{{ container }}">
+          <section class="wb-mb-links col-xs-12" id="wb-glb-mn" hidden>
+            <h2>Search and menus</h2>
+            <ul class="pnl-btn list-inline text-right">
+              <li>
+                <a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button">
+                  <span class="glyphicon glyphicon-search">
+                    <span class="glyphicon glyphicon-th-list">
+                      <span class="wb-inv">Search and menus</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <div id="mb-pnl"></div>
+          </section>
+        </div>
+      </div>
+      <div id="header">
+        <div class="{{ container }}">
+          {{ ccei_megamenu }}
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          {{ ccei_menu}}
+        </div>
+      </div>
+      <div id="subheader">
+        <div class="{{ container }}">
+          <a class="ccei-logo display-flex flex-align-center" href="home-en.html">
+            <img src="/profiles/ccei/themes/custom/ccei_bootstrap/assets/CCEI-EN-SMALL.png" alt="" />
+            <div class="slogan-container">
+              <span>{{ 'Canadian Center for Energy Information'|t }}</span>
+              <span class="small">{{ 'Get plugged in to energy information'|t }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </header>
   {% endblock %}
 {% endif %}
@@ -115,7 +144,8 @@
         page.sidebar_first is empty and page.sidebar_second is empty ? 'col-md-12'
       ]
     %}
-    <main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+    <main property="mainContentOfPage" typeof="WebPageElement">
 
     {# Header #}
     {% if page.header %}
@@ -220,20 +250,17 @@
         <nav class="container wb-navcurr">
           <h2 class="wb-inv">About government</h2>
             <ul class="list-unstyled colcount-sm-2 colcount-md-3">
-              <li><a href="/en/contact">Contact us</a></li>
+              <li><a href="/profiles/ccei/themes/custom/ccei_bootstrap/CCEI/contact-en.html">Contact us</a></li>
               <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
               <li><a href="https://www.canada.ca/en/government/publicservice.html">Public service and military</a></li>
-              <li><a href="https://www.canada.ca/en/news.html">News</a></li>
+              <li><a href="http://news.gc.ca/">News</a></li>
               <li><a href="https://www.canada.ca/en/government/system/laws.html">Treaties, laws and regulations</a></li>
               <li><a href="https://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
-              <li><a href="https://pm.gc.ca/eng">Prime Minister</a></li>
+              <li><a href="http://pm.gc.ca/eng">Prime Minister</a></li>
               <li><a href="https://www.canada.ca/en/government/system.html">How government works</a></li>
-              <li><a href="https://open.canada.ca/en/">Open government</a></li>
+              <li><a href="http://open.canada.ca/en/">Open government</a></li>
             </ul>
           </nav>
-        </div>
-        <div class="{{ container }}">
-          {{ page.footer }}
         </div>
         <div class="brand">
         <div class="{{ container }}">
@@ -244,7 +271,7 @@
                   <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
                   <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
                   <li><a href="https://www1.canada.ca/en/newsite.html">About Canada.ca</a></li>
-                  <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                  <a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
                   <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
                 </ul>
               </nav>

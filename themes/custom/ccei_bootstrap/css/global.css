@@ -63,11 +63,16 @@ hr {
 }
 #subheader .ccei-logo>img {
   height: 45px;
-  margin: 10px 0px;
-  padding-right: 8px;
+  margin: 24px 0px;
+  padding-right: 16px;
 }
-#subheader .ccei-logo>span {
+#subheader .slogan-container {
+  padding-left: 16px;
+  border-left: 1px solid white;
+}
+#subheader .slogan-container>span {
   color: white;
+  display: block;
 }
 #srch-bar button {
   padding: 10px 14px;
@@ -413,15 +418,6 @@ details[open] {
   z-index: 400;
   color: black;
 }
-.highlight-card a.btn {
-  position: absolute;
-  font-size: 1.25em;
-  padding: 5px 12px;
-  right: 8px;
-  top: 8px;
-  z-index: 400;
-  color: black;
-}
 .highlight-card img {
   width: 100%;
 }
@@ -477,15 +473,6 @@ details[open] {
   border: 1px solid #ccc;
 }
 .publication-card a.btn-share {
-  position: absolute;
-  font-size: 1.25em;
-  padding: 5px 12px;
-  color: black;
-  right: 8px;
-  top: 8px;
-  z-index: 400;
-}
-.publication-card a.btn {
   position: absolute;
   font-size: 1.25em;
   padding: 5px 12px;

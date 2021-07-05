@@ -33,12 +33,24 @@
  * @ingroup themeable
  */
 #}
+{% set heading_id = attributes.id ~ '-menu'|clean_id %}
+<nav role="navigation" aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby') }}>
+  {# Label. If not displayed, we still provide it for screen readers. #}
+  {% if not configuration.label_display %}
+    {% set title_attributes = title_attributes.addClass('visually-hidden') %}
+  {% endif %}
+  {{ title_prefix }}
+  <h2{{ title_attributes.setAttribute('id', heading_id) }}>{{ configuration.label }}</h2>
+  {{ title_suffix }}
+
+{# Menu. #}
 {% block content %}
-  <div id="ccei-banner" class="hidden-xs hidden-sm">
-    <div class="container">
-      <a href="/home-eng.htm">
-        <img id="ccei-logo" src="/profiles/ccei/themes/custom/ccei_bootstrap/assets/ccei-ccie/logo-sm-eng.png" alt="{{ 'Canadian Center for Energy Information logo'|t }}" />
-      </a>
+  <nav role="navigation" id="wb-sm" data-trgt="mb-pnl" class="wb-menu height-100" typeof="SiteNavigationElement">
+    <div class="pnl-strt nvbar height-100">
+      <ul class="list-inline menu height-100 visible-sm visible-md visible-lg" role="menubar" aria-label="CCEI menu">
+        {{ content }}
+      </ul>
     </div>
-  </div>
+  </nav>
 {% endblock %}
+</nav>

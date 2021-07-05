@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.ccei_megamenu
+  module:
+    - views
+    - wxt_library
+  theme:
+    - ccei_bootstrap
+id: views_block__ccei_megamenu_block_1
+theme: ccei_bootstrap
+region: navigation
+weight: -9
+provider: null
+plugin: 'views_block:ccei_megamenu-block_1'
+settings:
+  id: 'views_block:ccei_megamenu-block_1'
+  label: 'CCEI Megamenu'
+  provider: views
+  label_display: '0'
+  views_label: 'CCEI Megamenu'
+  items_per_page: none
+visibility:
+  panels_title:
+    id: panels_title
+    enabled: 0
+    negate: false
+    context_mapping: {  }

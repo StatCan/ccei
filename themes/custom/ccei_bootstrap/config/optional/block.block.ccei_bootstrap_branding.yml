@@ -1,13 +1,14 @@
-langcode: en
 status: false
 dependencies:
   module:
     - system
   theme:
     - ccei_bootstrap
+_core:
+  default_config_hash: 0uvVPFB0Km7ZGVxgACmAzDYxjaS4PHzCtQge4UIiKBo
 id: ccei_bootstrap_branding
 theme: ccei_bootstrap
-region: '-1'
+region: branding
 weight: -8
 provider: null
 plugin: system_branding_block

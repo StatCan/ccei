@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:bc6a3e6f-0762-4c1c-8fd2-1262170c8bc9'
+  module:
+    - block_content
+    - wxt_library
+  theme:
+    - ccei_bootstrap
+id: cceireportfeedback
+theme: ccei_bootstrap
+region: content_footer
+weight: -9
+provider: null
+plugin: 'block_content:bc6a3e6f-0762-4c1c-8fd2-1262170c8bc9'
+settings:
+  id: 'block_content:bc6a3e6f-0762-4c1c-8fd2-1262170c8bc9'
+  label: 'CCEI report & feedback'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  panels_title:
+    id: panels_title
+    enabled: 0
+    negate: false
+    context_mapping: {  }

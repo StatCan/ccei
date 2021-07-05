@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.ccei-menu
+  module:
+    - menu_block
+    - wxt_library
+id: cceimenu
+theme: ccei_bootstrap
+region: navigation
+weight: -8
+provider: null
+plugin: 'menu_block:ccei-menu'
+settings:
+  id: 'menu_block:ccei-menu'
+  label: 'CCEI Menu'
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  custom_level: '1'
+  hide_children: 0
+  depth: 0
+  expand: 0
+  expand_only_active_trails: 0
+  parent: 'ccei-menu:'
+  render_parent: false
+  follow: 0
+  suggestion: ccei_menu
+visibility:
+  panels_title:
+    id: panels_title
+    enabled: 0
+    negate: false
+    context_mapping: {  }

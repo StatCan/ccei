@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subject_category
+    - node.type.ccei_subject
+    - taxonomy.vocabulary.ccei_subject_category
+id: node.ccei_subject.field_subject_category
+field_name: field_subject_category
+entity_type: node
+bundle: ccei_subject
+label: 'Subject category'
+description: 'Enter your the category for your subject (Energy Products or Topics).'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      ccei_subject_category: ccei_subject_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
